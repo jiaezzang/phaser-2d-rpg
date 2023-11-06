@@ -1,5 +1,7 @@
 import './style.css';
 import Phaser from 'phaser';
+import Preloader from './scenes/Preloader';
+import DisplayScene from './scenes/DisplayScene';
 
 new Phaser.Game({
     type: Phaser.WEBGL,
@@ -11,5 +13,6 @@ new Phaser.Game({
             debug: import.meta.env.DEV,
             gravity: { y: 2500 }
         }
-    }
+    },
+    scene: [Preloader, DisplayScene]
 });
