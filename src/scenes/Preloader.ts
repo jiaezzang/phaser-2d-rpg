@@ -12,7 +12,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('seal', 'enemies/seal/seal.png', 'enemies/seal/seal.json');
 
         //tile
-        this.load.image('platforms', 'map/spritesheet_jumper.png');
+        this.load.image('platforms', 'map/texture.png');
         this.load.tilemapTiledJSON('map', 'map/map.json');
     }
     create() {
