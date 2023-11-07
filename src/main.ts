@@ -4,7 +4,7 @@ import Preloader from './scenes/Preloader';
 import DisplayScene from './scenes/DisplayScene';
 
 new Phaser.Game({
-    type: Phaser.WEBGL,
+    // type: Phaser.WEBGL,
     width: '100%',
     height: '100%',
     physics: {

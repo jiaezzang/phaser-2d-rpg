@@ -1,0 +1,39 @@
+{
+  "frames": {
+    "effectMachine1.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 532,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 51,
+        "y": 33,
+        "w": 532,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 626,
+        "h": 126
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "texture.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 532,
+      "h": 58
+    },
+    "scale": 1
+  }
+}

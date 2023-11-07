@@ -1,0 +1,75 @@
+{
+    "frames": {
+        "walk1": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 136,
+                "h": 161
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 136,
+                "h": 161
+            },
+            "sourceSize": {
+                "w": 136,
+                "h": 161
+            }
+        },
+        "walk2": {
+            "frame": {
+                "x": 0,
+                "y": 161,
+                "w": 141,
+                "h": 159
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 141,
+                "h": 159
+            },
+            "sourceSize": {
+                "w": 141,
+                "h": 159
+            }
+        },
+        "dead": {
+            "frame": {
+                "x": 0,
+                "y": 320,
+                "w": 136,
+                "h": 140
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 136,
+                "h": 140
+            },
+            "sourceSize": {
+                "w": 136,
+                "h": 140
+            }
+        }
+    },
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "bee.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 141,
+            "h": 460
+        },
+        "scale": 1
+    }
+}
