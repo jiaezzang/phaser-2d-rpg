@@ -1,7 +1,7 @@
 import './style.css';
 import Phaser from 'phaser';
-import Preloader from './scenes/Preloader';
-import DisplayScene from './scenes/DisplayScene';
+import Preloader from './components/scenes/Preloader';
+import DisplayScene from './components/scenes/DisplayScene';
 
 new Phaser.Game({
     // type: Phaser.WEBGL,
