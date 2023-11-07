@@ -15,6 +15,7 @@ export default class DisplayScene extends Phaser.Scene {
   background!: Background;
   cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   tileMap!: Phaser.GameObjects.TileSprite;
+  platformsLayer!: Phaser.Tilemaps.TilemapLayer;
   enemy!: Enemy;
   minimap!: MiniMap;
   wormEnemy!: WormEnemy;
@@ -35,6 +36,8 @@ export default class DisplayScene extends Phaser.Scene {
   }
   create() {
     this.background = new Background(this);
+    // this.physics.add.staticImage(100, 100, "platforms").setOrigin(10, 10);
+
     this.enemy = new BeeEnemy(this, {
       id: 1,
       name: "bee",
@@ -134,8 +137,7 @@ export default class DisplayScene extends Phaser.Scene {
       ],
     });
 
-    this.player = new Player(this, 0, 800, "player", "stand1");
-    console.log("create! s");
+    this.player = new Player(this, 0, 0, "player", "stand1");
 
     // keyboard
     //@ts-ignore
@@ -143,19 +145,37 @@ export default class DisplayScene extends Phaser.Scene {
 
     //map
     const map = this.make.tilemap({ key: "map" });
-    const tileset = map.addTilesetImage("texture", "platforms");
-    if (tileset) {
-      const platforms = map.createLayer("platforms", tileset);
-      platforms?.setCollisionByExclusion([-1]);
-      platforms?.setPosition(0, 0);
-      if (platforms) this.physics.add.collider(this.player, platforms);
-      platforms?.setScale(0.5);
-    }
+    const tileset = map.addTilesetImage("texture", "platforms") ?? "";
+    const platforms = map.createLayer("platforms", tileset);
+    platforms?.setCollisionByExclusion([-1]);
+    if (platforms) this.platformsLayer = platforms;
+    this.platformsLayer.setScale(0.5);
+    const platformGroup = this.physics.add.staticGroup();
+    const tileBodies = this.platformsLayer
+      ///@ts-ignore
+      .filterTiles((tile) => tile.properties.collides)
+      .map((tile) => {
+        return this.add
+          .rectangle(tile.x * 40, tile.y * 40 + 160, 40, tile.properties.height)
+          .setOrigin(0, 1);
+      });
+    platformGroup.addMultiple(tileBodies);
+    tileBodies.forEach((el) => {
+      ///@ts-ignore
+      el.body.checkCollision.down = false;
+      ///@ts-ignore
+      el.body.checkCollision.left = false;
+      ///@ts-ignore
+      el.body.checkCollision.right = false;
+    });
+    this.physics.add.collider(platformGroup, this.player);
+
+    //camera&minimap
     this.cameras.main.startFollow(this.player);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.minimap = new MiniMap(this, 20, 80, 300, map.heightInPixels / 10, map);
     this.minimap.camera.ignore(this.background);
-
+    
     this.physics.world.setBounds(
       0,
       -200,
