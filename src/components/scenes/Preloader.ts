@@ -17,8 +17,8 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('wind', 'tools/wind/wind.png', 'tools/wind/wind.json');
 
         //tile
-        // this.load.image('platforms', 'map/platform.png');
-        // this.load.tilemapTiledJSON('map', 'map/map.json');
+        this.load.image('platforms', 'map/texture.png');
+        this.load.tilemapTiledJSON('map', 'map/map.json');
 
         this.load.image('platforms', 'map/platform.png');
         this.load.image('ladder', 'map/ladder.png');
