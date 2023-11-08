@@ -44,13 +44,13 @@ export default class DisplayScene extends Phaser.Scene {
             id: 4,
             name: 'monster',
             type: 'monster',
-            x: 400,
-            y: 1780,
+            x: 2500,
+            y: 2000,
             width: 0,
             height: 0,
             properties: [
-                { name: 'max', type: 'float', value: 900 },
-                { name: 'min', type: 'float', value: 400 },
+                { name: 'max', type: 'float', value: 2500 },
+                { name: 'min', type: 'float', value: 1800 },
                 { name: 'velocity', type: 'float', value: 100 }
             ]
         });
@@ -58,13 +58,13 @@ export default class DisplayScene extends Phaser.Scene {
             id: 5,
             name: 'mushroom',
             type: 'mushroom',
-            x: 800,
-            y: 1780,
+            x: 500,
+            y: 2000,
             width: 0,
             height: 0,
             properties: [
-                { name: 'max', type: 'float', value: 1400 },
-                { name: 'min', type: 'float', value: 800 },
+                { name: 'max', type: 'float', value: 800 },
+                { name: 'min', type: 'float', value: 400 },
                 { name: 'velocity', type: 'float', value: 100 }
             ]
         });
@@ -124,11 +124,11 @@ export default class DisplayScene extends Phaser.Scene {
                 { name: 'velocity', type: 'float', value: 300 }
             ]
         });
-        this.portal = new Portal(this, 1000, 1950, 'portal');
+        this.portal = new Portal(this, 1000, 2250, 'portal');
         this.reward = new Reward(this, 1500, 1500, 'reward');
 
         this.player = new Player(this, 0, 800, 'player', 'stand1');
-        console.log('create! s');
+        // console.log('create! s');
 
         // keyboard
         //@ts-ignore
@@ -145,12 +145,14 @@ export default class DisplayScene extends Phaser.Scene {
         platforms?.setCollisionByExclusion([-1]);
         if (platforms) this.platformsLayer = platforms;
         this.platformsLayer.setScale(0.5);
+        this.platformsLayer.setPosition(0, 1200);
+
         const platformGroup = this.physics.add.staticGroup();
         const tileBodies = this.platformsLayer
             ///@ts-ignore
             .filterTiles((tile) => tile.properties.collides)
             .map((tile) => {
-                return this.add.rectangle(tile.x * 40, tile.y * 40 + 160, 40, tile.properties.height).setOrigin(0, 1);
+                return this.add.rectangle(tile.x * 40, tile.y * 40 + 1350, 40, tile.properties.height).setOrigin(0, 1);
             });
         platformGroup.addMultiple(tileBodies);
         tileBodies.forEach((el) => {
