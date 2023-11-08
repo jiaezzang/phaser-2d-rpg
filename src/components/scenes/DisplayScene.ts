@@ -4,11 +4,13 @@ import MiniMap from '../MiniMap';
 import Fire from '../attacks/Fire';
 import Effect from '../attacks/Effect';
 import Wind from '../attacks/Wind';
-import Portal from '../portal/portal';
+import Portal from '../portal/Portal';
 import Mushroom from '../enimies/Mushroom';
 import Golem from '../enimies/Golem';
-import Monster from '../enimies/Monster';
-import Reward from '../reward/reward';
+import PsycoJack from '../enimies/PsycoJack';
+import PinkBean from '../enimies/PinkBean';
+import Gallopera from '../enimies/Gallopera';
+import Reward from '../reward/Reward';
 
 export default class DisplayScene extends Phaser.Scene {
     player!: Player;
@@ -18,7 +20,9 @@ export default class DisplayScene extends Phaser.Scene {
     minimap!: MiniMap;
     mushroom!: Mushroom;
     golem!: Golem;
-    monster!: Monster;
+    pinkbean!: PinkBean;
+    gallopera!: Gallopera;
+    psycojack!: PsycoJack;
     fire!: Fire;
     effect!: Effect;
     wind!: Wind;
@@ -40,103 +44,44 @@ export default class DisplayScene extends Phaser.Scene {
     }
     create() {
         this.background = new Background(this);
-        this.monster = new Monster(this, {
-            id: 4,
-            name: 'monster',
-            type: 'monster',
-            x: 2500,
-            y: 2000,
-            width: 0,
-            height: 0,
-            properties: [
-                { name: 'max', type: 'float', value: 2500 },
-                { name: 'min', type: 'float', value: 1800 },
-                { name: 'velocity', type: 'float', value: 100 }
-            ]
-        });
-        this.mushroom = new Mushroom(this, {
-            id: 5,
-            name: 'mushroom',
-            type: 'mushroom',
-            x: 500,
-            y: 2000,
-            width: 0,
-            height: 0,
-            properties: [
-                { name: 'max', type: 'float', value: 800 },
-                { name: 'min', type: 'float', value: 400 },
-                { name: 'velocity', type: 'float', value: 100 }
-            ]
-        });
-        this.golem = new Golem(this, {
-            id: 6,
-            name: 'golem',
-            type: 'golem',
-            x: 1400,
-            y: 1780,
-            width: 0,
-            height: 0,
-            properties: [
-                { name: 'max', type: 'float', value: 2000 },
-                { name: 'min', type: 'float', value: 1400 },
-                { name: 'velocity', type: 'float', value: 100 }
-            ]
-        });
-        this.fire = new Fire(this, {
-            id: 4,
-            name: 'fire',
-            type: 'fire',
-            x: 1800,
-            y: 1800,
-            width: 0,
-            height: 0,
-            properties: [
-                { name: 'max', type: 'float', value: 1300 },
-                { name: 'min', type: 'float', value: 500 },
-                { name: 'velocity', type: 'float', value: 100 }
-            ]
-        });
-        this.effect = new Effect(this, {
-            id: 4,
-            name: 'effect',
-            type: 'effect',
-            x: 1000,
-            y: 1800,
-            width: 0,
-            height: 0,
-            properties: [
-                { name: 'max', type: 'float', value: 1800 },
-                { name: 'min', type: 'float', value: 1500 },
-                { name: 'velocity', type: 'float', value: 100 }
-            ]
-        });
-        this.wind = new Wind(this, {
-            id: 5,
-            name: 'wind',
-            type: 'wind',
-            x: 1000,
-            y: 1300,
-            width: 0,
-            height: 0,
-            properties: [
-                { name: 'max', type: 'float', value: 1300 },
-                { name: 'min', type: 'float', value: 500 },
-                { name: 'velocity', type: 'float', value: 300 }
-            ]
-        });
+
+        // 적 생성
+        this.pinkbean = new PinkBean(this, { x: 2500, y: 2000, properties: { min: 1800, max: 2500 } });
+        this.mushroom = new Mushroom(this, { x: 500, y: 2000, properties: { max: 800, min: 400 } });
+        this.golem = new Golem(this, { x: 1800, y: 2200, properties: { min: 1800, max: 2300 } });
+        this.gallopera = new Gallopera(this, { x: 1400, y: 1780, properties: { min: 1400, max: 2000 } });
+        this.psycojack = new PsycoJack(this, { x: 1000, y: 1300, properties: { min: 1000, max: 1500 } });
+
+        // 포탈, 보상
         this.portal = new Portal(this, 1000, 2250, 'portal');
         this.reward = new Reward(this, 1500, 1500, 'reward');
 
+        // 플레이어
         this.player = new Player(this, 0, 800, 'player', 'stand1');
         // console.log('create! s');
 
         // keyboard
         //@ts-ignore
-        this.cursors = this.input.keyboard.createCursorKeys();
-        this.keyZ = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
-        this.keyX = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.X);
-        this.keyC = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.C);
-        console.log(this.keyZ);
+
+        this.cursors = this.input.keyboard!.createCursorKeys();
+        const keys = [
+            { key: 'Z', value: 'wind' },
+            { key: 'X', value: 'fire' },
+            { key: 'C', value: 'effect' }
+        ];
+        type KeyTypes = 'keyZ' | 'keyX' | 'keyC';
+        keys.forEach((keyArray) => {
+            const key = 'key' + `${keyArray.key}`;
+            this[key as KeyTypes] = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes[keyArray.key as 'Z' | 'X' | 'C']);
+            this[key as KeyTypes].on('down', () => {
+                const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
+                this.wind = new Wind(this, { x: x, y: this.player.y, flip: this.player.flipX });
+                this.physics.add.collider(this.mushroom, this.wind, () => {
+                    if (this.mushroom.attack < 3) this.mushroom.setFrame('attack1');
+                });
+                this.mushroom.kill();
+            }); // 바람을 불러일으키는 함수만 생성하면 된다.
+        });
 
         //map
         const map = this.make.tilemap({ key: 'map' });
@@ -150,48 +95,55 @@ export default class DisplayScene extends Phaser.Scene {
         const platformGroup = this.physics.add.staticGroup();
         const tileBodies = this.platformsLayer
             ///@ts-ignore
-            .filterTiles((tile) => tile.properties.collides)
+            .filterTiles((_tile) => _tile.properties.collides)
             .map((tile) => {
                 return this.add.rectangle(tile.x * 40, tile.y * 40 + 1350, 40, tile.properties.height).setOrigin(0, 1);
             });
         platformGroup.addMultiple(tileBodies);
-        tileBodies.forEach((el) => {
-            ///@ts-ignore
+
+        tileBodies.forEach((el: any) => {
             el.body.checkCollision.down = false;
-            ///@ts-ignore
             el.body.checkCollision.left = false;
-            ///@ts-ignore
             el.body.checkCollision.right = false;
         });
         this.physics.add.collider(platformGroup, this.player);
 
-        //camera&minimap
+        //camera & minimap
         this.cameras.main.startFollow(this.player);
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-        this.minimap = new MiniMap(this, 20, 80, 300, map.heightInPixels / 10, map);
+        this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
         this.minimap.camera.ignore(this.background);
 
         this.physics.world.setBounds(0, -200, map.widthInPixels, map.heightInPixels + 200);
     }
-    update(time: number, delta: number): void {
+    update(): void {
         this.background.update();
-        this.monster.update();
+        this.pinkbean.update();
         this.mushroom.update();
         this.golem.update();
-        this.fire.update();
-        this.wind.update();
-        this.effect.update();
+        this.psycojack.update();
+        this.gallopera.update();
         this.minimap.update(this.player);
         this.player.update(this.cursors);
-        // this.Portal.update();
-        if (this.keyZ.isDown) {
-            console.log(1);
-        }
-        if (this.keyX.isDown) {
-            console.log(1);
-        }
-        if (this.keyC.isDown) {
-            console.log(1);
-        }
     }
+    // attack(type: string) {
+    //     const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
+    //     if (type === 'wind') {
+    //         this.wind = new Wind(this, { x: x, y: this.player.y, flip: this.player.flipX });
+    //         this.physics.add.collider(this.mushroom, this.wind, () => {
+    //             console.log(1);
+    //         });
+    //         this.mushroom.kill();
+    //     } else if (type === 'effect') {
+    //         this.effect = new Effect(this, { x: x, y: this.player.y, flip: this.player.flipX });
+    //         this.physics.add.collider(this.mushroom, this.effect, () => {
+    //             this.mushroom.setFrame('attack1');
+    //         });
+    //     } else if (type === 'fire') {
+    //         this.fire = new Fire(this, { x: x, y: this.player.y, flip: this.player.flipX });
+    //         this.physics.add.collider(this.mushroom, this.fire, () => {
+    //             this.mushroom.setFrame('attack1');
+    //         });
+    //     }
+    // }
 }
