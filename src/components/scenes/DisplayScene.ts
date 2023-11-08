@@ -47,7 +47,7 @@ export default class DisplayScene extends Phaser.Scene {
 
         // 적 생성
         this.pinkbean = new PinkBean(this, { x: 2500, y: 2000, properties: { min: 1800, max: 2500 } });
-        this.mushroom = new Mushroom(this, { x: 500, y: 2000, properties: { max: 800, min: 400 } });
+        this.mushroom = new Mushroom(this, { x: 500, y: 1900, properties: { max: 800, min: 400 } });
         this.golem = new Golem(this, { x: 1800, y: 2200, properties: { min: 1800, max: 2300 } });
         this.gallopera = new Gallopera(this, { x: 1400, y: 1780, properties: { min: 1400, max: 2000 } });
         this.psycojack = new PsycoJack(this, { x: 1000, y: 1300, properties: { min: 1000, max: 1500 } });
@@ -83,30 +83,71 @@ export default class DisplayScene extends Phaser.Scene {
             }); // 바람을 불러일으키는 함수만 생성하면 된다.
         });
 
-        //map
-        const map = this.make.tilemap({ key: 'map' });
-        const tileset = map.addTilesetImage('texture', 'platforms') ?? '';
-        const platforms = map.createLayer('platforms', tileset);
-        platforms?.setCollisionByExclusion([-1]);
-        if (platforms) this.platformsLayer = platforms;
-        this.platformsLayer.setScale(0.5);
-        this.platformsLayer.setPosition(0, 1200);
+    //map
+    const map = this.make.tilemap({ key: "map" });
+    const tileset = map.addTilesetImage("texture", "platforms") ?? "";
+    const platforms = map.createLayer("platforms", tileset);
+    platforms?.setCollisionByExclusion([-1]);
+    if (platforms) this.platformsLayer = platforms;
+    // this.platformsLayer.setScale(0.5);
+    // this.platformsLayer.setPosition(0, 1200);
+    // this.mushroom.checkCollision.down = false;
 
-        const platformGroup = this.physics.add.staticGroup();
-        const tileBodies = this.platformsLayer
-            ///@ts-ignore
-            .filterTiles((_tile) => _tile.properties.collides)
-            .map((tile) => {
-                return this.add.rectangle(tile.x * 40, tile.y * 40 + 1350, 40, tile.properties.height).setOrigin(0, 1);
-            });
-        platformGroup.addMultiple(tileBodies);
+    const platformGroup = this.physics.add.staticGroup();
+    //tile collides
+    const tileBodies = this.platformsLayer
+      ///@ts-ignore
+      .filterTiles((tile) => tile.properties.collides)
+      .map((tile) => {
+        return this.add
+          .rectangle(tile.x * 10, tile.y * 10 + 140, 10, tile.properties.height)
+          .setOrigin(0, 1);
+      });
+    platformGroup.addMultiple(tileBodies);
+    console.log(tileBodies);
+    tileBodies.forEach((el) => {
+      ///@ts-ignore
+      el.body.checkCollision.down = false;
+      ///@ts-ignore
+      el.body.checkCollision.left = false;
+      ///@ts-ignore
+      el.body.checkCollision.right = false;
+    });
+    //tile collides : climb
+    const tileClimb = this.platformsLayer
+      ///@ts-ignore
+      .filterTiles((tile) => tile.properties.climb)
+      .map((tile) => {
+        return this.add
+          .rectangle(tile.x * 10, tile.y * 10 + 140, 10, tile.properties.height)
+          .setOrigin(0, 1);
+      });
+    platformGroup.addMultiple(tileClimb);
+    console.log(tileBodies);
+    tileClimb.forEach((el) => {
+      ///@ts-ignore
+      el.body.checkCollision.down = false;
+    });
 
-        tileBodies.forEach((el: any) => {
-            el.body.checkCollision.down = false;
-            el.body.checkCollision.left = false;
-            el.body.checkCollision.right = false;
-        });
-        this.physics.add.collider(platformGroup, this.player);
+    this.physics.add.collider(platformGroup, this.player);
+    this.physics.add.collider(this.player, this.mushroom, () => {
+      this.input.enabled = false;
+      this.player.setCollideWorldBounds(false);
+      this.player.setTint(0xff0000);
+      this.player
+        .setVelocity(100, 200)
+        .setBounce(1, 1)
+        .setCollideWorldBounds(true);
+      // this.cameras.main.shake(200, 0.010);
+      setTimeout(() => {
+        this.player.setTint();
+        // this.player.checkCollision.none = false;
+        this.player.setBounce(0);
+        // this.player.setVelocityX(0).setBounceX(0)
+      }, 1500);
+    });
+
+    this.player.setCollideWorldBounds(true);
 
         //camera & minimap
         this.cameras.main.startFollow(this.player);

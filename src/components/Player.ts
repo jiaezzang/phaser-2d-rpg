@@ -1,4 +1,6 @@
 export default class Player extends Phaser.Physics.Arcade.Sprite {
+    [x: string]: any;
+    dead = false;
     constructor(scene: Phaser.Scene, x: number = 0, y: number = 0, texture: string, frame: string) {
         super(scene, x, y, texture, frame);
 
@@ -52,5 +54,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.play('jumpstart', true);
             this.setVelocityY(-1250);
         }
+    }
+    kill() {
+        this.dead = true;
+
     }
 }

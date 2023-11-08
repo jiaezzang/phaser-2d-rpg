@@ -1,18 +1,18 @@
-import './style.css';
-import Phaser from 'phaser';
-import Preloader from './components/scenes/Preloader';
-import DisplayScene from './components/scenes/DisplayScene';
+import "./style.css";
+import Phaser from "phaser";
+import Preloader from "./components/scenes/Preloader";
+import DisplayScene from "./components/scenes/DisplayScene";
 
 new Phaser.Game({
-    // type: Phaser.WEBGL,
-    width: '100%',
-    height: '100%',
-    physics: {
-        default: 'arcade',
-        arcade: {
-            debug: import.meta.env.DEV,
-            gravity: { y: 2500 }
-        }
+  // type: Phaser.WEBGL,
+  width: "100%",
+  height: "100%",
+  physics: {
+    default: "arcade",
+    arcade: {
+      debug: import.meta.env.DEV,
+      gravity: { y: 2500 },
     },
-    scene: [Preloader, DisplayScene]
+  },
+  scene: [Preloader, DisplayScene],
 });
