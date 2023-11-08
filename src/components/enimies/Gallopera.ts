@@ -1,21 +1,21 @@
-import { getCustomPropertyValueFromObject } from '../../util';
 import Enemy from './Enemy';
 
-export default class Monster extends Enemy {
+type TMushroomProps = { x: number; y: number; properties: { min: number; max: number } };
+export default class Gallopera extends Enemy {
     min: number;
     max: number;
-    movingVelocity = 200;
-    constructor(scene: Phaser.Scene, config: Phaser.Types.Tilemaps.TiledObject) {
-        super(scene, config.x ?? 0, config.y ?? 0, 'monster', 'walk1');
-        this.min = getCustomPropertyValueFromObject(config, 'min');
-        this.max = getCustomPropertyValueFromObject(config, 'max');
-        this.movingVelocity = getCustomPropertyValueFromObject(config, 'velocity');
+    movingVelocity = 100;
+    constructor(scene: Phaser.Scene, config: TMushroomProps) {
+        super(scene, config.x ?? 0, config.y ?? 0, 'gallopera', 'walk1');
+        this.min = config.properties.min;
+        this.max = config.properties.max;
+
         this.anims.create({
             key: 'walk',
-            frames: scene.anims.generateFrameNames('monster', {
+            frames: scene.anims.generateFrameNames('gallopera', {
                 prefix: 'walk',
                 start: 1,
-                end: 7,
+                end: 5,
                 zeroPad: 1
             }),
             frameRate: 8,
