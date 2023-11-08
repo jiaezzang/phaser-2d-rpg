@@ -1,0 +1,159 @@
+{
+    "frames": {
+        "reward1": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 108,
+                "h": 63
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 6,
+                "y": 3,
+                "w": 108,
+                "h": 63
+            },
+            "sourceSize": {
+                "w": 120,
+                "h": 70
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "reward3": {
+            "frame": {
+                "x": 108,
+                "y": 0,
+                "w": 107,
+                "h": 57
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 7,
+                "y": 9,
+                "w": 107,
+                "h": 57
+            },
+            "sourceSize": {
+                "w": 120,
+                "h": 67
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "reward2": {
+            "frame": {
+                "x": 215,
+                "y": 0,
+                "w": 106,
+                "h": 58
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 8,
+                "y": 6,
+                "w": 106,
+                "h": 58
+            },
+            "sourceSize": {
+                "w": 120,
+                "h": 67
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "reward5": {
+            "frame": {
+                "x": 108,
+                "y": 57,
+                "w": 105,
+                "h": 64
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 8,
+                "y": 3,
+                "w": 105,
+                "h": 64
+            },
+            "sourceSize": {
+                "w": 120,
+                "h": 68
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "reward4": {
+            "frame": {
+                "x": 0,
+                "y": 63,
+                "w": 104,
+                "h": 61
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 9,
+                "y": 6,
+                "w": 104,
+                "h": 61
+            },
+            "sourceSize": {
+                "w": 120,
+                "h": 67
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "reward6": {
+            "frame": {
+                "x": 321,
+                "y": 0,
+                "w": 103,
+                "h": 61
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 10,
+                "y": 3,
+                "w": 103,
+                "h": 61
+            },
+            "sourceSize": {
+                "w": 120,
+                "h": 67
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    },
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "reward.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 424,
+            "h": 124
+        },
+        "scale": 1
+    }
+}

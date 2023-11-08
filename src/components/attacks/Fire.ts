@@ -15,7 +15,7 @@ export default class Fire extends Attack {
             frames: scene.anims.generateFrameNames('fire', {
                 prefix: 'attack',
                 start: 1,
-                end: 3,
+                end: 5,
                 zeroPad: 1
             }),
             frameRate: 8,

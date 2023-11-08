@@ -3,6 +3,10 @@ export function makeTileLayer(map: Phaser.Tilemaps.Tilemap, tilesetName: string,
 
     return map.createLayer(layerId, tileset);
 }
+export function findObjectInMap(map: Phaser.Tilemaps.Tilemap, layerName: string, objectName: string) {
+    return map.findObject(layerName, (obj) => obj.name === objectName);
+}
+
 type ObjectProperty = {
     name: string;
     value: number | boolean | string;

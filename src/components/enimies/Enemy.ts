@@ -14,7 +14,6 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     kill() {
         this.dead = true;
         this.setFrame('dead');
-        this.scene.sound.play('kill');
         this.scene.tweens.add({
             targets: this,
             delay: 300,

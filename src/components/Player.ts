@@ -4,7 +4,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
-        this.setOrigin(0.5, 1);
+        this.setOrigin(0, 1);
         this.setDisplayOrigin(0, 1);
         this.setCollideWorldBounds(true);
 
@@ -18,7 +18,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             }),
             frameRate: 4,
             repeat: -1
-         });
+        });
         this.anims.create({
             key: 'walk',
             frames: scene.anims.generateFrameNames('player', {
