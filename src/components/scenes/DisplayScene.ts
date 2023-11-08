@@ -47,7 +47,7 @@ export default class DisplayScene extends Phaser.Scene {
 
         // 적 생성
         this.pinkbean = new PinkBean(this, { x: 2500, y: 2000, properties: { min: 1800, max: 2500 } });
-        this.mushroom = new Mushroom(this, { x: 500, y: 2000, properties: { max: 800, min: 400 } });
+        this.mushroom = new Mushroom(this, { x: 500, y: 1900, properties: { max: 800, min: 400 } });
         this.golem = new Golem(this, { x: 1800, y: 2200, properties: { min: 1800, max: 2300 } });
         this.gallopera = new Gallopera(this, { x: 1400, y: 1780, properties: { min: 1400, max: 2000 } });
         this.psycojack = new PsycoJack(this, { x: 1000, y: 1300, properties: { min: 1000, max: 1500 } });
