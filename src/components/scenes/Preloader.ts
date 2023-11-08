@@ -12,7 +12,9 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('seal', 'enemies/seal/seal.png', 'enemies/seal/seal.json');
         this.load.atlas('mushroom', 'enemies/mushroom/mushroom.png', 'enemies/mushroom/mushroom.json');
         this.load.atlas('golem', 'enemies/golem/golem.png', 'enemies/golem/golem.json');
-        this.load.atlas('monster', 'enemies/monster/monster.png', 'enemies/monster/monster.json');
+        this.load.atlas('pinkbean', 'enemies/pinkbean/pinkbean.png', 'enemies/pinkbean/pinkbean.json');
+        this.load.atlas('gallopera', 'enemies/gallopera/gallopera.png', 'enemies/gallopera/gallopera.json');
+        this.load.atlas('psycojack', 'enemies/psycojack/psycojack.png', 'enemies/psycojack/psycojack.json');
 
         //attack
         this.load.atlas('effect', 'tools/effect/effect.png', 'tools/effect/effect.json');

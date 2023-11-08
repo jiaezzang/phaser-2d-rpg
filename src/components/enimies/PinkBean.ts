@@ -1,21 +1,21 @@
 import Enemy from './Enemy';
 
-type TGoluemProps = { x: number; y: number; properties: { min: number; max: number } };
-export default class Golem extends Enemy {
+type TPinkBeanProps = { x: number; y: number; properties: { min: number; max: number } };
+export default class PinkBean extends Enemy {
     min: number;
     max: number;
-    movingVelocity = 100;
-    constructor(scene: Phaser.Scene, config: TGoluemProps) {
-        super(scene, config.x ?? 0, config.y ?? 0, 'golem', 'walk1');
+    movingVelocity = 200;
+    constructor(scene: Phaser.Scene, config: TPinkBeanProps) {
+        super(scene, config.x ?? 0, config.y ?? 0, 'pinkbean', 'walk1');
         this.min = config.properties.min;
         this.max = config.properties.max;
 
         this.anims.create({
             key: 'walk',
-            frames: scene.anims.generateFrameNames('golem', {
+            frames: scene.anims.generateFrameNames('pinkbean', {
                 prefix: 'walk',
                 start: 1,
-                end: 10,
+                end: 6,
                 zeroPad: 1
             }),
             frameRate: 8,

@@ -1,15 +1,19 @@
-import { getCustomPropertyValueFromObject } from '../../util';
 import Enemy from './Enemy';
 
+type TMushroomProps = { x: number; y: number; properties: { min: number; max: number } };
 export default class Mushroom extends Enemy {
+    scene: Phaser.Scene;
     min: number;
     max: number;
+    attack: number;
     movingVelocity = 100;
-    constructor(scene: Phaser.Scene, config: Phaser.Types.Tilemaps.TiledObject) {
+    constructor(scene: Phaser.Scene, config: TMushroomProps) {
         super(scene, config.x ?? 0, config.y ?? 0, 'mushroom', 'walk1');
-        this.min = getCustomPropertyValueFromObject(config, 'min');
-        this.max = getCustomPropertyValueFromObject(config, 'max');
-        this.movingVelocity = getCustomPropertyValueFromObject(config, 'velocity');
+        this.scene = scene;
+        this.min = config.properties.min;
+        this.max = config.properties.max;
+        this.attack = 0;
+
         this.anims.create({
             key: 'walk',
             frames: scene.anims.generateFrameNames('mushroom', {
@@ -37,6 +41,24 @@ export default class Mushroom extends Enemy {
         } else if (this.body.x + this.body.width > this.max) {
             this.setFlipX(false);
             this.setVelocityX(-this.movingVelocity);
+        }
+    }
+
+    kill(): void {
+        this.attack += 1;
+        if (this.attack >= 3) {
+            this.anims.create({
+                key: 'dead',
+                frames: this.scene.anims.generateFrameNames('mushroom', {
+                    prefix: 'dead',
+                    start: 1,
+                    end: 4,
+                    zeroPad: 1
+                }),
+                frameRate: 8,
+                repeat: 0
+            });
+            this.play('dead');
         }
     }
 }

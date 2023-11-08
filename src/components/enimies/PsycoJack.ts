@@ -1,21 +1,21 @@
 import Enemy from './Enemy';
 
-type TGoluemProps = { x: number; y: number; properties: { min: number; max: number } };
-export default class Golem extends Enemy {
+type TPsycoJackProps = { x: number; y: number; properties: { min: number; max: number } };
+export default class PsycoJack extends Enemy {
     min: number;
     max: number;
     movingVelocity = 100;
-    constructor(scene: Phaser.Scene, config: TGoluemProps) {
-        super(scene, config.x ?? 0, config.y ?? 0, 'golem', 'walk1');
+    constructor(scene: Phaser.Scene, config: TPsycoJackProps) {
+        super(scene, config.x ?? 0, config.y ?? 0, 'psycojack', 'walk1');
         this.min = config.properties.min;
         this.max = config.properties.max;
 
         this.anims.create({
             key: 'walk',
-            frames: scene.anims.generateFrameNames('golem', {
+            frames: scene.anims.generateFrameNames('psycojack', {
                 prefix: 'walk',
                 start: 1,
-                end: 10,
+                end: 4,
                 zeroPad: 1
             }),
             frameRate: 8,

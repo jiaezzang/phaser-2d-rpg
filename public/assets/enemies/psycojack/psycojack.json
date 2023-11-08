@@ -1,0 +1,279 @@
+{
+    "frames": {
+        "dead1": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 94,
+                "h": 134
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 28,
+                "y": 6,
+                "w": 94,
+                "h": 134
+            },
+            "sourceSize": {
+                "w": 132,
+                "h": 151
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "walk2": {
+            "frame": {
+                "x": 0,
+                "y": 134,
+                "w": 108,
+                "h": 129
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 4,
+                "y": 3,
+                "w": 108,
+                "h": 129
+            },
+            "sourceSize": {
+                "w": 119,
+                "h": 134
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack1": {
+            "frame": {
+                "x": 94,
+                "y": 0,
+                "w": 114,
+                "h": 126
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 5,
+                "y": 12,
+                "w": 114,
+                "h": 126
+            },
+            "sourceSize": {
+                "w": 124,
+                "h": 146
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "walk1": {
+            "frame": {
+                "x": 0,
+                "y": 263,
+                "w": 105,
+                "h": 126
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 14,
+                "y": 5,
+                "w": 105,
+                "h": 126
+            },
+            "sourceSize": {
+                "w": 125,
+                "h": 138
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "dead2": {
+            "frame": {
+                "x": 0,
+                "y": 389,
+                "w": 87,
+                "h": 122
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 6,
+                "y": 25,
+                "w": 87,
+                "h": 122
+            },
+            "sourceSize": {
+                "w": 102,
+                "h": 155
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "walk3": {
+            "frame": {
+                "x": 0,
+                "y": 511,
+                "w": 120,
+                "h": 121
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 4,
+                "y": 4,
+                "w": 120,
+                "h": 121
+            },
+            "sourceSize": {
+                "w": 130,
+                "h": 133
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "walk4": {
+            "frame": {
+                "x": 87,
+                "y": 389,
+                "w": 85,
+                "h": 106
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 10,
+                "y": 15,
+                "w": 85,
+                "h": 106
+            },
+            "sourceSize": {
+                "w": 110,
+                "h": 130
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "dead3": {
+            "frame": {
+                "x": 105,
+                "y": 263,
+                "w": 80,
+                "h": 104
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 7,
+                "y": 25,
+                "w": 80,
+                "h": 104
+            },
+            "sourceSize": {
+                "w": 91,
+                "h": 137
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "dead4": {
+            "frame": {
+                "x": 172,
+                "y": 126,
+                "w": 65,
+                "h": 61
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 5,
+                "y": 48,
+                "w": 65,
+                "h": 61
+            },
+            "sourceSize": {
+                "w": 77,
+                "h": 115
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "dead5": {
+            "frame": {
+                "x": 108,
+                "y": 187,
+                "w": 81,
+                "h": 48
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 64,
+                "w": 81,
+                "h": 48
+            },
+            "sourceSize": {
+                "w": 86,
+                "h": 117
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "dead6": {
+            "frame": {
+                "x": 208,
+                "y": 0,
+                "w": 67,
+                "h": 40
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 8,
+                "y": 57,
+                "w": 67,
+                "h": 40
+            },
+            "sourceSize": {
+                "w": 80,
+                "h": 102
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    },
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "psycojack.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 275,
+            "h": 632
+        },
+        "scale": 1
+    }
+}
