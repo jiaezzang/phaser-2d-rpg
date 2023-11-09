@@ -16,6 +16,9 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('gallopera', 'enemies/gallopera/gallopera.png', 'enemies/gallopera/gallopera.json');
         this.load.atlas('psycojack', 'enemies/psycojack/psycojack.png', 'enemies/psycojack/psycojack.json');
 
+        //pet
+        this.load.atlas('pet', 'pet/pet.png', 'pet/pet.json')
+        
         //attack
         this.load.atlas('effect', 'tools/effect/effect.png', 'tools/effect/effect.json');
         this.load.atlas('fire', 'tools/fire/fire.png', 'tools/fire/fire.json');
