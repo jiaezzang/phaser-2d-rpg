@@ -1,0 +1,39 @@
+{
+    "frames": {
+        "redPotion": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 27,
+                "h": 27
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 11,
+                "y": 11,
+                "w": 27,
+                "h": 27
+            },
+            "sourceSize": {
+                "w": 49,
+                "h": 49
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    },
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "redPotion.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 27,
+            "h": 27
+        },
+        "scale": 1
+    }
+}

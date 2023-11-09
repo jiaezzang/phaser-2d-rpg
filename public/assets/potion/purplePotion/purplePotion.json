@@ -1,0 +1,39 @@
+{
+    "frames": {
+        "purplePotions": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 32,
+                "h": 31
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 9,
+                "y": 13,
+                "w": 32,
+                "h": 31
+            },
+            "sourceSize": {
+                "w": 49,
+                "h": 54
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    },
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "purplePotions.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 32,
+            "h": 31
+        },
+        "scale": 1
+    }
+}
