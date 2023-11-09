@@ -3,19 +3,22 @@ import Enemy from "./Enemy";
 type TMushroomProps = {
   x: number;
   y: number;
+  flag: number;
   properties: { min: number; max: number };
 };
 export default class Mushroom extends Enemy {
   min: number;
   max: number;
   attack: number;
+  flag: number;
   movingVelocity = 100;
   constructor(scene: Phaser.Scene, config: TMushroomProps) {
     super(scene, config.x ?? 0, config.y ?? 0, "mushroom", "walk1");
     this.min = config.properties.min;
     this.max = config.properties.max;
     this.attack = 0;
-    console.log(scene);
+    this.flag = config.flag;
+
     this.anims.create({
       key: "walk",
       frames: scene.anims.generateFrameNames("mushroom", {
@@ -45,6 +48,7 @@ export default class Mushroom extends Enemy {
   }
 
   update(): void {
+    if (this.attack >= this.flag) return;
     //@ts-ignore
     if (this.body.x < this.min) {
       this.setFlipX(true);
@@ -56,15 +60,10 @@ export default class Mushroom extends Enemy {
     }
   }
 
-  kill(): void {
+  async kill() {
     this.attack += 1;
-    if (this.attack >= 3) {
-      this.setVelocityX(0);
-      this.play("dead").on("animationcomplete", () => {
-        console.log("끝");
-        // 3초 뒤에 물병 생성
-        // 8초 뒤에 새로운 캐릭터 생성
-      });
+    if (this.attack >= this.flag) {
+      return super.kill().then((data) => data);
     }
   }
 }

@@ -13,6 +13,7 @@ import Gallopera from "../enimies/Gallopera";
 // import Reward from '../reward/Reward';
 import { enemy } from "../../data";
 import Pet from "../pet/Pet";
+import RedPotion from "../reward/RedPotion";
 
 export default class DisplayScene extends Phaser.Scene {
   player!: Player;
@@ -21,6 +22,7 @@ export default class DisplayScene extends Phaser.Scene {
   tileMap!: Phaser.GameObjects.TileSprite;
   minimap!: MiniMap;
   enemies!: any[];
+  enemy!: any;
   fire!: Fire;
   effect!: Effect;
   wind!: Wind;
@@ -46,26 +48,36 @@ export default class DisplayScene extends Phaser.Scene {
 
     this.enemies = [];
     enemy.forEach((_enemy) => {
-      const { type, x, y, properties } = _enemy;
+      const { type, x, y, dead, properties } = _enemy;
       if (type === "pinkbean") {
         this.enemies.push(
-          new PinkBean(this, { x: x, y: y, properties: properties })
+          new PinkBean(this, { x: x, y: y, flag: dead, properties: properties })
         );
       } else if (type === "mushroom") {
         this.enemies.push(
-          new Mushroom(this, { x: x, y: y, properties: properties })
+          new Mushroom(this, { x: x, y: y, flag: dead, properties: properties })
         );
       } else if (type === "golem") {
         this.enemies.push(
-          new Golem(this, { x: x, y: y, properties: properties })
+          new Golem(this, { x: x, y: y, flag: dead, properties: properties })
         );
       } else if (type === "psycojack") {
         this.enemies.push(
-          new PsycoJack(this, { x: x, y: y, properties: properties })
+          new PsycoJack(this, {
+            x: x,
+            y: y,
+            flag: dead,
+            properties: properties,
+          })
         );
       } else if (type === "gallopera") {
         this.enemies.push(
-          new Gallopera(this, { x: x, y: y, properties: properties })
+          new Gallopera(this, {
+            x: x,
+            y: y,
+            flag: dead,
+            properties: properties,
+          })
         );
       }
     });
@@ -119,9 +131,31 @@ export default class DisplayScene extends Phaser.Scene {
         this.physics.add.overlap(
           this.enemies,
           [this.wind, this.fire, this.effect],
-          this.attack
+          (monster: any) => {
+            this.enemy = monster;
+            if (this.enemy.attack >= this.enemy.flag) return;
+            this.enemy.setFrame("attack1");
+          }
         );
-        // this.mushroom.kill();
+        const result = this.enemy?.kill();
+        if (result) {
+          result.then((data: string) => {
+            const { x, y, flag } = this.enemy;
+            if (data === "resolve") {
+              new RedPotion(this, this.enemy.x, this.enemy.y, "redPotion");
+              setTimeout(() => {
+                this.enemies.push(
+                  new Mushroom(this, {
+                    x: x,
+                    y: y,
+                    flag: flag,
+                    properties: { min: this.enemy.min, max: this.enemy.max },
+                  })
+                );
+              }, 5000);
+            }
+          });
+        }
       });
     });
 
@@ -201,7 +235,7 @@ export default class DisplayScene extends Phaser.Scene {
     this.player.update(this.cursors);
     this.pet.update(this.cursors);
   }
-  attack(monster: any) {
-    monster.setFrame("attack1");
-  }
+  // attack(monster: any) {
+  //   monster.setFrame("attack1");
+  // }
 }

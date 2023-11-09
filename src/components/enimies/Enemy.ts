@@ -19,19 +19,13 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
   kill() {
     this.dead = true;
-    this.setFrame("dead");
-    this.scene.tweens.add({
-      targets: this,
-      delay: 300,
-      duration: 600,
-      alpha: 0,
-      onComplete: () => {
-        this.destroy();
-      },
-    });
-
-    this.stop();
     this.setVelocity(0);
+    return new Promise((resolve) => {
+      this.play("dead").on("animationcomplete", () => {
+        this.destroy();
+        resolve("resolve");
+      });
+    });
   }
   update(...args: any[]): void {
     if (this.dead) return;

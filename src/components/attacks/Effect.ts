@@ -6,7 +6,7 @@ export default class Effect extends Attack {
   constructor(scene: Phaser.Scene, config: TEffectProps) {
     super(scene, config.x ?? 0, config.y ?? 0, "effect", "attack1");
     this.movingVelocity = config.flip ? -200 : +200;
-    console.log(scene, config);
+
     this.anims.create({
       key: "attack",
       frames: scene.anims.generateFrameNames("effect", {
@@ -21,7 +21,7 @@ export default class Effect extends Attack {
     });
 
     this.setOrigin(0, 1);
-    this.play("attack");
+    this.play("attack").on("animationcomplete", () => this.destroy());
     this.setVelocityX(this.movingVelocity);
   }
 

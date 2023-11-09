@@ -54,13 +54,24 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
       frameRate: 8,
       repeat: -1,
     });
+    this.anims.create({
+      key: "attack",
+      frames: this.scene.anims.generateFrameNames("pet", {
+        prefix: "attack",
+        start: 1,
+        end: 1,
+        zeroPad: 1,
+      }),
+      frameRate: 8,
+      repeat: -1,
+    });
   }
   update(cursors: Phaser.Types.Input.Keyboard.CursorKeys): void {
-      //gap : player와 pet 사이의 거리
-      const gap = {
-        x: Math.abs(this.target.body.position.x - this.body?.position.x!),
-        y: Math.abs(this.target.body.position.y - this.body?.position.y!),
-      };
+    //gap : player와 pet 사이의 거리
+    const gap = {
+      x: Math.abs(this.target.body.position.x - this.body?.position.x!),
+      y: Math.abs(this.target.body.position.y - this.body?.position.y!),
+    };
 
     //keyboard event
     if (cursors.down) {
@@ -73,35 +84,42 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         this.setFlipX(false);
         //@ts-ignore
         if (this.body.blocked.down) this.play("walk", true);
-      }, 200)
+      }, 200);
     } else if (cursors.right.isDown) {
       setTimeout(() => {
         this.setFlipX(true);
         //@ts-ignore
         if (this.body.blocked.down) this.play("walk", true);
-      }, 200)
-    } 
-    
-    //키보드 누르지 않을 떄
-    if(cursors.up){
-      //@ts-ignore
-      if(gap.x > this.midLine ){
-        if (this.body?.blocked.down) this.play("walk", true);
-        if(this.target.body.position.x - this.body?.position.x! > 0 && this.flipX) this.setVelocityX(400)
-        else if(this.target.body.position.x - this.body?.position.x! < 0 && !this.flipX) this.setVelocityX(-400)
-      } else {
-        if (!this.target.dead && this.body?.blocked.down) this.play("stand", true);
+      }, 200);
     }
+
+    //키보드 누르지 않을 떄
+    if (cursors.up) {
+      //@ts-ignore
+      if (gap.x > this.midLine) {
+        if (this.body?.blocked.down) this.play("walk", true);
+        if (
+          this.target.body.position.x - this.body?.position.x! > 0 &&
+          this.flipX
+        )
+          this.setVelocityX(400);
+        else if (
+          this.target.body.position.x - this.body?.position.x! < 0 &&
+          !this.flipX
+        )
+          this.setVelocityX(-400);
+      } else {
+        if (!this.target.dead && this.body?.blocked.down)
+          this.play("stand", true);
+      }
     }
     //@ts-ignore
     if (cursors.space.isDown && this.body.blocked.down) {
-      this.play("jumpstart", true);
       this.setVelocityY(-1000);
     }
 
     //target(player) 움직일 때
     if (this.targetMoving) {
-
       //player와 pet이 바라보는 방향이 서로 다를 때(오른쪽 주시할 때 player는 false, pet은 true)
       if (this.target.flipX === this.flipX) {
         if (gap.x <= this.minLine) {
@@ -109,18 +127,18 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
           console.log("1");
         }
       }
-      if(this.target.flipX === this.flipX) return;
+      if (this.target.flipX === this.flipX) return;
 
       //Pet이 player와 deadLind 이상으로 거리상 차이가 날 때
       if (gap.x > this.deadLine || gap.y > this.deadLine) {
         setTimeout(() => {
           this.x = this.target.x;
           this.y = this.target.y;
-        }, 500)
-        
+        }, 500);
+
         //Pet이 daedLind 안에는 있지만 minLine보다는 밖에 있을 때
       } else if (gap.x > this.minLine && gap.x <= this.midLine) {
-        this.setVelocityX(this.target.body.velocity.x)
+        this.setVelocityX(this.target.body.velocity.x);
       }
 
       //pet이 player와 반대 방향을 주시하거나 minLine 안에 있을 때에는 정지
@@ -129,18 +147,6 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
     }
   }
   attack() {
-    this.anims.create({
-      key: "attack",
-      frames: this.scene.anims.generateFrameNames("pet", {
-        prefix: "attack",
-        start: 1,
-        end: 1,
-        zeroPad: 1,
-      }),
-      frameRate: 8,
-      repeat: -1
-    });
-
-    this.play('attack');
+    this.play("attack");
   }
 }

@@ -52,7 +52,8 @@ export default class Preloader extends Phaser.Scene {
     this.load.atlas("portal", "portal/portal.png", "portal/portal.json");
 
     //reward
-    this.load.atlas("reward", "reward/reward.png", "reward/reward.json");
+    this.load.image("purplePotion", "potion/purplePotion.png");
+    this.load.image("redPotion", "potion/redPotion.png");
   }
   create() {
     this.game.scene.start("display");

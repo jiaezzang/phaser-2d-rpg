@@ -1,6 +1,3 @@
-import Mushroom from "./enimies/Mushroom";
-import Pet from "./pet/Pet";
-
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   [x: string]: any;
   dead = false;
@@ -76,17 +73,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
   jump() {
-    this.anims.create({
-      key: "jumpstart",
-      frames: this.scene.anims.generateFrameNames("player", {
-        prefix: "jumpstart",
-        start: 1,
-        end: 3,
-        zeroPad: 1,
-      }),
-      frameRate: 8,
-      repeat: -1,
-    });
     this.play("jumpstart", true);
   }
   kill() {
