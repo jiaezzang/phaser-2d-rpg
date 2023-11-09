@@ -12,8 +12,7 @@ import PinkBean from "../enimies/PinkBean";
 import Gallopera from "../enimies/Gallopera";
 // import Reward from '../reward/Reward';
 import { enemy } from "../../data";
-import Enemy from "../enimies/Enemy";
-import { GameObjects } from "phaser";
+import Pet from "../pet/Pet";
 
 export default class DisplayScene extends Phaser.Scene {
   player!: Player;
@@ -29,6 +28,7 @@ export default class DisplayScene extends Phaser.Scene {
   keyX!: Phaser.Input.Keyboard.Key;
   keyC!: Phaser.Input.Keyboard.Key;
   portal!: Portal;
+  pet!: Pet;
   // reward!: Reward;
   platformsLayer!: Phaser.Tilemaps.TilemapLayer;
   constructor() {
@@ -72,16 +72,18 @@ export default class DisplayScene extends Phaser.Scene {
 
     // 포탈, 보상
     this.portal = new Portal(this, 1000, 2250, "portal");
-    // this.reward = new Reward(this, 1500, 1500, 'reward');
+    // this.reward = new Reward(this, 1500, 1500, "reward");
 
     // 플레이어
-    this.player = new Player(this, 0, 800, "player", "stand1");
-    // console.log('create! s');
+    this.player = new Player(this, 0, 1500, "player", "stand1");
 
+    //펫
+    this.pet = new Pet(this, 0, 1500, "pet", "stand", this.player);
+    this.pet.setFlipX(true);
     // keyboard
     //@ts-ignore
 
-    this.cursors = this.input.keyboard!.createCursorKeys();
+    this.cursors = this.input.keyboard?.createCursorKeys();
     const keys = [
       { key: "Z", value: "wind" },
       { key: "X", value: "fire" },
@@ -140,11 +142,10 @@ export default class DisplayScene extends Phaser.Scene {
       .filterTiles((tile) => tile.properties.collides)
       .map((tile) => {
         return this.add
-          .rectangle(tile.x * 10, tile.y * 10 + 140, 10, tile.properties.height)
+          .rectangle(tile.x * 10, tile.y * 10 + 10, 10, 10)
           .setOrigin(0, 1);
       });
     platformGroup.addMultiple(tileBodies);
-
     tileBodies.forEach((el) => {
       ///@ts-ignore
       el.body.checkCollision.down = false;
@@ -159,35 +160,22 @@ export default class DisplayScene extends Phaser.Scene {
       .filterTiles((tile) => tile.properties.climb)
       .map((tile) => {
         return this.add
-          .rectangle(tile.x * 10, tile.y * 10 + 140, 10, tile.properties.height)
+          .rectangle(tile.x * 10, tile.y * 10 + 10, 10, 10)
           .setOrigin(0, 1);
       });
     platformGroup.addMultiple(tileClimb);
-
     tileClimb.forEach((el) => {
       ///@ts-ignore
       el.body.checkCollision.down = false;
     });
-
+    console.log(this.pet.anims);
+    //collider 부여
     this.physics.add.collider(platformGroup, this.player);
-    this.physics.add.collider(this.player, this.enemies, () => {
-      this.input.enabled = false;
-      this.player.setCollideWorldBounds(false);
-      this.player.setTint(0xff0000);
-      this.player
-        .setVelocity(100, 200)
-        .setBounce(1, 1)
-        .setCollideWorldBounds(true);
-      // this.cameras.main.shake(200, 0.010);
-      setTimeout(() => {
-        this.player.setTint();
-        // this.player.checkCollision.none = false;
-        this.player.setBounce(0);
-        // this.player.setVelocityX(0).setBounceX(0)
-      }, 1500);
+    this.physics.add.collider(platformGroup, this.pet);
+    this.physics.add.overlap(this.player, this.enemies, () => {
+      this.player.kill();
+      this.pet.attack();
     });
-
-    this.player.setCollideWorldBounds(true);
 
     //camera & minimap
     this.cameras.main.startFollow(this.player);
@@ -201,14 +189,19 @@ export default class DisplayScene extends Phaser.Scene {
       map.widthInPixels,
       map.heightInPixels + 200
     );
+
+    //index 설정
+    this.player.setDepth(1);
+    this.pet.setDepth(1);
   }
   update(): void {
     this.background.update();
     this.enemies.forEach((enemy) => enemy.update());
     this.minimap.update(this.player);
     this.player.update(this.cursors);
+    this.pet.update(this.cursors);
   }
-  attack(monster: any): void {
+  attack(monster: any) {
     monster.setFrame("attack1");
   }
 }
