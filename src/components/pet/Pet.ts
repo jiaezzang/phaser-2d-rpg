@@ -8,7 +8,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
   historyLength: number;
   maxSpeed: number;
   targetMovig = false;
-  deadLine = 500;
+  deadLine = 600;
   midLine = 100;
   minLine = 30;
   constructor(
@@ -80,10 +80,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         //@ts-ignore
         if (this.body.blocked.down) this.play("walk", true);
       }, 200)
-    } 
-    
-    //키보드 누르지 않을 떄
-    if(cursors.up){
+    } else {
       //@ts-ignore
       if(gap.x > this.midLine ){
         if (this.body?.blocked.down) this.play("walk", true);
@@ -95,8 +92,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
     }
     //@ts-ignore
     if (cursors.space.isDown && this.body.blocked.down) {
-      this.play("jumpstart", true);
-      this.setVelocityY(-1000);
+      this.setVelocityY(-1200);
     }
 
     //target(player) 움직일 때
@@ -106,7 +102,6 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
       if (this.target.flipX === this.flipX) {
         if (gap.x <= this.minLine) {
           this.setVelocity(0);
-          console.log("1");
         }
       }
       if(this.target.flipX === this.flipX) return;
@@ -116,7 +111,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         setTimeout(() => {
           this.x = this.target.x;
           this.y = this.target.y;
-        }, 500)
+        }, 800)
         
         //Pet이 daedLind 안에는 있지만 minLine보다는 밖에 있을 때
       } else if (gap.x > this.minLine && gap.x <= this.midLine) {
