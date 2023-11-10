@@ -62,24 +62,12 @@ export default class DisplayScene extends Phaser.Scene {
         // keyboard
         //@ts-ignore
         this.cursors = this.input.keyboard?.createCursorKeys();
-        const keys = [
-            { key: 'Z', value: 'wind' },
-            { key: 'X', value: 'fire' },
-            { key: 'C', value: 'effect' }
-        ];
         type KeyTypes = 'keyZ' | 'keyX' | 'keyC';
-        keys.forEach((keyArray) => {
-            const key = 'key' + `${keyArray.key}`;
-            this[key as KeyTypes] = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes[keyArray.key as 'Z' | 'X' | 'C']);
-            this[key as KeyTypes].on('down', () => {
-                const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
-                if (key === 'keyZ') {
-                    this.attack = new Wind(this, { x: x, y: this.player.y, flip: this.player.flipX });
-                } else if (key === 'keyX') {
-                    this.attack = new Fire(this, { x: x, y: this.player.y, flip: this.player.flipX });
-                } else if (key === 'keyC') {
-                    this.attack = new Effect(this, { x: x, y: this.player.y, flip: this.player.flipX });
-                }
+        ['Z', 'X', 'C'].forEach((key) => {
+            const keyName = 'key' + `${key}`;
+            this[keyName as KeyTypes] = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes[key as 'Z' | 'X' | 'C']);
+            this[keyName as KeyTypes].on('down', () => {
+                this.keydown(keyName);
                 const fn = this.physics.add.overlap(this.enemies, this.attack, (monster: any) => {
                     fn.active = false;
                     if (monster.attacked < monster.flag) monster.attack();
@@ -88,14 +76,10 @@ export default class DisplayScene extends Phaser.Scene {
                         monster.kill().then(async (result: 'resolve') => {
                             if (result) {
                                 const { name, x, y, flag, min, max } = monster;
-
-                                if (['mushroom', 'pinkbean'].includes(name)) new RedPotion(this, x, y, 'redPotion');
-                                else new PurplePotion(this, x, y, 'purplePotion');
+                                this.addPotion(x, y, name);
 
                                 await new Promise((r) => setTimeout(r, 4000));
-                                const props = { type: name, x: x, y: y, dead: flag, properties: { min: min, max: max } };
-                                const enemy = this.enemies.insert(props);
-                                if (enemy) this.enemies.add(enemy);
+                                this.addEnemy({ type: name, x: x, y: y, dead: flag, properties: { min: min, max: max } });
                             }
                         });
                     }
@@ -170,5 +154,24 @@ export default class DisplayScene extends Phaser.Scene {
         this.minimap.update(this.player);
         this.player.update(this.cursors);
         this.pet.update(this.cursors);
+    }
+    keydown(key: string) {
+        const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
+        const props = { x: x, y: this.player.y, flip: this.player.flipX };
+        if (key === 'keyZ') {
+            this.attack = new Wind(this, props);
+        } else if (key === 'keyX') {
+            this.attack = new Fire(this, props);
+        } else if (key === 'keyC') {
+            this.attack = new Effect(this, props);
+        }
+    }
+    addPotion(x: number, y: number, name: string) {
+        if (['mushroom', 'pinkbean'].includes(name)) new RedPotion(this, x, y, 'redPotion');
+        else new PurplePotion(this, x, y, 'purplePotion');
+    }
+    addEnemy(props: TEnimiesProps) {
+        const enemy = this.enemies.insert(props);
+        if (enemy) this.enemies.add(enemy);
     }
 }

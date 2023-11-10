@@ -1,16 +1,10 @@
 import Enemy from './Enemy';
 
-type TPsycoJackProps = {
-    x: number;
-    y: number;
-    flag: number;
-    properties: { min: number; max: number };
-};
 export default class PsycoJack extends Enemy {
     min: number;
     max: number;
     movingVelocity = 100;
-    constructor(scene: Phaser.Scene, config: TPsycoJackProps) {
+    constructor(scene: Phaser.Scene, config: TEnemyProps) {
         super(scene, config.x ?? 0, config.y ?? 0, 'psycojack', config.flag, 'walk1');
         this.min = config.properties.min;
         this.max = config.properties.max;

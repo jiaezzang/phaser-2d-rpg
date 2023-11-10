@@ -4,9 +4,8 @@ import Golem from './Golem';
 import PinkBean from './PinkBean';
 import PsycoJack from './PsycoJack';
 
-type TEnemyProps = { type: string; x: number; y: number; dead: number; properties: { min: number; max: number } };
 export default class EnemiseGroup extends Phaser.GameObjects.Group {
-    constructor(scene: Phaser.Scene, enemies: TEnemyProps[]) {
+    constructor(scene: Phaser.Scene, enemies: TEnimiesProps[]) {
         super(scene);
         enemies.forEach((config) => {
             const enemy = this.enemy(config);
@@ -16,11 +15,11 @@ export default class EnemiseGroup extends Phaser.GameObjects.Group {
     update(): void {
         this.children.each((enemy) => (enemy as any).update());
     }
-    insert(config: TEnemyProps) {
+    insert(config: TEnimiesProps) {
         const enemy = this.enemy(config);
         return enemy;
     }
-    enemy(config: TEnemyProps) {
+    enemy(config: TEnimiesProps) {
         const { type, x, y, dead, properties } = config;
         const props = { x: x, y: y, flag: dead, properties: properties };
         if (type === 'pinkbean') {

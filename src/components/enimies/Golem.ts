@@ -1,17 +1,11 @@
 import Enemy from './Enemy';
 
-type TGoluemProps = {
-    x: number;
-    y: number;
-    flag: number;
-    properties: { min: number; max: number };
-};
 export default class Golem extends Enemy {
     min: number;
     max: number;
     flag: number;
     movingVelocity = 100;
-    constructor(scene: Phaser.Scene, config: TGoluemProps) {
+    constructor(scene: Phaser.Scene, config: TEnemyProps) {
         super(scene, config.x ?? 0, config.y ?? 0, 'golem', config.flag, 'walk1');
         this.min = config.properties.min;
         this.max = config.properties.max;

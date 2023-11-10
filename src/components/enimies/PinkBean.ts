@@ -1,16 +1,10 @@
 import Enemy from './Enemy';
 
-type TPinkBeanProps = {
-    x: number;
-    y: number;
-    flag: number;
-    properties: { min: number; max: number };
-};
 export default class PinkBean extends Enemy {
     min: number;
     max: number;
     movingVelocity = 200;
-    constructor(scene: Phaser.Scene, config: TPinkBeanProps) {
+    constructor(scene: Phaser.Scene, config: TEnemyProps) {
         super(scene, config.x ?? 0, config.y ?? 0, 'pinkbean', config.flag, 'walk1');
         this.min = config.properties.min;
         this.max = config.properties.max;
