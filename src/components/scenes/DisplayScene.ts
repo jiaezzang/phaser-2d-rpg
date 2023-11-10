@@ -49,14 +49,14 @@ export default class DisplayScene extends Phaser.Scene {
         // 플레이어
         this.player = new Player(this, 0, 1500, 'player', 'stand1');
 
-    //펫
-    this.pet = new Pet(this, 0, 1500, "pet", "stand1", this.player);
-    this.pet.setFlipX(true);
-    
-    //Health bar
-    this.hpBar = new HealthBar(this)
-    // const hpBarContainer = this.add.container();
-    // hpBarContainer.add(this.hpBar);
+        //펫
+        this.pet = new Pet(this, 0, 1500, 'pet', 'stand1', this.player);
+        this.pet.setFlipX(true);
+
+        //Health bar
+        this.hpBar = new HealthBar(this);
+        // const hpBarContainer = this.add.container();
+        // hpBarContainer.add(this.hpBar);
 
         // keyboard
         //@ts-ignore
@@ -96,55 +96,51 @@ export default class DisplayScene extends Phaser.Scene {
         this.platformsLayer.setPosition(0, 600);
         // this.mushroom.checkCollision.down = false;
 
-    const platformGroup = this.physics.add.staticGroup();
-    //tile collides
-    const tileBodies = this.platformsLayer
-      ///@ts-ignore
-      .filterTiles((tile) => tile.properties.collides)
-      .map((tile) => {
-        return this.add
-          .rectangle(tile.x * 7, tile.y * 7 + 607, 7, 7)
-          .setOrigin(0, 1);
-      });
-    platformGroup.addMultiple(tileBodies);
-    tileBodies.forEach((el) => {
-      ///@ts-ignore
-      el.body.checkCollision.down = false;
-      ///@ts-ignore
-      el.body.checkCollision.left = false;
-      ///@ts-ignore
-      el.body.checkCollision.right = false;
-    });
-    //tile collides : climb
-    const tileClimb = this.platformsLayer
-      ///@ts-ignore
-      .filterTiles((tile) => tile.properties.climb)
-      .map((tile) => {
-        return this.add
-          .rectangle(tile.x * 7, tile.y * 7 + 607, 7, 7)
-          .setOrigin(0, 1);
-      });
-    platformGroup.addMultiple(tileClimb);
-    tileClimb.forEach((el) => {
-      ///@ts-ignore
-      el.body.checkCollision.down = false;
-    });
-    console.log(this.pet.anims);
-    //collider 부여
-    this.physics.add.collider(platformGroup, this.player );
-    this.physics.add.collider(platformGroup, this.pet);
-    this.physics.add.overlap(this.player, this.enemies, () => {
-      this.player.kill(this.hpBar.value);
-      this.hpBar.decreaseHp(30)
-      this.pet.attack();
-    });
+        const platformGroup = this.physics.add.staticGroup();
+        //tile collides
+        const tileBodies = this.platformsLayer
+            ///@ts-ignore
+            .filterTiles((tile) => tile.properties.collides)
+            .map((tile) => {
+                return this.add.rectangle(tile.x * 7, tile.y * 7 + 607, 7, 7).setOrigin(0, 1);
+            });
+        platformGroup.addMultiple(tileBodies);
+        tileBodies.forEach((el) => {
+            ///@ts-ignore
+            el.body.checkCollision.down = false;
+            ///@ts-ignore
+            el.body.checkCollision.left = false;
+            ///@ts-ignore
+            el.body.checkCollision.right = false;
+        });
+        //tile collides : climb
+        const tileClimb = this.platformsLayer
+            ///@ts-ignore
+            .filterTiles((tile) => tile.properties.climb)
+            .map((tile) => {
+                return this.add.rectangle(tile.x * 7, tile.y * 7 + 607, 7, 7).setOrigin(0, 1);
+            });
+        platformGroup.addMultiple(tileClimb);
+        tileClimb.forEach((el) => {
+            ///@ts-ignore
+            el.body.checkCollision.down = false;
+        });
+        console.log(this.pet.anims);
+        //collider 부여
+        this.physics.add.collider(platformGroup, this.player);
+        this.physics.add.collider(platformGroup, this.pet);
+        this.physics.add.overlap(this.player, this.enemies, () => {
+            this.player.kill(this.hpBar.value);
+            this.hpBar.decreaseHp(30);
+            this.pet.attack();
+        });
 
-    //camera & minimap
-    this.cameras.main.startFollow(this.player);
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
-    this.minimap.camera.ignore(this.background);
-    this.minimap.camera.ignore(this.hpBar);
+        //camera & minimap
+        this.cameras.main.startFollow(this.player);
+        this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
+        this.minimap.camera.ignore(this.background);
+        this.minimap.camera.ignore(this.hpBar);
 
         this.physics.world.setBounds(0, -200, map.widthInPixels, map.heightInPixels + 200);
 
