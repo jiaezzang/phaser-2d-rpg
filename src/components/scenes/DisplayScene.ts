@@ -12,6 +12,7 @@ import PinkBean from "../enimies/PinkBean";
 import Gallopera from "../enimies/Gallopera";
 import Reward from "../reward/Reward";
 import Pet from "../pet/Pet";
+import HealthBar from "../healthBar/HealthBar";
 
 export default class DisplayScene extends Phaser.Scene {
   player!: Player;
@@ -82,11 +83,14 @@ export default class DisplayScene extends Phaser.Scene {
     this.player = new Player(this, 0, 1500, "player", "stand1");
 
     //펫
-    this.pet = new Pet(this, 0, 1500, "pet", "stand", this.player);
+    this.pet = new Pet(this, 0, 1500, "pet", "stand1", this.player);
     this.pet.setFlipX(true);
+    
+    //Health bar
+    const hpBar = new HealthBar(this)
+
     // keyboard
     //@ts-ignore
-
     this.cursors = this.input.keyboard?.createCursorKeys();
     const keys = [
       { key: "Z", value: "wind" },
@@ -119,8 +123,8 @@ export default class DisplayScene extends Phaser.Scene {
     const platforms = map.createLayer("platforms", tileset);
     platforms?.setCollisionByExclusion([-1]);
     if (platforms) this.platformsLayer = platforms;
-    // this.platformsLayer.setScale(0.5);
-    // this.platformsLayer.setPosition(0, 1200);
+    this.platformsLayer.setScale(0.7);
+    this.platformsLayer.setPosition(0, 600);
     // this.mushroom.checkCollision.down = false;
 
     const platformGroup = this.physics.add.staticGroup();
@@ -130,7 +134,7 @@ export default class DisplayScene extends Phaser.Scene {
       .filterTiles((tile) => tile.properties.collides)
       .map((tile) => {
         return this.add
-          .rectangle(tile.x * 10, tile.y * 10 + 10, 10, 10)
+          .rectangle(tile.x * 7, tile.y * 7 + 607, 7, 7)
           .setOrigin(0, 1);
       });
     platformGroup.addMultiple(tileBodies);
@@ -148,20 +152,17 @@ export default class DisplayScene extends Phaser.Scene {
       .filterTiles((tile) => tile.properties.climb)
       .map((tile) => {
         return this.add
-          .rectangle(tile.x * 10, tile.y * 10 + 10, 10, 10)
+          .rectangle(tile.x * 7, tile.y * 7 + 607, 7, 7)
           .setOrigin(0, 1);
       });
     platformGroup.addMultiple(tileClimb);
-    tileClimb.forEach((el) => {
-      ///@ts-ignore
-      el.body.checkCollision.down = false;
-    });
-console.log(this.pet.anims)
+
     //collider 부여
     this.physics.add.collider(platformGroup, this.player);
     this.physics.add.collider(platformGroup, this.pet);
     this.physics.add.overlap(this.player, this.mushroom, () => {
       this.player.kill();
+      hpBar.decreaseHp(2)
       this.pet.attack();
     });
 
