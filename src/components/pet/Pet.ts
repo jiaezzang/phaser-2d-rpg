@@ -8,7 +8,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
   historyLength: number;
   maxSpeed: number;
   targetMovig = false;
-  deadLine = 500;
+  deadLine = 600;
   midLine = 100;
   minLine = 30;
   constructor(
@@ -90,32 +90,20 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         this.setFlipX(true);
         //@ts-ignore
         if (this.body.blocked.down) this.play("walk", true);
-      }, 200);
-    }
-
-    //키보드 누르지 않을 떄
-    if (cursors.up) {
+      }, 200)
+    } else {
       //@ts-ignore
-      if (gap.x > this.midLine) {
+      if(gap.x > this.midLine ){
         if (this.body?.blocked.down) this.play("walk", true);
-        if (
-          this.target.body.position.x - this.body?.position.x! > 0 &&
-          this.flipX
-        )
-          this.setVelocityX(400);
-        else if (
-          this.target.body.position.x - this.body?.position.x! < 0 &&
-          !this.flipX
-        )
-          this.setVelocityX(-400);
+        if(this.target.body.position.x - this.body?.position.x! > 0 && this.flipX) this.setVelocityX(400)
+        else if(this.target.body.position.x - this.body?.position.x! < 0 && !this.flipX) this.setVelocityX(-400)
       } else {
-        if (!this.target.dead && this.body?.blocked.down)
-          this.play("stand", true);
-      }
+        if (!this.target.dead && this.body?.blocked.down) this.play("stand", true);
+    }
     }
     //@ts-ignore
     if (cursors.space.isDown && this.body.blocked.down) {
-      this.setVelocityY(-1000);
+      this.setVelocityY(-1200);
     }
 
     //target(player) 움직일 때
@@ -124,7 +112,6 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
       if (this.target.flipX === this.flipX) {
         if (gap.x <= this.minLine) {
           this.setVelocity(0);
-          console.log("1");
         }
       }
       if (this.target.flipX === this.flipX) return;
@@ -134,8 +121,8 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         setTimeout(() => {
           this.x = this.target.x;
           this.y = this.target.y;
-        }, 500);
-
+        }, 800)
+        
         //Pet이 daedLind 안에는 있지만 minLine보다는 밖에 있을 때
       } else if (gap.x > this.minLine && gap.x <= this.midLine) {
         this.setVelocityX(this.target.body.velocity.x);
@@ -147,6 +134,18 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
     }
   }
   attack() {
-    this.play("attack");
+    this.anims.create({
+      key: "attack",
+      frames: this.scene.anims.generateFrameNames("pet", {
+        prefix: "attack",
+        start: 1,
+        end: 1,
+        zeroPad: 1,
+      }),
+      frameRate: 8,
+      repeat: -1
+    });
+
+    this.play('attack');
   }
 }

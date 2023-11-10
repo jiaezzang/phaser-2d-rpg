@@ -7,6 +7,7 @@ import Wind from '../attacks/Wind';
 import Portal from '../portal/Portal';
 import { enemy } from '../../data';
 import Pet from '../pet/Pet';
+import HealthBar from '../healthBar/HealthBar';
 import RedPotion from '../reward/RedPotion';
 import PurplePotion from '../reward/PurplePotion';
 import EnemiseGroup from '../enimies/EnemyGroup';
@@ -48,6 +49,13 @@ export default class DisplayScene extends Phaser.Scene {
         this.player = new Player(this, 0, 1500, 'player', 'stand1');
 
         //펫
+        this.pet = new Pet(this, 0, 1500, 'pet', 'stand1', this.player);
+        this.pet.setFlipX(true);
+
+        //Health bar
+        const hpBar = new HealthBar(this);
+
+        //펫
         this.pet = new Pet(this, 0, 1500, 'pet', 'stand', this.player);
         this.pet.setFlipX(true);
 
@@ -85,7 +93,6 @@ export default class DisplayScene extends Phaser.Scene {
                                 else new PurplePotion(this, x, y, 'purplePotion');
 
                                 await new Promise((r) => setTimeout(r, 4000));
-
                                 const props = { type: name, x: x, y: y, dead: flag, properties: { min: min, max: max } };
                                 const enemy = this.enemies.insert(props);
                                 if (enemy) this.enemies.add(enemy);
