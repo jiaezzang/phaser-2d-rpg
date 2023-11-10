@@ -1,6 +1,3 @@
-import Mushroom from "./enimies/Mushroom";
-import Pet from "./pet/Pet";
-
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   [x: string]: any;
   dead = false;
@@ -41,6 +38,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       frameRate: 8,
       repeat: -1,
     });
+    this.anims.create({
+      key: "jumpstart",
+      frames: scene.anims.generateFrameNames("player", {
+        prefix: "jumpstart",
+        start: 1,
+        end: 4,
+        zeroPad: 1,
+      }),
+      frameRate: 8,
+      repeat: -1,
+    });
   }
   update(cursors: Phaser.Types.Input.Keyboard.CursorKeys): void {
     if (cursors.left.isDown) {
@@ -60,30 +68,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
     //@ts-ignore
     if (cursors.space.isDown && this.body.blocked.down) {
-      this.jump()
+      this.jump();
       this.setVelocityY(-1250);
     }
   }
-  jump(){
-    this.anims.create({
-        key: "jumpstart",
-        frames: this.scene.anims.generateFrameNames("player", {
-          prefix: "jumpstart",
-          start: 1,
-          end: 3,
-          zeroPad: 1,
-        }),
-        frameRate: 8,
-        repeat: -1,
-      });
-      this.play('jumpstart', true)
+  jump() {
+    this.play("jumpstart", true);
   }
   kill() {
     this.dead = true;
     this.setTint(0xff0000);
     setTimeout(() => {
-        this.setTint();
-        this.dead = false;
-    }, 1000)
+      this.setTint();
+      this.dead = false;
+    }, 1000);
   }
 }

@@ -1,17 +1,24 @@
 export default class Attack extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string) {
-        super(scene, x, y, texture, frame);
-        this.name = texture;
+  constructor(
+    scene: Phaser.Scene,
+    x: number,
+    y: number,
+    texture: string,
+    frame?: string
+  ) {
+    super(scene, x, y, texture, frame);
+    this.name = texture;
+    console.log(scene, x, y, texture, frame);
 
-        scene.add.existing(this);
-        scene.physics.add.existing(this);
+    scene.add.existing(this);
+    scene.physics.add.existing(this);
 
-        //@ts-ignore
-        this.body.setAllowGravity(false);
-        this.setImmovable(true);
-    }
+    //@ts-ignore
+    this.body.setAllowGravity(false);
+    this.setImmovable(true);
+  }
 
-    update(...args: any[]): void {
-        super.update(...args);
-    }
+  update(...args: any[]): void {
+    super.update(...args);
+  }
 }

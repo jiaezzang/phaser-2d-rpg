@@ -10,22 +10,20 @@ import Golem from "../enimies/Golem";
 import PsycoJack from "../enimies/PsycoJack";
 import PinkBean from "../enimies/PinkBean";
 import Gallopera from "../enimies/Gallopera";
-import Reward from "../reward/Reward";
+// import Reward from '../reward/Reward';
+import { enemy } from "../../data";
 import Pet from "../pet/Pet";
 import HealthBar from "../healthBar/HealthBar";
+import RedPotion from "../reward/RedPotion";
 
 export default class DisplayScene extends Phaser.Scene {
   player!: Player;
-  pet!: Pet;
   background!: Background;
   cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   tileMap!: Phaser.GameObjects.TileSprite;
   minimap!: MiniMap;
-  mushroom!: Mushroom;
-  golem!: Golem;
-  pinkbean!: PinkBean;
-  gallopera!: Gallopera;
-  psycojack!: PsycoJack;
+  enemies!: any[];
+  enemy!: any;
   fire!: Fire;
   effect!: Effect;
   wind!: Wind;
@@ -33,7 +31,8 @@ export default class DisplayScene extends Phaser.Scene {
   keyX!: Phaser.Input.Keyboard.Key;
   keyC!: Phaser.Input.Keyboard.Key;
   portal!: Portal;
-  reward!: Reward;
+  pet!: Pet;
+  // reward!: Reward;
   platformsLayer!: Phaser.Tilemaps.TilemapLayer;
   constructor() {
     super({ key: "display" });
@@ -48,36 +47,45 @@ export default class DisplayScene extends Phaser.Scene {
   create() {
     this.background = new Background(this);
 
-    // 적 생성
-    this.pinkbean = new PinkBean(this, {
-      x: 2500,
-      y: 2000,
-      properties: { min: 1800, max: 2500 },
-    });
-    this.mushroom = new Mushroom(this, {
-      x: 500,
-      y: 1900,
-      properties: { max: 800, min: 400 },
-    });
-    this.golem = new Golem(this, {
-      x: 1800,
-      y: 2200,
-      properties: { min: 1800, max: 2300 },
-    });
-    this.gallopera = new Gallopera(this, {
-      x: 1400,
-      y: 1780,
-      properties: { min: 1400, max: 2000 },
-    });
-    this.psycojack = new PsycoJack(this, {
-      x: 1000,
-      y: 1300,
-      properties: { min: 1000, max: 1500 },
+    this.enemies = [];
+    enemy.forEach((_enemy) => {
+      const { type, x, y, dead, properties } = _enemy;
+      if (type === "pinkbean") {
+        this.enemies.push(
+          new PinkBean(this, { x: x, y: y, flag: dead, properties: properties })
+        );
+      } else if (type === "mushroom") {
+        this.enemies.push(
+          new Mushroom(this, { x: x, y: y, flag: dead, properties: properties })
+        );
+      } else if (type === "golem") {
+        this.enemies.push(
+          new Golem(this, { x: x, y: y, flag: dead, properties: properties })
+        );
+      } else if (type === "psycojack") {
+        this.enemies.push(
+          new PsycoJack(this, {
+            x: x,
+            y: y,
+            flag: dead,
+            properties: properties,
+          })
+        );
+      } else if (type === "gallopera") {
+        this.enemies.push(
+          new Gallopera(this, {
+            x: x,
+            y: y,
+            flag: dead,
+            properties: properties,
+          })
+        );
+      }
     });
 
     // 포탈, 보상
     this.portal = new Portal(this, 1000, 2250, "portal");
-    this.reward = new Reward(this, 1500, 1500, "reward");
+    // this.reward = new Reward(this, 1500, 1500, "reward");
 
     // 플레이어
     this.player = new Player(this, 0, 1500, "player", "stand1");
@@ -100,21 +108,59 @@ export default class DisplayScene extends Phaser.Scene {
     type KeyTypes = "keyZ" | "keyX" | "keyC";
     keys.forEach((keyArray) => {
       const key = "key" + `${keyArray.key}`;
-      this[key as KeyTypes] = this.input.keyboard?.addKey(
+      this[key as KeyTypes] = this.input.keyboard!.addKey(
         Phaser.Input.Keyboard.KeyCodes[keyArray.key as "Z" | "X" | "C"]
       );
       this[key as KeyTypes].on("down", () => {
         const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
-        this.wind = new Wind(this, {
-          x: x,
-          y: this.player.y,
-          flip: this.player.flipX,
-        });
-        this.physics.add.collider(this.mushroom, this.wind, () => {
-          if (this.mushroom.attack < 3) this.mushroom.setFrame("attack1");
-        });
-        this.mushroom.kill();
-      }); // 바람을 불러일으키는 함수만 생성하면 된다.
+        if (key === "keyZ") {
+          this.wind = new Wind(this, {
+            x: x,
+            y: this.player.y,
+            flip: this.player.flipX,
+          });
+        } else if (key === "keyX") {
+          this.fire = new Fire(this, {
+            x: x,
+            y: this.player.y,
+            flip: this.player.flipX,
+          });
+        } else if (key === "keyC") {
+          this.effect = new Effect(this, {
+            x: x,
+            y: this.player.y,
+            flip: this.player.flipX,
+          });
+        }
+        this.physics.add.overlap(
+          this.enemies,
+          [this.wind, this.fire, this.effect],
+          (monster: any) => {
+            this.enemy = monster;
+            if (this.enemy.attack >= this.enemy.flag) return;
+            this.enemy.setFrame("attack1");
+          }
+        );
+        const result = this.enemy?.kill();
+        if (result) {
+          result.then((data: string) => {
+            const { x, y, flag } = this.enemy;
+            if (data === "resolve") {
+              new RedPotion(this, this.enemy.x, this.enemy.y, "redPotion");
+              setTimeout(() => {
+                this.enemies.push(
+                  new Mushroom(this, {
+                    x: x,
+                    y: y,
+                    flag: flag,
+                    properties: { min: this.enemy.min, max: this.enemy.max },
+                  })
+                );
+              }, 5000);
+            }
+          });
+        }
+      });
     });
 
     //map
@@ -156,11 +202,15 @@ export default class DisplayScene extends Phaser.Scene {
           .setOrigin(0, 1);
       });
     platformGroup.addMultiple(tileClimb);
-
+    tileClimb.forEach((el) => {
+      ///@ts-ignore
+      el.body.checkCollision.down = false;
+    });
+    console.log(this.pet.anims);
     //collider 부여
     this.physics.add.collider(platformGroup, this.player);
     this.physics.add.collider(platformGroup, this.pet);
-    this.physics.add.overlap(this.player, this.mushroom, () => {
+    this.physics.add.overlap(this.player, this.enemies, () => {
       this.player.kill();
       hpBar.decreaseHp(2)
       this.pet.attack();
@@ -180,38 +230,17 @@ export default class DisplayScene extends Phaser.Scene {
     );
 
     //index 설정
-    this.player.setDepth(1)
-    this.pet.setDepth(1)
+    this.player.setDepth(1);
+    this.pet.setDepth(1);
   }
   update(): void {
     this.background.update();
-    this.pinkbean.update();
-    this.mushroom.update();
-    this.golem.update();
-    this.psycojack.update();
-    this.gallopera.update();
+    this.enemies.forEach((enemy) => enemy.update());
     this.minimap.update(this.player);
     this.player.update(this.cursors);
     this.pet.update(this.cursors);
   }
-  // attack(type: string) {
-  //     const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
-  //     if (type === 'wind') {
-  //         this.wind = new Wind(this, { x: x, y: this.player.y, flip: this.player.flipX });
-  //         this.physics.add.collider(this.mushroom, this.wind, () => {
-  //             console.log(1);
-  //         });
-  //         this.mushroom.kill();
-  //     } else if (type === 'effect') {
-  //         this.effect = new Effect(this, { x: x, y: this.player.y, flip: this.player.flipX });
-  //         this.physics.add.collider(this.mushroom, this.effect, () => {
-  //             this.mushroom.setFrame('attack1');
-  //         });
-  //     } else if (type === 'fire') {
-  //         this.fire = new Fire(this, { x: x, y: this.player.y, flip: this.player.flipX });
-  //         this.physics.add.collider(this.mushroom, this.fire, () => {
-  //             this.mushroom.setFrame('attack1');
-  //         });
-  //     }
+  // attack(monster: any) {
+  //   monster.setFrame("attack1");
   // }
 }

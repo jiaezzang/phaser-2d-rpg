@@ -1,0 +1,58 @@
+export const enemy = [
+  {
+    type: "mushroom",
+    x: 4100,
+    y: 1390,
+    dead: 3,
+    properties: { max: 4450, min: 4100 },
+  },
+  {
+    type: "mushroom",
+    x: 500,
+    y: 1900,
+    dead: 3,
+    properties: { max: 1400, min: 400 },
+  },
+  {
+    type: "mushroom",
+    x: 2000,
+    y: 1780,
+    dead: 3,
+    properties: { max: 2700, min: 2000 },
+  },
+  {
+    type: "pinkbean",
+    x: 5600,
+    y: 800,
+    dead: 5,
+    properties: { max: 6050, min: 5600 },
+  },
+  {
+    type: "golem",
+    x: 3600,
+    y: 1125,
+    dead: 6,
+    properties: { max: 4200, min: 3600 },
+  },
+  {
+    type: "gallopera",
+    x: 1750,
+    y: 1125,
+    dead: 6,
+    properties: { max: 2300, min: 1750 },
+  },
+  {
+    type: "psycojack",
+    x: 1050,
+    y: 1000,
+    dead: 7,
+    properties: { max: 1600, min: 1050 },
+  },
+  {
+    type: "psycojack",
+    x: 6900,
+    y: 1350,
+    dead: 7,
+    properties: { max: 7400, min: 6900 },
+  },
+];
