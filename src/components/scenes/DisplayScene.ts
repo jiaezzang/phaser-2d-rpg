@@ -148,6 +148,7 @@ export default class DisplayScene extends Phaser.Scene {
         this.physics.add.collider(platformGroup, this.pet);
         this.physics.add.overlap(this.player, this.enemies, () => {
             this.player.kill();
+            hpBar.decreaseHp(2);
             this.pet.attack();
         });
 
