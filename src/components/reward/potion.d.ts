@@ -1,0 +1,1 @@
+type TPotionsProps = {x: number; y: number; texture: string;};

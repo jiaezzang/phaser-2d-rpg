@@ -1,7 +1,11 @@
+import Pet from "../pet/Pet";
+
 export default class PurplePotion extends Phaser.Physics.Arcade.Image {
-    constructor(scene: Phaser.Scene, x: number, y: number, texture: string) {
-        super(scene, x, y, texture);
-        this.name = texture;
+    pet!: Pet;
+    constructor(scene: Phaser.Scene, config:TPotionsProps, pet: Pet) {
+        super(scene, config.x, config.y, config.texture);
+        this.name = config.texture;
+        this.pet = pet
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -9,7 +13,7 @@ export default class PurplePotion extends Phaser.Physics.Arcade.Image {
         //@ts-ignore
         this.body.setAllowGravity(false);
         this.setImmovable(true);
-        this.setX(x).setY(y).setScale(1.5);
+        this.setX(config.x).setY(config.y).setScale(1.5);
         this.setOrigin(0, 1);
     }
 
