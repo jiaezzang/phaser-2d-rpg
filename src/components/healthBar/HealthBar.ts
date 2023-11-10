@@ -1,10 +1,11 @@
-export default class HealthBar {
+export default class HealthBar extends Phaser.GameObjects.Group {
   bar!: Phaser.GameObjects.Graphics;
   x!: number;
   y!: number;
   value!: number;
   p!: number;
   constructor(scene: Phaser.Scene) {
+    super(scene)
     this.bar = new Phaser.GameObjects.Graphics(scene);
     this.x = window.innerWidth - 180;
     this.y = 50;
@@ -28,15 +29,6 @@ export default class HealthBar {
   draw() {
     this.bar.clear();
 
-    // //  BG
-    // this.bar.fillStyle(0x000000);
-    // this.bar.fillRect(this.x - 80, this.y, 250, 30);
-
-    //  Health
-
-    // this.bar.fillStyle(0xffffff);
-    // this.bar.fillRect(this.x + 2, this.y + 2, 246, 26);
-
     if (this.value < 30) {
       this.bar.fillStyle(0xF5000A);
     } else {
@@ -49,12 +41,12 @@ export default class HealthBar {
   }
   increaseHP(hp: number) {
     this.value += hp;
-    if (this.value > 1476) this.value = 1476;
+    if (this.value >= 946) this.value = 946;
     this.draw();
   }
   decreaseHp(attak: number) {
     this.value -= attak;
-    if (this.value < 0) this.value = 0;
+    if (this.value <= 0) this.value = 0;
     this.draw();
   }
 }
