@@ -1,5 +1,8 @@
+import HealthBar from "./healthBar/HealthBar";
+
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   [x: string]: any;
+  attacked = false;
   dead = false;
   constructor(
     scene: Phaser.Scene,
@@ -51,6 +54,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     });
   }
   update(cursors: Phaser.Types.Input.Keyboard.CursorKeys): void {
+    // if(this.dead) return;
+
     if (cursors.left.isDown) {
       this.setVelocityX(-400);
       this.setFlipX(true);
@@ -75,12 +80,22 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   jump() {
     this.play("jumpstart", true);
   }
-  kill() {
-    this.dead = true;
+  kill(hp: number) {
+    if (this.dead) return;
+    if (hp === 0) {
+      this.dead = true;
+      this.setTint();
+      this.setFrame("hit")
+      // .setRotation(30);
+      this.setFlipX(false);
+    }
+    this.attacked = true;
     this.setTint(0xff0000);
     setTimeout(() => {
       this.setTint();
-      this.dead = false;
+      this.attacked = false;
     }, 1000);
+
+    this.setFrame("hit");
   }
 }
