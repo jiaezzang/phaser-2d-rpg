@@ -172,6 +172,8 @@ export default class DisplayScene extends Phaser.Scene {
         this.pet.update(this.cursors);
     }
     keydown(key: string) {
+        this.player.attack();
+
         const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
         const props = { x: x, y: this.player.y, flip: this.player.flipX };
         if (key === 'keyZ') {
@@ -185,6 +187,7 @@ export default class DisplayScene extends Phaser.Scene {
             const props = { x: cloeset.x, y: cloeset.y - 200 };
             this.attack = new Effect(this, props);
         }
+        // promise 문으로 바꾸기
         this.attack.attack();
         this.attack.playSound();
     }

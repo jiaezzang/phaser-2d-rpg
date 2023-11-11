@@ -21,6 +21,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.stop();
         this.setVelocity(0);
         (this.body as Phaser.Physics.Arcade.Body).enable = false;
+        // 여기 잘라야 할 것 같음
         await new Promise((r) => setTimeout(r, 1000));
         if (!this.dead) {
             this.play('walk');
