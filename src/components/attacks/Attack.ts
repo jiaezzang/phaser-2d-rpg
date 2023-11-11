@@ -14,4 +14,8 @@ export default class Attack extends Phaser.Physics.Arcade.Sprite {
     update(...args: any[]): void {
         super.update(...args);
     }
+
+    attack() {
+        this.play('attack').on('animationcomplete', () => this.destroy());
+    }
 }

@@ -20,8 +20,13 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.attacked += 1;
         this.setFrame('attack1');
         this.stop();
-        await new Promise((r) => setTimeout(r, 1000));
-        if (!this.dead) this.play('walk');
+        this.setVelocity(0);
+        await new Promise((r) => setTimeout(r, 700));
+        if (!this.dead) {
+            this.play('walk');
+            // @ts-ignore
+            this.setVelocityX(this.flipX ? this.movingVelocity : -this.movingVelocity);
+        }
     }
     kill() {
         this.dead = true;
