@@ -1,0 +1,111 @@
+{
+    "frames": {
+        "attack2": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 187,
+                "h": 81
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 11,
+                "y": 68,
+                "w": 187,
+                "h": 81
+            },
+            "sourceSize": {
+                "w": 207,
+                "h": 199
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack1": {
+            "frame": {
+                "x": 187,
+                "y": 0,
+                "w": 184,
+                "h": 54
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 9,
+                "y": 87,
+                "w": 184,
+                "h": 54
+            },
+            "sourceSize": {
+                "w": 196,
+                "h": 201
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack3": {
+            "frame": {
+                "x": 371,
+                "y": 0,
+                "w": 143,
+                "h": 80
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 32,
+                "y": 60,
+                "w": 143,
+                "h": 80
+            },
+            "sourceSize": {
+                "w": 206,
+                "h": 201
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack4": {
+            "frame": {
+                "x": 187,
+                "y": 54,
+                "w": 134,
+                "h": 75
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 31,
+                "y": 60,
+                "w": 134,
+                "h": 75
+            },
+            "sourceSize": {
+                "w": 192,
+                "h": 201
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    },
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "attack",
+        "format": "RGBA8888",
+        "size": {
+            "w": 514,
+            "h": 129
+        },
+        "scale": 1
+    }
+}

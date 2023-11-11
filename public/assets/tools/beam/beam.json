@@ -1,0 +1,207 @@
+{
+    "frames": {
+        "attack6": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 63,
+                "h": 75
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 2,
+                "w": 63,
+                "h": 75
+            },
+            "sourceSize": {
+                "w": 65,
+                "h": 82
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack5": {
+            "frame": {
+                "x": 0,
+                "y": 75,
+                "w": 63,
+                "h": 73
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 5,
+                "w": 63,
+                "h": 73
+            },
+            "sourceSize": {
+                "w": 65,
+                "h": 84
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack8": {
+            "frame": {
+                "x": 0,
+                "y": 148,
+                "w": 63,
+                "h": 67
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 9,
+                "w": 63,
+                "h": 67
+            },
+            "sourceSize": {
+                "w": 65,
+                "h": 85
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack7": {
+            "frame": {
+                "x": 0,
+                "y": 215,
+                "w": 63,
+                "h": 44
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 5,
+                "w": 63,
+                "h": 44
+            },
+            "sourceSize": {
+                "w": 65,
+                "h": 50
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack1": {
+            "frame": {
+                "x": 0,
+                "y": 259,
+                "w": 38,
+                "h": 38
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 1,
+                "y": 3,
+                "w": 38,
+                "h": 38
+            },
+            "sourceSize": {
+                "w": 42,
+                "h": 43
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack2": {
+            "frame": {
+                "x": 0,
+                "y": 297,
+                "w": 37,
+                "h": 38
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 1,
+                "y": 2,
+                "w": 37,
+                "h": 38
+            },
+            "sourceSize": {
+                "w": 41,
+                "h": 43
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack3": {
+            "frame": {
+                "x": 0,
+                "y": 335,
+                "w": 38,
+                "h": 36
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 1,
+                "y": 5,
+                "w": 38,
+                "h": 36
+            },
+            "sourceSize": {
+                "w": 42,
+                "h": 43
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "attack4": {
+            "frame": {
+                "x": 37,
+                "y": 297,
+                "w": 37,
+                "h": 33
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 1,
+                "y": 4,
+                "w": 37,
+                "h": 33
+            },
+            "sourceSize": {
+                "w": 41,
+                "h": 41
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    },
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "attack",
+        "format": "RGBA8888",
+        "size": {
+            "w": 74,
+            "h": 371
+        },
+        "scale": 1
+    }
+}

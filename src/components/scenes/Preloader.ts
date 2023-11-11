@@ -21,6 +21,9 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('effect', 'tools/effect/effect.png', 'tools/effect/effect.json');
         this.load.atlas('fire', 'tools/fire/fire.png', 'tools/fire/fire.json');
         this.load.atlas('wind', 'tools/wind/wind.png', 'tools/wind/wind.json');
+        // this.load.atlas('beam', 'tools/beam/beam.png', 'tools/beam/beam.json');
+        // this.load.atlas('star', 'tools/star/star.png', 'tools/star/star.json');
+        // this.load.atlas('cloud', 'tools/cloud/cloud.png', 'tools/cloud/cloud.json');
 
         //pet
         this.load.atlas('pet', 'pet/pet.png', 'pet/pet.json');
