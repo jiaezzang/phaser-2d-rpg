@@ -1,11 +1,9 @@
 import Attack from './Attack';
 
-type TEffectProps = { x: number; y: number; flip: boolean };
 export default class Effect extends Attack {
     movingVelocity = 200;
-    constructor(scene: Phaser.Scene, config: TEffectProps) {
+    constructor(scene: Phaser.Scene, config: TAttackProps) {
         super(scene, config.x ?? 0, config.y ?? 0, 'effect', 'attack1');
-        this.movingVelocity = config.flip ? -200 : +200;
 
         this.anims.create({
             key: 'attack',
@@ -16,12 +14,13 @@ export default class Effect extends Attack {
                 zeroPad: 1
             }),
             frameRate: 8,
-            repeat: 2,
-            hideOnComplete: true
+            repeat: 2
         });
 
-        this.setOrigin(0, 1);
-        this.play('attack').on('animationcomplete', () => this.destroy());
-        this.setVelocityX(this.movingVelocity);
+        this.setVelocityY(this.movingVelocity);
+    }
+
+    playSound() {
+        this.scene.sound.play('effect');
     }
 }

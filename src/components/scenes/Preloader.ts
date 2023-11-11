@@ -35,6 +35,13 @@ export default class Preloader extends Phaser.Scene {
         //potion
         this.load.image('purplePotion', 'potion/purplePotion.png');
         this.load.image('redPotion', 'potion/redPotion.png');
+
+        //sound
+        this.load.audio('bgm', 'sounds/bgm.mp3');
+        this.load.audio('fire', 'sounds/fire.mp3');
+        this.load.audio('effect', 'sounds/effect.mp3');
+        this.load.audio('wind', 'sounds/wind.mp3');
+        this.load.audio('getPotion', 'sounds/getPotion.mp3');
     }
     create() {
         this.game.scene.start('display');
