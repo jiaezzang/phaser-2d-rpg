@@ -11,7 +11,14 @@ export const enemy = [
         x: 1000,
         y: 1910,
         dead: 3,
-        properties: { max: 1400, min: 400 }
+        properties: { max: 1250, min: 400 }
+    },
+    {
+        type: 'mushroom',
+        x: 1300,
+        y: 1910,
+        dead: 3,
+        properties: { max: 1250, min: 400 }
     },
     {
         type: 'mushroom',

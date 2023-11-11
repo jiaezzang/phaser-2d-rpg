@@ -70,8 +70,7 @@ export default class DisplayScene extends Phaser.Scene {
             this[keyName as KeyTypes] = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes[key as 'Z' | 'X' | 'C']);
             this[keyName as KeyTypes].on('down', () => {
                 this.keydown(keyName);
-                const fn = this.physics.add.overlap(this.enemies, this.attack, (monster: any) => {
-                    fn.active = false;
+                this.physics.add.overlap(this.enemies, this.attack, (monster: any) => {
                     if (monster.attacked < monster.flag) monster.attack();
                     else {
                         this.enemies.remove(monster);

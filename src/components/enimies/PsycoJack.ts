@@ -39,12 +39,10 @@ export default class PsycoJack extends Enemy {
 
     update(): void {
         if (this.dead) return;
-        //@ts-ignore
-        if (this.body.x < this.min) {
+        if ((this.body as Phaser.Physics.Arcade.Body).x < this.min) {
             this.setFlipX(true);
             this.setVelocityX(this.movingVelocity);
-            // @ts-ignore
-        } else if (this.body.x + this.body.width > this.max) {
+        } else if ((this.body as Phaser.Physics.Arcade.Body).x + (this.body as Phaser.Physics.Arcade.Body).width > this.max) {
             this.setFlipX(false);
             this.setVelocityX(-this.movingVelocity);
         }

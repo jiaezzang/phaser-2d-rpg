@@ -12,8 +12,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
-        //@ts-ignore
-        this.body.setAllowGravity(false);
+        (this.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
         this.setImmovable(true);
     }
     async attack() {
@@ -21,11 +20,13 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.setFrame('attack1');
         this.stop();
         this.setVelocity(0);
-        await new Promise((r) => setTimeout(r, 700));
+        (this.body as Phaser.Physics.Arcade.Body).enable = false;
+        await new Promise((r) => setTimeout(r, 1000));
         if (!this.dead) {
             this.play('walk');
             // @ts-ignore
             this.setVelocityX(this.flipX ? this.movingVelocity : -this.movingVelocity);
+            (this.body as Phaser.Physics.Arcade.Body).enable = true;
         }
     }
     kill() {
