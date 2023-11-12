@@ -14,7 +14,7 @@ export default class FireBeam extends Attack {
                 end: 8,
                 zeroPad: 1
             }),
-            frameRate: 8,
+            frameRate: 10,
             repeat: 0
         });
 

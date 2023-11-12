@@ -13,7 +13,7 @@ export default class Effect extends Attack {
                 end: 4,
                 zeroPad: 1
             }),
-            frameRate: 8,
+            frameRate: 10,
             repeat: 2
         });
 

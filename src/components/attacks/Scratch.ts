@@ -12,7 +12,7 @@ export default class Scratch extends Attack {
                 end: 23,
                 zeroPad: 1
             }),
-            frameRate: 8,
+            frameRate: 10,
             repeat: 0
         });
     }

@@ -14,7 +14,7 @@ export default class FireLight extends Attack {
                 end: 7,
                 zeroPad: 1
             }),
-            frameRate: 8,
+            frameRate: 10,
             repeat: 0
         });
 

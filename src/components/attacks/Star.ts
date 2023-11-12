@@ -14,7 +14,7 @@ export default class Star extends Attack {
                 end: 10,
                 zeroPad: 1
             }),
-            frameRate: 8,
+            frameRate: 10,
             repeat: 0
         });
 

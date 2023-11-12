@@ -14,7 +14,7 @@ export default class Beam extends Attack {
                 end: 7,
                 zeroPad: 1
             }),
-            frameRate: 7,
+            frameRate: 10,
             repeat: 0
         });
 
