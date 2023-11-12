@@ -62,30 +62,12 @@ export default class DisplayScene extends Phaser.Scene {
         // hpBarContainer.add(this.hpBar);
 
         // keyboard
-        //@ts-ignore
-        this.cursors = this.input.keyboard?.createCursorKeys();
+        this.cursors = this.input.keyboard!.createCursorKeys();
         type KeyTypes = 'keyZ' | 'keyX' | 'keyC';
         ['Z', 'X', 'C'].forEach((key) => {
             const keyName = 'key' + `${key}`;
             this[keyName as KeyTypes] = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes[key as 'Z' | 'X' | 'C']);
-            this[keyName as KeyTypes].on('down', () => {
-                this.keydown(keyName);
-                this.physics.add.overlap(this.enemies, this.attack, (monster: any) => {
-                    if (monster.attacked < monster.flag) monster.attack();
-                    else {
-                        this.enemies.remove(monster);
-                        monster.kill().then(async (result: 'resolve') => {
-                            if (result) {
-                                const { name, x, y, flag, min, max } = monster;
-                                this.addPotion(x, y, name);
-
-                                await new Promise((r) => setTimeout(r, 4000));
-                                this.addEnemy({ type: name, x: x, y: y, dead: flag, properties: { min: min, max: max } });
-                            }
-                        });
-                    }
-                });
-            });
+            this[keyName as KeyTypes].on('down', () => this.keydown(keyName));
         });
 
         //map
@@ -172,24 +154,42 @@ export default class DisplayScene extends Phaser.Scene {
         this.pet.update(this.cursors);
     }
     keydown(key: string) {
-        this.player.attack();
-
         const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
         const props = { x: x, y: this.player.y, flip: this.player.flipX };
         if (key === 'keyZ') {
             this.attack = new Beam(this, props);
+            this.kill(this.enemies);
         } else if (key === 'keyX') {
             this.attack = new Ice(this, props);
+            this.kill(this.enemies);
         } else if (key === 'keyC') {
-            const cloeset = this.physics.closest(this.player, this.enemies.getChildren());
-            if (!cloeset) return;
-            // @ts-ignore
-            const props = { x: cloeset.x, y: cloeset.y };
-            this.attack = new Scratch(this, props);
+            const monsters = this.enemies.getChildren().filter((child: any) => Phaser.Math.Distance.Between(this.player.x, this.player.y, child.x, child.y) <= 1000);
+            monsters.forEach((monster: any) => {
+                this.attack = new Scratch(this, { x: monster.x, y: monster.y });
+                this.kill(monster);
+            });
         }
-        // promise 문으로 바꾸기
-        this.attack.attack();
+        this.player.attack();
         this.attack.playSound();
+    }
+    kill(enemies: Phaser.Types.Physics.Arcade.ArcadeColliderType) {
+        const fn = this.physics.add.overlap(enemies, this.attack, (monster: any) => {
+            fn.active = false;
+            if (monster.attacked < monster.flag) monster.attack();
+            else {
+                this.enemies.remove(monster);
+                monster.kill().then(async (result: 'resolve') => {
+                    if (result) {
+                        const { name, x, y, flag, min, max } = monster;
+                        this.addPotion(x, y, name);
+
+                        await new Promise((r) => setTimeout(r, 4000));
+                        this.addEnemy({ type: name, x: x, y: y, dead: flag, properties: { min: min, max: max } });
+                    }
+                });
+            }
+        });
+        this.attack.attack();
     }
     addPotion(x: number, y: number, name: string) {
         if (['mushroom', 'pinkbean'].includes(name)) {
