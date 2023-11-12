@@ -18,12 +18,14 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('psycojack', 'enemies/psycojack/psycojack.png', 'enemies/psycojack/psycojack.json');
 
         //attack
+        this.load.atlas('fireScratch', 'tools/fireScratch/fireScratch.png', 'tools/fireScratch/fireScratch.json');
         this.load.atlas('effect', 'tools/effect/effect.png', 'tools/effect/effect.json');
-        this.load.atlas('fire', 'tools/fire/fire.png', 'tools/fire/fire.json');
-        this.load.atlas('wind', 'tools/wind/wind.png', 'tools/wind/wind.json');
-        // this.load.atlas('beam', 'tools/beam/beam.png', 'tools/beam/beam.json');
-        // this.load.atlas('star', 'tools/star/star.png', 'tools/star/star.json');
-        // this.load.atlas('cloud', 'tools/cloud/cloud.png', 'tools/cloud/cloud.json');
+        this.load.atlas('beam', 'tools/beam/beam.png', 'tools/beam/beam.json');
+        this.load.atlas('ice', 'tools/ice/ice.png', 'tools/ice/ice.json');
+        this.load.atlas('star', 'tools/star/star.png', 'tools/star/star.json');
+        this.load.atlas('scratch', 'tools/scratch/scratch.png', 'tools/scratch/scratch.json');
+        this.load.atlas('fireBeam', 'tools/fireBeam/fireBeam.png', 'tools/fireBeam/fireBeam.json');
+        this.load.atlas('fireLight', 'tools/fireLight/fireLight.png', 'tools/fireLight/fireLight.json');
 
         //pet
         this.load.atlas('pet', 'pet/pet.png', 'pet/pet.json');
@@ -46,7 +48,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.audio('bgm', 'sounds/bgm.mp3');
         this.load.audio('fire', 'sounds/fire.mp3');
         this.load.audio('effect', 'sounds/effect.mp3');
-        this.load.audio('wind', 'sounds/wind.mp3');
+        this.load.audio('beam', 'sounds/beam.mp3');
         this.load.audio('getPotion', 'sounds/getPotion.mp3');
     }
     create() {

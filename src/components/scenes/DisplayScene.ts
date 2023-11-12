@@ -1,9 +1,9 @@
 import { Background } from '../Background';
 import Player from '../Player';
 import MiniMap from '../MiniMap';
-import Fire from '../attacks/Fire';
-import Effect from '../attacks/Effect';
-import Wind from '../attacks/Wind';
+import Scratch from '../attacks/Scratch';
+import Ice from '../attacks/Ice';
+import Beam from '../attacks/Beam';
 import Portal from '../portal/Portal';
 import { enemy } from '../../data';
 import Pet from '../pet/Pet';
@@ -20,7 +20,7 @@ export default class DisplayScene extends Phaser.Scene {
     tileMap!: Phaser.GameObjects.TileSprite;
     minimap!: MiniMap;
     enemies!: EnemiseGroup;
-    attack!: Fire | Effect | Wind;
+    attack!: Ice | Scratch | Beam;
     keyZ!: Phaser.Input.Keyboard.Key;
     keyX!: Phaser.Input.Keyboard.Key;
     keyC!: Phaser.Input.Keyboard.Key;
@@ -177,15 +177,15 @@ export default class DisplayScene extends Phaser.Scene {
         const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
         const props = { x: x, y: this.player.y, flip: this.player.flipX };
         if (key === 'keyZ') {
-            this.attack = new Wind(this, props);
+            this.attack = new Beam(this, props);
         } else if (key === 'keyX') {
-            this.attack = new Fire(this, props);
+            this.attack = new Ice(this, props);
         } else if (key === 'keyC') {
             const cloeset = this.physics.closest(this.player, this.enemies.getChildren());
             if (!cloeset) return;
             // @ts-ignore
-            const props = { x: cloeset.x, y: cloeset.y - 200 };
-            this.attack = new Effect(this, props);
+            const props = { x: cloeset.x, y: cloeset.y };
+            this.attack = new Scratch(this, props);
         }
         // promise 문으로 바꾸기
         this.attack.attack();

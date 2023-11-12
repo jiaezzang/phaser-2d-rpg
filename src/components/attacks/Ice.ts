@@ -1,17 +1,17 @@
 import Attack from './Attack';
 
-export default class Wind extends Attack {
+export default class Ice extends Attack {
     movingVelocity = 200;
     constructor(scene: Phaser.Scene, config: TAttackProps) {
-        super(scene, config.x ?? 0, config.y ?? 0, 'wind', 'attack1');
+        super(scene, config.x ?? 0, config.y ?? 0, 'ice', 'attack1');
         this.movingVelocity = config.flip ? -200 : +200;
 
         this.anims.create({
             key: 'attack',
-            frames: scene.anims.generateFrameNames('wind', {
+            frames: scene.anims.generateFrameNames('ice', {
                 prefix: 'attack',
                 start: 1,
-                end: 8,
+                end: 10,
                 zeroPad: 1
             }),
             frameRate: 8,
@@ -22,6 +22,6 @@ export default class Wind extends Attack {
     }
 
     playSound() {
-        this.scene.sound.play('wind');
+        this.scene.sound.play('effect');
     }
 }
