@@ -9,8 +9,10 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
   maxSpeed: number;
   targetMovig = false;
   deadLine = 600;
-  midLine = 100;
-  minLine = 30;
+  midLine = 200;
+  minLine = 50;
+  isFollowingPlayer = false;
+  updateTween!: any;
   constructor(
     scene: Phaser.Scene,
     x: number = 0,
@@ -23,14 +25,18 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
 
     scene.add.existing(this);
     scene.physics.add.existing(this);
+    (this.body as Phaser.Physics.Arcade.Body).setAllowGravity(true);
     this.setOrigin(0, 1);
     this.setDisplayOrigin(0, 1);
+    this.setSize(30, 50);
     this.setCollideWorldBounds(true);
     this.target = target;
     this.minDistance = 10;
     this.history = [];
     this.historyLength = 5;
     this.maxSpeed = 250;
+    this.x = x;
+    this.y = y;
 
     this.anims.create({
       key: "stand",
@@ -54,7 +60,6 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
       frameRate: 8,
       repeat: -1,
     });
-
   }
   update(cursors: Phaser.Types.Input.Keyboard.CursorKeys): void {
     //gap : player와 pet 사이의 거리
@@ -97,7 +102,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
           this.setVelocityX(-400);
       } else {
         if (this.body?.blocked.down) this.play("stand", true);
-        if(!this.target.dead && this.target.attacked) this.play('attack')
+        if (!this.target.dead && this.target.attacked) this.play("attack");
       }
     }
     //@ts-ignore
@@ -131,7 +136,6 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
     } else {
       this.setVelocity(0, 0);
     }
-    this.pet.getPotion
   }
   attack() {
     this.anims.create({
@@ -147,11 +151,5 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
     });
 
     this.play("attack");
-  }
-  getPotion(potion: Phaser.Physics.Arcade.Image){
-    if(Math.abs(potion.x - this.x) < 20 && Math.abs(potion.y - this.y) < 20){
-      potion.setX(this.x).setY(this.y)
-    }
-    console.log('good')
   }
 }
