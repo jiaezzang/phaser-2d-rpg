@@ -46,7 +46,7 @@ export default class DisplayScene extends Phaser.Scene {
         console.log('preload s');
     }
     create() {
-        this.sound.play('bgm', { loop: true });
+        this.sound.play('scene1', { loop: true });
         this.background = new Background(this);
 
         // 적
@@ -56,12 +56,14 @@ export default class DisplayScene extends Phaser.Scene {
         this.player = new Player(this, this.bounding.x, this.bounding.y, 'player_' + this.playerType, 'stand1');
 
         // 포탈, 보상
-        this.portal = new Portal(this, 500, 1945, 'portal').setScale(0.6).setSize(120, 120);
+        this.portal = new Portal(this, 5700, 1945, 'portal').setScale(0.6).setSize(120, 120);
 
         const fn = this.physics.add.overlap(this.portal, this.player, () => {
             fn.active = false;
             this.cameras.main.fadeOut(1000, 0, 0, 0);
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+                this.sound.stopAll();
+                this.sound.play('portal');
                 this.scene.start('store', { playerType: this.playerType, hpBar: this.hpBar.value });
             });
         });
