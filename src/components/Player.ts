@@ -21,7 +21,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.anims.create({
       key: "stand",
-      frames: scene.anims.generateFrameNames("player", {
+      frames: scene.anims.generateFrameNames(texture, {
         prefix: "stand",
         start: 1,
         end: 5,
@@ -32,7 +32,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     });
     this.anims.create({
       key: "walk",
-      frames: scene.anims.generateFrameNames("player", {
+      frames: scene.anims.generateFrameNames(texture, {
         prefix: "walk",
         start: 1,
         end: 6,
@@ -43,7 +43,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     });
     this.anims.create({
       key: "attack",
-      frames: scene.anims.generateFrameNames("player", {
+      frames: scene.anims.generateFrameNames(texture, {
         prefix: "attack",
         start: 1,
         end: 4,
@@ -54,7 +54,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     });
     this.anims.create({
       key: "jumpstart",
-      frames: scene.anims.generateFrameNames("player", {
+      frames: scene.anims.generateFrameNames(texture, {
         prefix: "jumpstart",
         start: 1,
         end: 2,

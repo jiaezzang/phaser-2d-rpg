@@ -14,6 +14,7 @@ import EnemiseGroup from "../enimies/EnemyGroup";
 
 export default class DisplayScene extends Phaser.Scene {
   player!: Player;
+  playerType!: string;
   hpBar!: HealthBar;
   background!: Background;
   cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -33,7 +34,8 @@ export default class DisplayScene extends Phaser.Scene {
     super({ key: "display" });
     console.log("cons! s");
   }
-  init() {
+  init(data: { player: string }) {
+    this.playerType = data.player;
     console.log("init s");
   }
   preload() {
@@ -50,7 +52,7 @@ export default class DisplayScene extends Phaser.Scene {
     this.portal = new Portal(this, 5723, 1888, "portal");
 
     // 플레이어
-    this.player = new Player(this, 0, 1500, "player", "stand1");
+    this.player = new Player(this, 0, 1500, "player_" + this.playerType, "stand1");
 
     //펫
     this.pet = new Pet(this, 0, 1500, "pet", "stand1", this.player);
