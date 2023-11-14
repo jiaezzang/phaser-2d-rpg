@@ -177,13 +177,7 @@ export default class DisplayScene extends Phaser.Scene {
                         this.addPotion(x, y, name);
 
                         await new Promise((r) => setTimeout(r, 4000));
-                        this.addEnemy({
-                            type: name,
-                            x: x,
-                            y: y,
-                            dead: flag,
-                            properties: { min: min, max: max }
-                        });
+                        this.addEnemy({ type: name, x: x, y: y, dead: flag, properties: { min: min, max: max } });
                     }
                 });
             }
@@ -192,21 +186,12 @@ export default class DisplayScene extends Phaser.Scene {
     }
     addPotion(x: number, y: number, name: string) {
         if (['mushroom', 'pinkbean'].includes(name)) {
-            const redPotion = new RedPotion(this, {
-                x: x,
-                y: y,
-                texture: 'redPotion'
-            });
+            const redPotion = new RedPotion(this, { x: x, y: y, texture: 'redPotion' });
             this.potions.add(redPotion);
             this.physics.add.collider(this.platformGroup, redPotion);
         } else {
-            const purplePotion = new PurplePotion(this, {
-                x: x,
-                y: y,
-                texture: 'purplePotion'
-            });
+            const purplePotion = new PurplePotion(this, { x: x, y: y, texture: 'purplePotion' });
             this.potions.add(purplePotion);
-
             this.physics.add.collider(this.platformGroup, purplePotion);
         }
     }
@@ -229,6 +214,10 @@ export default class DisplayScene extends Phaser.Scene {
                     this.hpBar.increaseHP(child.name);
                 }
             }
+            this.physics.overlap(this.player, child, () => {
+                this.hpBar.increaseHP(child.name);
+                child.destroy();
+            });
         });
     }
 }
