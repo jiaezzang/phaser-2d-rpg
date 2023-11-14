@@ -43,39 +43,40 @@ export default class HealthBar extends Phaser.GameObjects.Graphics {
         this.currentHp = this.value;
         this.newHp = this.value + this.hp;
 
-        if (this.updateTween && this.updateTween.isPlaying()) {
-            this.updateTween.on('complete', () => {
-                this.currentHp = this.newHp;
-                this.newHp += this.hp;
-                this.updateTween = this.scene.tweens.addCounter({
-                    from: this.value,
-                    to: this.value + this.hp,
-                    duration: 500,
-                    ease: 'linear',
-                    onUpdate: (tween) => {
-                        this.value = Math.round(tween.getValue());
-                        if (this.value >= 473) this.value = 473;
-                        this.draw();
-                    }
-                });
-            });
-        } else {
-            this.updateTween = this.scene.tweens.addCounter({
-                from: this.value,
-                to: this.value + this.hp,
-                duration: 500,
-                ease: 'linear',
-                onUpdate: (tween) => {
-                    this.value = Math.round(tween.getValue());
-                    if (this.value >= 473) this.value = 473;
-                    this.draw();
-                }
-            });
-        }
+    if (this.updateTween && this.updateTween.isPlaying()) {
+      this.updateTween.on("complete", () => {
+        this.currentHp = this.newHp;
+        this.newHp += this.hp;
+        this.updateTween = this.scene.tweens.addCounter({
+          from: this.value,
+          to: this.value + this.hp,
+          duration: 500,
+          ease: "linear",
+          onUpdate: (tween) => {
+            this.value = Math.round(tween.getValue());
+            if (this.value >= 473) this.value = 473;
+            this.draw();
+          },
+        });
+      });
+    } else {
+      this.updateTween = this.scene.tweens.addCounter({
+        from: this.value,
+        to: this.value + this.hp,
+        duration: 500,
+        ease: "linear",
+        onUpdate: (tween) => {
+          this.value = Math.round(tween.getValue());
+          if (this.value >= 473) this.value = 473;
+          this.draw();
+        },
+      });
     }
-    decreaseHp(attak: number) {
-        this.value -= attak;
-        if (this.value <= 0) this.value = 0;
-        this.draw();
-    }
+  }
+  decreaseHp(attak: number) {
+    if(this.value === 0) return;
+    this.value -= attak;
+    if (this.value <= 0) this.value = 0;
+    this.draw();
+  }
 }

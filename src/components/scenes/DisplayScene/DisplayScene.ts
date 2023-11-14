@@ -71,6 +71,7 @@ export default class DisplayScene extends Phaser.Scene {
         //펫
         this.pet = new Pet(this, 0, 1500, 'pet', 'stand1', this.player);
         this.pet.setFlipX(true);
+        this.pet.rest = false;
 
         //Health bar
         this.hpBar = new HealthBar(this, this.value);
@@ -134,6 +135,13 @@ export default class DisplayScene extends Phaser.Scene {
             this.player.kill(this.hpBar.value);
             this.hpBar.decreaseHp(2);
             if (this.hpBar.value > 0) this.pet.attack();
+            if (this.hpBar.value === 0) {
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+                    this.scene.start('store', { data: this.playerType });
+                });
+                this.player.setVelocity(0).stop();
+            }
         });
 
         //camera & minimap
@@ -156,8 +164,13 @@ export default class DisplayScene extends Phaser.Scene {
         this.background.update();
         this.enemies.update();
         this.minimap.update(this.player);
-        this.player.update(this.cursors);
-        this.pet.update(this.cursors);
+        if (!this.player.dead) {
+            this.player.update(this.cursors);
+            this.pet.update(this.cursors);
+        } else {
+            this.player.setFrame('hit1').setVelocity(0).stop();
+            this.pet.setFrame('attack1').setVelocity(0).stop();
+        }
         this.getPotion();
     }
     keydown(key: string) {
@@ -219,12 +232,12 @@ export default class DisplayScene extends Phaser.Scene {
             if (Math.abs(this.pet.x - child.x) < 300 && Math.abs(this.pet.y - child.y) < 300) {
                 if (this.pet.x - child.x > 0) this.pet.setFlipX(false);
                 else this.pet.setFlipX(true);
-                this.physics.moveToObject(this.pet, child, 800);
+                this.physics.moveToObject(this.pet, child, 500);
                 // potion.setAngle(0)
                 if (Math.abs(this.pet.x - child.x) < 30 && Math.abs(this.pet.y - child.y) < 30) {
                     child.destroy();
                     this.pet.body?.stop();
-                    this.pet.setVelocity(0, 100);
+                    this.pet.setFlipX(!this.pet.flipX);
                     this.hpBar.increaseHP(child.name);
                 }
             }
