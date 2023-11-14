@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 import Preloader from './components/Preloader';
 import DisplayScene from './components/scenes/DisplayScene/DisplayScene';
 import SelectPlayerScene from './components/scenes/PlayerSettingScene/PlayerSettingScene';
+import StoreScene from './components/scenes/SotreScene/StoreScene';
 
 new Phaser.Game({
     // type: Phaser.WEBGL,
@@ -15,5 +16,5 @@ new Phaser.Game({
             gravity: { y: 2500 }
         }
     },
-    scene: [Preloader, SelectPlayerScene, DisplayScene]
+    scene: [Preloader, SelectPlayerScene, DisplayScene, StoreScene]
 });
