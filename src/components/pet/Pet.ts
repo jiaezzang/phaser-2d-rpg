@@ -97,7 +97,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
                 if (this.target.body.position.x - this.body?.position.x! > 0 && this.flipX) this.setVelocityX(400);
                 else if (this.target.body.position.x - this.body?.position.x! < 0 && !this.flipX) this.setVelocityX(-400);
             } else {
-                // if (this.body?.blocked.down) this.play('stand', true);
+                if (this.body?.blocked.down) this.play('stand', true);
                 if (!this.target.dead && this.target.attacked) this.play('attack');
             }
         }
