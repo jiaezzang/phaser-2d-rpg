@@ -60,7 +60,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.setScale(0.7);
     }
     update(cursors: Phaser.Types.Input.Keyboard.CursorKeys): void {
-        console.log(cursors);
         // if(this.dead) return;
         if (cursors.left.isDown) {
             this.setVelocityX(-400);
