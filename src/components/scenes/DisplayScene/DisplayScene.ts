@@ -13,49 +13,47 @@ import PurplePotion from "../../reward/PurplePotion";
 import EnemiseGroup from "../../enimies/EnemyGroup";
 
 export default class DisplayScene extends Phaser.Scene {
-  player!: Player;
-  playerType!: string;
-  hpBar!: HealthBar;
-  background!: Background;
-  cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
-  tileMap!: Phaser.GameObjects.TileSprite;
-  minimap!: MiniMap;
-  enemies!: EnemiseGroup;
-  attack!: Ice | Scratch | Beam;
-  keyZ!: Phaser.Input.Keyboard.Key;
-  keyX!: Phaser.Input.Keyboard.Key;
-  keyC!: Phaser.Input.Keyboard.Key;
-  portal!: Portal;
-  pet!: Pet;
-  platformsLayer!: Phaser.Tilemaps.TilemapLayer;
-  platformGroup!: any;
-  potions!: Phaser.Physics.Arcade.Group;
-  constructor() {
-    super({ key: "display" });
-    console.log("cons! s");
-  }
-  init(data: { player: string }) {
-    this.playerType = data.player;
-    console.log("init s");
-  }
-  preload() {
-    console.log("preload s");
-  }
-  create() {
-    this.sound.play("bgm", { loop: true });
-    this.background = new Background(this);
+    player!: Player;
+    playerType!: string;
+    hpBar!: HealthBar;
+    value!: number;
+    bounding!: { x: number; y: number };
+    background!: Background;
+    cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
+    tileMap!: Phaser.GameObjects.TileSprite;
+    minimap!: MiniMap;
+    enemies!: EnemiseGroup;
+    attack!: Ice | Scratch | Beam;
+    keyZ!: Phaser.Input.Keyboard.Key;
+    keyX!: Phaser.Input.Keyboard.Key;
+    keyC!: Phaser.Input.Keyboard.Key;
+    portal!: Portal;
+    pet!: Pet;
+    platformsLayer!: Phaser.Tilemaps.TilemapLayer;
+    platformGroup!: any;
+    potions!: Phaser.Physics.Arcade.Group;
+    constructor() {
+        super({ key: 'display' });
+        console.log('cons! s');
+    }
+    init(data: { player: string; hpBarValue?: number; bounding: { x: number; y: number } }) {
+        this.playerType = data.player;
+        this.value = data.hpBarValue ?? 473;
+        this.bounding = data.bounding ?? { x: 0, y: 1500 };
+        console.log('init s');
+    }
+    preload() {
+        console.log('preload s');
+    }
+    create() {
+        this.sound.play('bgm', { loop: true });
+        this.background = new Background(this);
 
     // 적
     this.enemies = new EnemiseGroup(this, enemy);
 
-    // 플레이어
-    this.player = new Player(
-      this,
-      0,
-      1500,
-      "player_" + this.playerType,
-      "stand1"
-    );
+        // 플레이어
+        this.player = new Player(this, this.bounding.x, this.bounding.y, 'player_' + this.playerType, 'stand1');
 
     // 포탈, 보상
     this.portal = new Portal(this, 500, 1945, "portal")
@@ -68,7 +66,7 @@ export default class DisplayScene extends Phaser.Scene {
         this.cameras.main.once(
           Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
           () => {
-            this.scene.start("store", { data: this.playerType });
+            this.scene.start("store", { playerType: this.playerType, hpBar: this.hpBar.value });
           }
         );
       }
@@ -78,8 +76,8 @@ export default class DisplayScene extends Phaser.Scene {
     this.pet = new Pet(this, 0, 1500, "pet", "stand1", this.player);
     this.pet.setFlipX(true);
 
-    //Health bar
-    this.hpBar = new HealthBar(this);
+        //Health bar
+        this.hpBar = new HealthBar(this, this.value);
 
     //potion
     this.potions = this.physics.add.group();

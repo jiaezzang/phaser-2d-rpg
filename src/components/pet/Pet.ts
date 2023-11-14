@@ -3,6 +3,7 @@ import Player from "../Player";
 export default class Pet extends Phaser.Physics.Arcade.Sprite {
   [x: string]: any;
   dead = false;
+  rest = false;
   minDistance: number;
   history: { x: number; y: number }[];
   historyLength: number;
@@ -37,6 +38,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
     this.maxSpeed = 250;
     this.x = x;
     this.y = y;
+    this.rest = false;
 
     this.anims.create({
       key: "stand",
@@ -53,6 +55,17 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
       key: "walk",
       frames: this.scene.anims.generateFrameNames("pet", {
         prefix: "walk",
+        start: 1,
+        end: 2,
+        zeroPad: 1,
+      }),
+      frameRate: 8,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: "rest",
+      frames: this.scene.anims.generateFrameNames("pet", {
+        prefix: "rest",
         start: 1,
         end: 2,
         zeroPad: 1,
@@ -96,7 +109,8 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         this.play("walk", true);
       } else {
         this.setVelocityX(0);
-        this.play("stand", true);
+        if (this.rest) this.play("rest", true);
+        else this.play("stand", true);
       }
       console.log(gap.x > this.minLine && gap.x <= this.deadLine);
     }
