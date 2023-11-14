@@ -78,13 +78,13 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
       setTimeout(() => {
         this.setFlipX(false);
         //@ts-ignore
-        if (this.body.blocked.down) this.play("walk", true);
+        if (this.body?.blocked.down) this.play("walk", true);
       }, 200);
     } else if (cursors.right.isDown) {
       setTimeout(() => {
         this.setFlipX(true);
         //@ts-ignore
-        if (this.body.blocked.down) this.play("walk", true);
+        if (this.body?.blocked.down) this.play("walk", true);
       }, 200);
     } else {
       //@ts-ignore

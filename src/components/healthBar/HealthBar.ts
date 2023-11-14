@@ -74,6 +74,7 @@ export default class HealthBar extends Phaser.GameObjects.Graphics {
     }
   }
   decreaseHp(attak: number) {
+    if(this.value === 0) return;
     this.value -= attak;
     if (this.value <= 0) this.value = 0;
     this.draw();
