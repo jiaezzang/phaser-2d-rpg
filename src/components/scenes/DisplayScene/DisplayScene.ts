@@ -282,7 +282,7 @@ export default class DisplayScene extends Phaser.Scene {
       ) {
         if (this.pet.x - child.x > 0) this.pet.setFlipX(false);
         else this.pet.setFlipX(true);
-        this.physics.moveToObject(this.pet, child, 800);
+        this.physics.moveToObject(this.pet, child, 500);
         // potion.setAngle(0)
         if (
           Math.abs(this.pet.x - child.x) < 30 &&
@@ -290,7 +290,7 @@ export default class DisplayScene extends Phaser.Scene {
         ) {
           child.destroy();
           this.pet.body?.stop();
-          this.pet.setVelocity(0, 100);
+          this.pet.setFlipX(!this.pet.flipX);
           this.hpBar.increaseHP(child.name);
         }
       }
