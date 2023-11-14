@@ -48,11 +48,14 @@ export default class DisplayScene extends Phaser.Scene {
     // 적
     this.enemies = new EnemiseGroup(this, enemy);
 
-    // 포탈, 보상
-    this.portal = new Portal(this, 5723, 1888, "portal");
-
     // 플레이어
-    this.player = new Player(this, 0, 1500, "player_" + this.playerType, "stand1");
+    this.player = new Player(
+      this,
+      5723,
+      1500,
+      "player_" + this.playerType,
+      "stand1"
+    );
 
     //펫
     this.pet = new Pet(this, 0, 1500, "pet", "stand1", this.player);
@@ -73,6 +76,22 @@ export default class DisplayScene extends Phaser.Scene {
         Phaser.Input.Keyboard.KeyCodes[key as "Z" | "X" | "C"]
       );
       this[keyName as KeyTypes].on("down", () => this.keydown(keyName));
+    });
+
+    // 포탈, 보상
+    this.portal = new Portal(this, 5710, 1945, "portal")
+      .setScale(0.6)
+      .setSize(120, 120);
+    this.physics.add.overlap(this.portal, this.player, () => {
+      if (this.cursors.up.isDown) {
+        this.cameras.main.fadeOut(1000, 0, 0, 0);
+        this.cameras.main.once(
+          Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+          () => {
+            this.scene.start("store");
+          }
+        );
+      }
     });
 
     //map
@@ -144,9 +163,9 @@ export default class DisplayScene extends Phaser.Scene {
     );
 
     //index 설정
-    this.player.setDepth(1);
-    this.pet.setDepth(1);
-
+    this.portal.setDepth(1);
+    this.player.setDepth(99);
+    this.pet.setDepth(100);
     // this.physics.moveToObject(this.pet, this.player, 500)
   }
   update(): void {
@@ -260,6 +279,10 @@ export default class DisplayScene extends Phaser.Scene {
           this.hpBar.increaseHP(child.name);
         }
       }
+      this.physics.overlap(this.player, child, () => {
+        this.hpBar.increaseHP(child.name);
+        child.destroy();
+      });
     });
   }
 }
