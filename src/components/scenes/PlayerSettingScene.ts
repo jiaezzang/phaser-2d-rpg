@@ -3,7 +3,7 @@ export default class SelectPlayerScene extends Phaser.Scene {
   players!: any[];
   constructor() {
     super({ key: "selectPlayer" });
-    console.log('Select Player')
+    console.log("Select Player");
   }
   create() {
     this.add
@@ -43,9 +43,15 @@ export default class SelectPlayerScene extends Phaser.Scene {
         el.setTint(0x808080);
       });
       el.on("pointerdown", () => {
-        this.scene.start("display", {
-          player: el.texture.key.replace("player_", ""),
-        });
+        this.cameras.main.fadeOut(1000, 0, 0, 0);
+        this.cameras.main.once(
+          Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+          () => {
+            this.scene.start("display", {
+              player: el.texture.key.replace("player_", ""),
+            });
+          }
+        );
       });
     });
   }
