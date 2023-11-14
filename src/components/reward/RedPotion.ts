@@ -18,8 +18,5 @@ export default class RedPotion extends Phaser.Physics.Arcade.Image {
     }
     update(...args: any[]): void {
         super.update(...args);
-        this.scene.physics.overlap(this, this.pet, () => {
-            console.log('eng');
-        });
     }
 }
