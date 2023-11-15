@@ -45,6 +45,7 @@ export default class DisplayScene extends Phaser.Scene {
         console.log('preload s');
     }
     create() {
+        this.input.setDefaultCursor('url(assets/cursor/default.png), pointer');
         this.sound.play('scene1', { loop: true });
         this.background = new Background(this);
 

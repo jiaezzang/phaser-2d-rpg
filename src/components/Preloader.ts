@@ -11,6 +11,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('player_angel', 'player/angel/angel.png', 'player/angel/angel.json');
         this.load.atlas('player_marona', 'player/marona/marona.png', 'player/marona/marona.json');
         this.load.atlas('player_witch', 'player/witch/witch.png', 'player/witch/witch.json');
+        this.load.image('default1', 'cursor/default1.png');
 
         // enemy
         this.load.atlas('mushroom', 'enemies/mushroom/mushroom.png', 'enemies/mushroom/mushroom.json');
@@ -56,6 +57,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('redPotion', 'potion/redPotion.png');
 
         //sound
+        this.load.audio('scene0', 'sounds/scene0.mp3');
         this.load.audio('scene1', 'sounds/scene1.mp3');
         this.load.audio('scene2', 'sounds/scene2.mp3');
         this.load.audio('fire', 'sounds/fire.mp3');

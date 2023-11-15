@@ -6,6 +6,8 @@ export default class SelectPlayerScene extends Phaser.Scene {
         console.log('Select Player');
     }
     create() {
+        this.sound.play('scene0', { loop: true });
+        this.input.setDefaultCursor('url(assets/cursor/default1.png), pointer');
         this.add.image(window.innerWidth / 2, window.innerHeight / 2 - 200, 'selectPlayer').setScale(2);
         this.physics.destroy();
         this.hover = '';
@@ -17,6 +19,7 @@ export default class SelectPlayerScene extends Phaser.Scene {
         this.players.push(angel, marona, witch);
         this.players.forEach((el) => {
             el.on('pointerover', () => {
+                this.input.setDefaultCursor('url(assets/cursor/default.png), pointer');
                 el.setTint();
                 el.play('walk_' + el.texture.key.replace('player_', ''), true);
             }).on('pointerout', () => {
@@ -24,10 +27,13 @@ export default class SelectPlayerScene extends Phaser.Scene {
                 el.setFrame('stand1');
                 el.setTint(0x808080);
             });
+            el.on('pointerup', () => {
+                this.input.setDefaultCursor('url(assets/cursor/default.png), pointer');
+                this.sound.stopAll();
+                this.scene.start('display', { player: el.texture.key.replace('player_', '') });
+            });
             el.on('pointerdown', () => {
-                this.scene.start('display', {
-                    player: el.texture.key.replace('player_', '')
-                });
+                this.input.setDefaultCursor('url(assets/cursor/mouseDown.png), pointer');
             });
         });
     }
