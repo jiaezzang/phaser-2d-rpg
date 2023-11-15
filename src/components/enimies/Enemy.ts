@@ -2,8 +2,8 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     flag: number;
     attacked: number;
     dead: boolean;
-    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, flag: number, frame?: string) {
-        super(scene, x, y, texture, frame);
+    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, flag: number) {
+        super(scene, x, y, texture);
         this.name = texture;
         this.flag = flag;
         this.attacked = 0;

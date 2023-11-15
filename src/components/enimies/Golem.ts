@@ -6,7 +6,7 @@ export default class Golem extends Enemy {
     flag: number;
     movingVelocity = 100;
     constructor(scene: Phaser.Scene, config: TEnemyProps) {
-        super(scene, config.x ?? 0, config.y ?? 0, 'golem', config.flag, 'walk1');
+        super(scene, config.x ?? 0, config.y ?? 0, 'golem', config.flag);
         this.min = config.properties.min;
         this.max = config.properties.max;
         this.flag = config.flag;

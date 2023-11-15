@@ -5,7 +5,7 @@ export default class Gallopera extends Enemy {
     max: number;
     movingVelocity = 100;
     constructor(scene: Phaser.Scene, config: TEnemyProps) {
-        super(scene, config.x ?? 0, config.y ?? 0, 'gallopera', config.flag, 'walk1');
+        super(scene, config.x ?? 0, config.y ?? 0, 'gallopera', config.flag);
         this.min = config.properties.min;
         this.max = config.properties.max;
 

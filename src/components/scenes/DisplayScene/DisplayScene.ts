@@ -56,7 +56,7 @@ export default class DisplayScene extends Phaser.Scene {
         this.player = new Player(this, this.bounding.x, this.bounding.y, 'player_' + this.playerType, 'stand1');
 
         // 포탈, 보상
-        this.portal = new Portal(this, 5700, 1945, 'portal').setScale(0.6).setSize(120, 120);
+        this.portal = new Portal(this, 300, 1945, 'portal').setScale(0.6).setSize(120, 120);
 
         const fn = this.physics.add.overlap(this.portal, this.player, () => {
             if (this.cursors.up.isDown) {
@@ -132,11 +132,12 @@ export default class DisplayScene extends Phaser.Scene {
         this.physics.add.collider(this.platformGroup, this.player);
         this.physics.add.collider(this.platformGroup, this.pet);
 
-        this.physics.add.overlap(this.player, this.enemies, () => {
+        const fn2 = this.physics.add.overlap(this.player, this.enemies, () => {
             this.player.kill(this.hpBar.value);
             this.hpBar.decreaseHp(2);
             if (this.hpBar.value > 0) this.pet.attack();
             if (this.hpBar.value === 0) {
+                fn2.active = false;
                 this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
                     this.sound.stopAll();
