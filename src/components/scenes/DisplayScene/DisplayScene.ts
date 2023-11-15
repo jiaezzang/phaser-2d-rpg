@@ -115,7 +115,6 @@ export default class DisplayScene extends Phaser.Scene {
     if (platforms) this.platformsLayer = platforms;
     this.platformsLayer.setScale(0.7);
     this.platformsLayer.setPosition(0, 600);
-    // this.mushroom.checkCollision.down = false;
 
     this.platformGroup = this.physics.add.staticGroup();
     //tile collides
@@ -172,7 +171,7 @@ export default class DisplayScene extends Phaser.Scene {
 
     //camera & minimap
     this.cameras.main.startFollow(this.player);
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.setBounds(0, 0, 5900, map.heightInPixels);
     this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
     this.minimap.camera.ignore(this.background);
     this.minimap.camera.ignore(this.hpBar.bar);

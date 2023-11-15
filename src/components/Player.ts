@@ -82,6 +82,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.jump();
       this.setVelocityY(-1250);
     }
+
+    if (this.x + this.width >= 6000) {
+      this.setVelocityX(0);
+      this.x = 6000 - this.width;
+  }
+
   }
   jump() {
     this.play("jumpstart", true).on("animationcomplete", () =>

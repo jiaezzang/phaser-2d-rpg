@@ -12,7 +12,7 @@ export default class MiniMap {
     this.camera = scene.cameras
       .add(x, y, width, height)
       .setZoom(zoom)
-      .setBounds(0, 0, map.widthInPixels, map.heightInPixels)
+      .setBounds(0, 0, 5900, map.heightInPixels)
       .setBackgroundColor(0x000000)
       .setAlpha(0.75)
       .setName("minimap");
