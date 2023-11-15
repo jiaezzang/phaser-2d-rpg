@@ -3,6 +3,7 @@ import Gallopera from './Gallopera';
 import Golem from './Golem';
 import PinkBean from './PinkBean';
 import PsycoJack from './PsycoJack';
+import Balrog from './Balrog';
 
 export default class EnemiseGroup extends Phaser.GameObjects.Group {
     constructor(scene: Phaser.Scene, enemies: TEnimiesProps[]) {
@@ -32,6 +33,8 @@ export default class EnemiseGroup extends Phaser.GameObjects.Group {
             return new PsycoJack(this.scene, props);
         } else if (type === 'gallopera') {
             return new Gallopera(this.scene, props);
+        } else if (type === 'balrog') {
+            return new Balrog(this.scene, props);
         }
     }
 }

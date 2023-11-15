@@ -18,19 +18,28 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('pinkbean', 'enemies/pinkbean/pinkbean.png', 'enemies/pinkbean/pinkbean.json');
         this.load.atlas('gallopera', 'enemies/gallopera/gallopera.png', 'enemies/gallopera/gallopera.json');
         this.load.atlas('psycojack', 'enemies/psycojack/psycojack.png', 'enemies/psycojack/psycojack.json');
+        this.load.atlas('balrog', 'enemies/balrog/balrog.png', 'enemies/balrog/balrog.json');
 
         //attack
         this.load.atlas('fireScratch', 'tools/fireScratch/fireScratch.png', 'tools/fireScratch/fireScratch.json');
-        this.load.atlas('effect', 'tools/effect/effect.png', 'tools/effect/effect.json');
+        this.load.atlas('iceScratch', 'tools/IceScratch/IceScratch.png', 'tools/IceScratch/IceScratch.json');
         this.load.atlas('beam', 'tools/beam/beam.png', 'tools/beam/beam.json');
         this.load.atlas('ice', 'tools/ice/ice.png', 'tools/ice/ice.json');
         this.load.atlas('star', 'tools/star/star.png', 'tools/star/star.json');
         this.load.atlas('scratch', 'tools/scratch/scratch.png', 'tools/scratch/scratch.json');
         this.load.atlas('fireBeam', 'tools/fireBeam/fireBeam.png', 'tools/fireBeam/fireBeam.json');
         this.load.atlas('fireLight', 'tools/fireLight/fireLight.png', 'tools/fireLight/fireLight.json');
+        this.load.atlas('magician', 'tools/magician/magician.png', 'tools/magician/magician.json');
+
+        //npc
+        this.load.atlas('npc', 'npc/npc.png', 'npc/npc.json');
+
+        //bubble
+        this.load.atlas('bubble', 'bubble/bubble.png', 'bubble/bubble.json');
 
         //pet
-        this.load.atlas('pet', 'pet/pet.png', 'pet/pet.json');
+        this.load.atlas('blackPet', 'pet/blackPet/blackPet.png', 'pet/blackPet/blackPet.json');
+        this.load.atlas('brownPet', 'pet/brownPet/brownPet.png', 'pet/brownPet/brownPet.json');
 
         //tile
         this.load.image('platforms', 'map/texture.png');

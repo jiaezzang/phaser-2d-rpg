@@ -56,10 +56,24 @@ export const enemy = [
         properties: { max: 1110, min: 700 }
     },
     {
-        type: 'psycojack',
-        x: 6900,
-        y: 1350,
+        type: 'balrog',
+        x: 4450,
+        y: 1870,
         dead: 7,
-        properties: { max: 7400, min: 6900 }
+        properties: { max: 5500, min: 4450 }
+    },
+    {
+        type: 'balrog',
+        x: 5000,
+        y: 1870,
+        dead: 7,
+        properties: { max: 5800, min: 5000 }
+    },
+    {
+        type: 'balrog',
+        x: 4800,
+        y: 1870,
+        dead: 7,
+        properties: { max: 5500, min: 4800 }
     }
 ];

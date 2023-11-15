@@ -84,24 +84,19 @@ export default class StoreScene extends Phaser.Scene {
       this.pet.play("rest");
     }, 10000);
 
-    const fn = this.physics.add.overlap(this.portal, this.player, () => {
-      fn.active = false;
-      this.cameras.main.fadeOut(1000, 0, 0, 0);
-      clearInterval(this.timeKey);
-      this.cameras.main.once(
-        Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
-        () => {
-          this.sound.stopAll();
-          this.sound.play("portal");
-          this.scene.start("display", {
-            player: this.playerType,
-            hpBarValue: this.hpBar.value,
-            bounding: { x: 5500, y: 1945 },
-          });
-        }
-      );
-    });
-  }
+        const fn = this.physics.add.overlap(this.portal, this.player, () => {
+            if (this.cursors.up.isDown) {
+                fn.active = false;
+                clearInterval(this.timeKey);
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+                    this.sound.stopAll();
+                    this.sound.play('portal');
+                    this.scene.start('display', { player: this.playerType, hpBarValue: this.hpBar.value, bounding: { x: 5500, y: 1945 } });
+                });
+            }
+        });
+    }
 
   update() {
     const flag = this.cameras.main.centerX - this.player.x;

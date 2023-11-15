@@ -1,0 +1,111 @@
+{
+    "frames": {
+        "bubble1": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 25,
+                "h": 20
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 14,
+                "y": 10,
+                "w": 25,
+                "h": 20
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 38
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "bubble2": {
+            "frame": {
+                "x": 25,
+                "y": 0,
+                "w": 25,
+                "h": 20
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 12,
+                "y": 10,
+                "w": 25,
+                "h": 20
+            },
+            "sourceSize": {
+                "w": 49,
+                "h": 38
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "bubble3": {
+            "frame": {
+                "x": 50,
+                "y": 0,
+                "w": 25,
+                "h": 20
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 13,
+                "y": 10,
+                "w": 25,
+                "h": 20
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 38
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        "bubble4": {
+            "frame": {
+                "x": 75,
+                "y": 0,
+                "w": 25,
+                "h": 20
+            },
+            "rotated": false,
+            "trimmed": true,
+            "spriteSourceSize": {
+                "x": 13,
+                "y": 10,
+                "w": 25,
+                "h": 20
+            },
+            "sourceSize": {
+                "w": 52,
+                "h": 38
+            },
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    },
+    "meta": {
+        "app": "http://free-tex-packer.com",
+        "version": "0.6.7",
+        "image": "bubble",
+        "format": "RGBA8888",
+        "size": {
+            "w": 100,
+            "h": 20
+        },
+        "scale": 1
+    }
+}

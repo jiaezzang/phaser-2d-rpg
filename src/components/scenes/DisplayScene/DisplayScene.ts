@@ -1,9 +1,6 @@
 import { Background } from './Background';
 import Player from '../../Player';
 import MiniMap from '../../MiniMap';
-import Scratch from '../../attacks/Scratch';
-import Ice from '../../attacks/Ice';
-import Beam from '../../attacks/Beam';
 import Portal from '../../portal/Portal';
 import { enemy } from '../../../data';
 import Pet from '../../pet/Pet';
@@ -11,6 +8,8 @@ import HealthBar from '../../healthBar/HealthBar';
 import RedPotion from '../../reward/RedPotion';
 import PurplePotion from '../../reward/PurplePotion';
 import EnemiseGroup from '../../enimies/EnemyGroup';
+import { createAttack } from '../../attacks/util';
+import { TAttack } from '../../attacks/util';
 
 export default class DisplayScene extends Phaser.Scene {
     player!: Player;
@@ -23,7 +22,7 @@ export default class DisplayScene extends Phaser.Scene {
     tileMap!: Phaser.GameObjects.TileSprite;
     minimap!: MiniMap;
     enemies!: EnemiseGroup;
-    attack!: Ice | Scratch | Beam;
+    attack!: TAttack;
     keyZ!: Phaser.Input.Keyboard.Key;
     keyX!: Phaser.Input.Keyboard.Key;
     keyC!: Phaser.Input.Keyboard.Key;
@@ -59,13 +58,15 @@ export default class DisplayScene extends Phaser.Scene {
         this.portal = new Portal(this, 5700, 1945, 'portal').setScale(0.6).setSize(120, 120);
 
         const fn = this.physics.add.overlap(this.portal, this.player, () => {
-            fn.active = false;
-            this.cameras.main.fadeOut(1000, 0, 0, 0);
-            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
-                this.sound.stopAll();
-                this.sound.play('portal');
-                this.scene.start('store', { playerType: this.playerType, hpBar: this.hpBar.value });
-            });
+            if (this.cursors.up.isDown) {
+                fn.active = false;
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+                    this.sound.stopAll();
+                    this.sound.play('portal');
+                    this.scene.start('store', { playerType: this.playerType, hpBar: this.hpBar.value });
+                });
+            }
         });
 
         //펫
@@ -88,14 +89,14 @@ export default class DisplayScene extends Phaser.Scene {
             this[keyName as KeyTypes].on('down', () => this.keydown(keyName));
         });
 
-    //map
-    const map = this.make.tilemap({ key: "map" });
-    const tileset = map.addTilesetImage("texture", "platforms") ?? "";
-    const platforms = map.createLayer("platforms", tileset);
-    platforms?.setCollisionByExclusion([-1]);
-    if (platforms) this.platformsLayer = platforms;
-    this.platformsLayer.setScale(0.7);
-    this.platformsLayer.setPosition(0, 600);
+        //map
+        const map = this.make.tilemap({ key: 'map' });
+        const tileset = map.addTilesetImage('texture', 'platforms') ?? '';
+        const platforms = map.createLayer('platforms', tileset);
+        platforms?.setCollisionByExclusion([-1]);
+        if (platforms) this.platformsLayer = platforms;
+        this.platformsLayer.setScale(0.7);
+        this.platformsLayer.setPosition(0, 600);
 
         this.platformGroup = this.physics.add.staticGroup();
         //tile collides
@@ -137,19 +138,21 @@ export default class DisplayScene extends Phaser.Scene {
             if (this.hpBar.value === 0) {
                 this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+                    this.sound.stopAll();
+                    this.sound.play('portal');
                     this.scene.start('store', { playerType: this.playerType, hpBar: this.hpBar.value });
                 });
                 this.player.setVelocity(0).stop();
             }
         });
 
-    //camera & minimap
-    this.cameras.main.startFollow(this.player);
-    this.cameras.main.setBounds(0, 0, 5900, map.heightInPixels);
-    this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
-    this.minimap.camera.ignore(this.background);
-    this.minimap.camera.ignore(this.hpBar.bar);
-    this.minimap.camera.ignore(this.hpBar.hpbarImage);
+        //camera & minimap
+        this.cameras.main.startFollow(this.player);
+        this.cameras.main.setBounds(0, 0, 5900, map.heightInPixels);
+        this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
+        this.minimap.camera.ignore(this.background);
+        this.minimap.camera.ignore(this.hpBar.bar);
+        this.minimap.camera.ignore(this.hpBar.hpbarImage);
 
         this.physics.world.setBounds(0, -200, map.widthInPixels, map.heightInPixels + 200);
 
@@ -175,15 +178,16 @@ export default class DisplayScene extends Phaser.Scene {
         const x = this.player.flipX ? this.player.x - 50 : this.player.x + 100;
         const props = { x: x, y: this.player.y, flip: this.player.flipX };
         if (key === 'keyZ') {
-            this.attack = new Beam(this, props);
+            this.attack = createAttack(this, props, key, this.playerType) as TAttack;
             this.kill(this.enemies);
         } else if (key === 'keyX') {
-            this.attack = new Ice(this, props);
+            this.attack = createAttack(this, props, key, this.playerType) as TAttack;
             this.kill(this.enemies);
         } else if (key === 'keyC') {
             const monsters = this.enemies.getChildren().filter((child: any) => Phaser.Math.Distance.Between(this.player.x, this.player.y, child.x, child.y) <= 1000);
             monsters.forEach((monster: any) => {
-                this.attack = new Scratch(this, { x: monster.x, y: monster.y });
+                const props = { x: monster.x, y: monster.y };
+                this.attack = createAttack(this, props, key, this.playerType) as TAttack;
                 this.kill(monster);
             });
         }
