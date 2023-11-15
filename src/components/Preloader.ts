@@ -42,8 +42,10 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('brownPet', 'pet/brownPet/brownPet.png', 'pet/brownPet/brownPet.json');
 
         //tile
-        this.load.image('platforms', 'map/texture.png');
-        this.load.tilemapTiledJSON('map', 'map/map.json');
+        this.load.image('platforms', 'map/main/texture.png');
+        this.load.tilemapTiledJSON('map', 'map/main/map.json');
+        this.load.image('storePlatforms', 'map/store/bg2.png');
+        this.load.tilemapTiledJSON('storeMap', 'map/store/bg2.json');
 
         //portal
         this.load.atlas('portal', 'portal/portal.png', 'portal/portal.json');
