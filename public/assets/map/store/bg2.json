@@ -101,10 +101,37 @@
          "tileheight":16,
          "tiles":[
                 {
+                 "id":0,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":16,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":90,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":91,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -119,10 +146,46 @@
                         }]
                 }, 
                 {
+                 "id":181,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":182,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":198,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":272,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":273,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -137,10 +200,316 @@
                         }]
                 }, 
                 {
+                 "id":363,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":364,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":380,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":454,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":455,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":545,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":546,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":636,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":637,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":727,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":728,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":818,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":819,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":909,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":910,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1000,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1001,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1091,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1092,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1182,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1183,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1273,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1274,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1364,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1365,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1455,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1456,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1546,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1547,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1637,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1638,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1728,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1729,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1819,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1820,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -549,12 +918,153 @@
                          "type":"bool",
                          "value":false
                         }]
-                }, 
+                },
+            
                 {
                  "id":1910,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":1911,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2001,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2002,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2092,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2093,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2183,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2184,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2274,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2275,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2365,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2366,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2456,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2457,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2547,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2548,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -564,6 +1074,24 @@
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2638,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2639,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -731,10 +1259,46 @@
                         }]
                 }, 
                 {
+                 "id":2729,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2730,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":2733,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2820,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2821,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -875,10 +1439,46 @@
                         }]
                 }, 
                 {
+                 "id":2911,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":2912,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":2915,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3002,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3003,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -893,10 +1493,46 @@
                         }]
                 }, 
                 {
+                 "id":3093,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3094,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":3097,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3184,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3185,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -918,8 +1554,7 @@
                          "type":"bool",
                          "value":true
                         }]
-                },
-            
+                }, 
                 {
                  "id":3250,
                  "properties":[
@@ -1011,10 +1646,46 @@
                         }]
                 }, 
                 {
+                 "id":3275,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3276,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":3279,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3366,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3367,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -1029,6 +1700,24 @@
                         }]
                 }, 
                 {
+                 "id":3457,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3458,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":3461,
                  "properties":[
                         {
@@ -1037,6 +1726,25 @@
                          "value":false
                         }]
                 }, 
+                {
+                 "id":3548,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3549,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                },
+            
                 {
                  "id":3552,
                  "properties":[
@@ -1047,10 +1755,46 @@
                         }]
                 }, 
                 {
+                 "id":3639,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3640,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":3643,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3730,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3731,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -1236,6 +1980,24 @@
                         }]
                 }, 
                 {
+                 "id":3821,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3822,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":3825,
                  "properties":[
                         {
@@ -1317,6 +2079,24 @@
                         }]
                 }, 
                 {
+                 "id":3912,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":3913,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":3916,
                  "properties":[
                         {
@@ -1326,10 +2106,46 @@
                         }]
                 }, 
                 {
+                 "id":4003,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4004,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":4007,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4094,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4095,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -1359,6 +2175,24 @@
                          "name":"npc",
                          "type":"bool",
                          "value":true
+                        }]
+                }, 
+                {
+                 "id":4185,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4186,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
                         }]
                 }, 
                 {
@@ -1623,10 +2457,46 @@
                         }]
                 }, 
                 {
+                 "id":4276,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4277,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":4280,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4367,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4368,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -1641,6 +2511,24 @@
                         }]
                 }, 
                 {
+                 "id":4458,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4459,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":4462,
                  "properties":[
                         {
@@ -1650,10 +2538,47 @@
                         }]
                 }, 
                 {
+                 "id":4549,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4550,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":4553,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                },
+            
+                {
+                 "id":4640,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4641,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -1738,8 +2663,7 @@
                          "type":"bool",
                          "value":true
                         }]
-                },
-            
+                }, 
                 {
                  "id":4682,
                  "properties":[
@@ -1975,10 +2899,46 @@
                         }]
                 }, 
                 {
+                 "id":4731,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4732,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":4735,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4822,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4823,
+                 "properties":[
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":false
                         }]
@@ -1993,6 +2953,24 @@
                         }]
                 }, 
                 {
+                 "id":4913,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":4914,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":4917,
                  "properties":[
                         {
@@ -2002,10 +2980,24 @@
                         }]
                 }, 
                 {
+                 "id":5004,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":5005,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"wall",
                          "type":"bool",
                          "value":true
                         }]
@@ -2396,7 +3388,8 @@
                          "type":"bool",
                          "value":true
                         }]
-                }, 
+                },
+            
                 {
                  "id":5049,
                  "properties":[
@@ -2558,8 +3551,7 @@
                          "type":"bool",
                          "value":true
                         }]
-                },
-            
+                }, 
                 {
                  "id":5067,
                  "properties":[
@@ -2819,6 +3811,227 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":5096,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5186,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5187,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5277,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5278,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5368,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5369,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5459,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5460,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5550,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5551,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5641,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5642,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5732,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5733,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5823,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5824,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5914,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":5915,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":6005,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":6006,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":6096,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":6097,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":6187,
+                 "properties":[
+                        {
+                         "name":"wall",
+                         "type":"bool",
+                         "value":false
                         }]
                 }],
          "tilewidth":16,
