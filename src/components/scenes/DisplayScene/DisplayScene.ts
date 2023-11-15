@@ -137,7 +137,7 @@ export default class DisplayScene extends Phaser.Scene {
             if (this.hpBar.value === 0) {
                 this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
-                    this.scene.start('store', { data: this.playerType });
+                    this.scene.start('store', { playerType: this.playerType, hpBar: this.hpBar.value });
                 });
                 this.player.setVelocity(0).stop();
             }
