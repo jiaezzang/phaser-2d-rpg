@@ -87,15 +87,14 @@ export default class DisplayScene extends Phaser.Scene {
             this[keyName as KeyTypes].on('down', () => this.keydown(keyName));
         });
 
-        //map
-        const map = this.make.tilemap({ key: 'map' });
-        const tileset = map.addTilesetImage('texture', 'platforms') ?? '';
-        const platforms = map.createLayer('platforms', tileset);
-        platforms?.setCollisionByExclusion([-1]);
-        if (platforms) this.platformsLayer = platforms;
-        this.platformsLayer.setScale(0.7);
-        this.platformsLayer.setPosition(0, 600);
-        // this.mushroom.checkCollision.down = false;
+    //map
+    const map = this.make.tilemap({ key: "map" });
+    const tileset = map.addTilesetImage("texture", "platforms") ?? "";
+    const platforms = map.createLayer("platforms", tileset);
+    platforms?.setCollisionByExclusion([-1]);
+    if (platforms) this.platformsLayer = platforms;
+    this.platformsLayer.setScale(0.7);
+    this.platformsLayer.setPosition(0, 600);
 
         this.platformGroup = this.physics.add.staticGroup();
         //tile collides
@@ -145,21 +144,20 @@ export default class DisplayScene extends Phaser.Scene {
             }
         });
 
-        //camera & minimap
-        this.cameras.main.startFollow(this.player);
-        this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-        this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
-        this.minimap.camera.ignore(this.background);
-        this.minimap.camera.ignore(this.hpBar.bar);
-        this.minimap.camera.ignore(this.hpBar.hpbarImage);
+    //camera & minimap
+    this.cameras.main.startFollow(this.player);
+    this.cameras.main.setBounds(0, 0, 5900, map.heightInPixels);
+    this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
+    this.minimap.camera.ignore(this.background);
+    this.minimap.camera.ignore(this.hpBar.bar);
+    this.minimap.camera.ignore(this.hpBar.hpbarImage);
 
         this.physics.world.setBounds(0, -200, map.widthInPixels, map.heightInPixels + 200);
 
         //index 설정
-        this.player.setDepth(1);
-        this.pet.setDepth(1);
-
-        // this.physics.moveToObject(this.pet, this.player, 500)
+        this.player.setDepth(99);
+        this.pet.setDepth(100);
+        this.portal.setDepth(1);
     }
     update(): void {
         this.background.update();

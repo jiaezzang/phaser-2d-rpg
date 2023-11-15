@@ -86,7 +86,6 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         };
 
         const gapX = this.target.body.position.x - this.body?.position.x!;
-        // console.log(gapX);
 
         //keyboard event
         if (cursors.down) {
@@ -114,7 +113,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
                 if (this.rest) this.play('rest', true);
                 else this.play('stand', true);
             }
-            // console.log(gap.x > this.minLine && gap.x <= this.deadLine);
+            console.log(gap.x > this.minLine && gap.x <= this.deadLine);
         }
         if (!this.target.dead && this.target.attacked) this.play('attack');
 
@@ -130,6 +129,11 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
                 this.x = this.target.x;
                 this.y = this.target.y;
             }, 800);
+        }
+
+        if (this.x + this.width >= 6000) {
+            this.setVelocityX(0);
+            this.x = 6000 - this.width;
         }
     }
     attack() {
