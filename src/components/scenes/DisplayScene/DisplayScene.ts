@@ -58,13 +58,15 @@ export default class DisplayScene extends Phaser.Scene {
         this.portal = new Portal(this, 5700, 1945, 'portal').setScale(0.6).setSize(120, 120);
 
         const fn = this.physics.add.overlap(this.portal, this.player, () => {
-            fn.active = false;
-            this.cameras.main.fadeOut(1000, 0, 0, 0);
-            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
-                this.sound.stopAll();
-                this.sound.play('portal');
-                this.scene.start('store', { playerType: this.playerType, hpBar: this.hpBar.value });
-            });
+            if (this.cursors.up.isDown) {
+                fn.active = false;
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+                    this.sound.stopAll();
+                    this.sound.play('portal');
+                    this.scene.start('store', { playerType: this.playerType, hpBar: this.hpBar.value });
+                });
+            }
         });
 
         //펫
@@ -87,14 +89,14 @@ export default class DisplayScene extends Phaser.Scene {
             this[keyName as KeyTypes].on('down', () => this.keydown(keyName));
         });
 
-    //map
-    const map = this.make.tilemap({ key: "map" });
-    const tileset = map.addTilesetImage("texture", "platforms") ?? "";
-    const platforms = map.createLayer("platforms", tileset);
-    platforms?.setCollisionByExclusion([-1]);
-    if (platforms) this.platformsLayer = platforms;
-    this.platformsLayer.setScale(0.7);
-    this.platformsLayer.setPosition(0, 600);
+        //map
+        const map = this.make.tilemap({ key: 'map' });
+        const tileset = map.addTilesetImage('texture', 'platforms') ?? '';
+        const platforms = map.createLayer('platforms', tileset);
+        platforms?.setCollisionByExclusion([-1]);
+        if (platforms) this.platformsLayer = platforms;
+        this.platformsLayer.setScale(0.7);
+        this.platformsLayer.setPosition(0, 600);
 
         this.platformGroup = this.physics.add.staticGroup();
         //tile collides
@@ -144,13 +146,13 @@ export default class DisplayScene extends Phaser.Scene {
             }
         });
 
-    //camera & minimap
-    this.cameras.main.startFollow(this.player);
-    this.cameras.main.setBounds(0, 0, 5900, map.heightInPixels);
-    this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
-    this.minimap.camera.ignore(this.background);
-    this.minimap.camera.ignore(this.hpBar.bar);
-    this.minimap.camera.ignore(this.hpBar.hpbarImage);
+        //camera & minimap
+        this.cameras.main.startFollow(this.player);
+        this.cameras.main.setBounds(0, 0, 5900, map.heightInPixels);
+        this.minimap = new MiniMap(this, 20, 20, 300, map.heightInPixels / 15, map);
+        this.minimap.camera.ignore(this.background);
+        this.minimap.camera.ignore(this.hpBar.bar);
+        this.minimap.camera.ignore(this.hpBar.hpbarImage);
 
         this.physics.world.setBounds(0, -200, map.widthInPixels, map.heightInPixels + 200);
 
