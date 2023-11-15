@@ -70,7 +70,7 @@ export default class DisplayScene extends Phaser.Scene {
         });
 
         //펫
-        this.pet = new Pet(this, 0, 1500, 'pet', 'stand1', this.player);
+        this.pet = new Pet(this, 0, 1500, 'blackPet', 'stand1', this.player);
         this.pet.setFlipX(true);
         this.pet.rest = false;
 
