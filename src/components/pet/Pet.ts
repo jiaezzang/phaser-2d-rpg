@@ -35,18 +35,18 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
 
         this.anims.create({
             key: 'stand',
-            frames: scene.anims.generateFrameNames('pet', {
+            frames: scene.anims.generateFrameNames('blackCat', {
                 prefix: 'stand',
                 start: 1,
                 end: 6,
                 zeroPad: 1
             }),
-            frameRate: 8,
+            frameRate: 6,
             repeat: -1
         });
         this.anims.create({
             key: 'walk',
-            frames: this.scene.anims.generateFrameNames('pet', {
+            frames: this.scene.anims.generateFrameNames('blackCat', {
                 prefix: 'walk',
                 start: 1,
                 end: 2,
@@ -57,7 +57,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         });
         this.anims.create({
             key: 'rest',
-            frames: this.scene.anims.generateFrameNames('pet', {
+            frames: this.scene.anims.generateFrameNames('blackCat', {
                 prefix: 'rest',
                 start: 1,
                 end: 2,
@@ -68,7 +68,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
         });
         this.anims.create({
             key: 'attack',
-            frames: this.scene.anims.generateFrameNames('pet', {
+            frames: this.scene.anims.generateFrameNames('blackCat', {
                 prefix: 'attack',
                 start: 1,
                 end: 1,

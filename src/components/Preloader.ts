@@ -38,7 +38,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas('bubble', 'bubble/bubble.png', 'bubble/bubble.json');
 
         //pet
-        this.load.atlas('balckCat', 'pet/balckCat/balckCat.png', 'pet/balckCat/balckCat.json');
+        this.load.atlas('blackCat', 'pet/blackCat/blackCat.png', 'pet/blackCat/blackCat.json');
         this.load.atlas('brownCat', 'pet/brownCat/brownCat.png', 'pet/brownCat/brownCat.json');
 
         //tile
