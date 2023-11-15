@@ -88,7 +88,7 @@ export default class StoreScene extends Phaser.Scene {
         this.petFriend2 = new Pet(this, window.innerWidth / 2 - 150, 200, 'brownPet', 'stand1', this.player).setFlipX(true);
         const petFriend3 = new Pet(this, window.innerWidth / 2 - 600, y - 100, 'brownPet', 'rest1', this.player).setFlipX(true).setScale(1.3).setSize(30, 30);
 
-        this.npc = new Npc(this, 550, 680, 'npc', 'stand1');
+        this.npc = new Npc(this, window.innerWidth / 2 - 470, 680, 'npc', 'stand1');
 
         //collider 부여
         this.physics.add.collider(this.platformGroup, this.npc);
