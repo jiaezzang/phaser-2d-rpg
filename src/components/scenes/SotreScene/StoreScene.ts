@@ -3,6 +3,7 @@ import Pet from '../../pet/Pet';
 import HealthBar from '../../healthBar/HealthBar';
 import Portal from '../../portal/Portal';
 import Npc from '../../npc/Npc';
+import Bubble from '../../bubble/Bubble';
 
 export default class StoreScene extends Phaser.Scene {
     player!: Player;
@@ -75,7 +76,7 @@ export default class StoreScene extends Phaser.Scene {
         });
 
         this.sound.play('scene2', { loop: true });
-        // new Background(this, 0, 0, "background");
+
         this.timeKey = 0;
         this.hpBar = new HealthBar(this, this.value);
         const x = this.cameras.main.centerX;
@@ -87,6 +88,7 @@ export default class StoreScene extends Phaser.Scene {
         this.petFriend = new Pet(this, window.innerWidth / 2 + 450, 400, 'brownPet', 'stand1', this.player);
         this.petFriend2 = new Pet(this, window.innerWidth / 2 - 150, 200, 'brownPet', 'stand1', this.player).setFlipX(true);
         const petFriend3 = new Pet(this, window.innerWidth / 2 - 600, y - 100, 'brownPet', 'rest1', this.player).setFlipX(true).setScale(1.3).setSize(30, 30);
+        new Bubble(this, window.innerWidth / 2 - 470, 610);
 
         this.npc = new Npc(this, window.innerWidth / 2 - 470, 680, 'npc', 'stand1');
 
