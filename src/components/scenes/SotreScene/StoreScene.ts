@@ -28,7 +28,6 @@ export default class StoreScene extends Phaser.Scene {
     this.value = data.hpBar;
   }
   create() {
-    this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
     //map
     this.map = this.make.tilemap({ key: "storeMap" });
     this.center = window.innerWidth / 2 - this.map.widthInPixels / 2;
@@ -82,8 +81,6 @@ export default class StoreScene extends Phaser.Scene {
     // new Background(this, 0, 0, "background");
     this.timeKey = 0;
     this.hpBar = new HealthBar(this, this.value);
-    const x = this.cameras.main.centerX;
-    const y = window.innerHeight;
     this.portal = new Portal(this, window.innerWidth / 2 + 550, 840, "portal")
       .setScale(0.7)
       .setSize(120, 120);
@@ -114,7 +111,7 @@ export default class StoreScene extends Phaser.Scene {
       "brownPet",
       "stand1",
       this.player
-    ).setSize(30, 40);
+    );
     const petFriend2 = new Pet(
       this,
       window.innerWidth / 2 - 600,
@@ -127,7 +124,47 @@ export default class StoreScene extends Phaser.Scene {
       .setScale(1.3)
       .setSize(30, 30);
 
-    this.add.image(window.innerWidth / 2 - 180, 300, "lyingCat").setFlipX(true);
+    const petFriend3 = this.add
+      .image(window.innerWidth / 2 - 180, 300, "lyingCat")
+      .setFlipX(true);
+    this.physics.add.existing(petFriend3);
+
+    [this.pet, petFriend, petFriend2].forEach((cat) =>
+      cat
+        .setInteractive({ draggable: true, cursor: "pointer" })
+        .on("dragstart", () => {
+          (cat.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+          cat.setImmovable(true);
+        })
+        .on("drag", () => {
+          cat.play("stand");
+          cat.x = this.input.x;
+          cat.y = this.input.y;
+        })
+        .on("dragend", () => {
+          (cat.body as Phaser.Physics.Arcade.Body).setAllowGravity(true);
+          cat.setImmovable(false);
+
+          if (cat === petFriend2) {
+            setTimeout(() => {
+              cat.play("rest");
+            }, 2000);
+          }
+        })
+    );
+    petFriend3
+      .setInteractive({ draggable: true, cursor: "pointer" })
+      .on("dragstart", () => {
+        (petFriend3.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+      })
+      .on("drag", () => {
+        petFriend3.x = this.input.x;
+        petFriend3.y = this.input.y;
+      })
+      .on("dragend", () => {
+        (petFriend3.body as Phaser.Physics.Arcade.Body).setAllowGravity(true);
+      });
+
     //NPC
     const npcBox = this.add.image(
       window.innerWidth / 2,
@@ -142,20 +179,10 @@ export default class StoreScene extends Phaser.Scene {
       "npc",
       "stand1"
     ).setInteractive({ draggable: false, cursor: "pointer" });
-    npcSprite
-      .on("pointerdown", () => {
-        npcBox.setVisible(true);
-        boxClose.setVisible(true);
-        this.input.setDefaultCursor(
-          "url(assets/cursor/mouseDown.png), pointer"
-        );
-      })
-      .on("pointerover", () => {
-        this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
-      })
-      .on("pointerup", () => {
-        this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
-      });
+    npcSprite.on("pointerdown", () => {
+      npcBox.setVisible(true);
+      boxClose.setVisible(true);
+    });
     new Bubble(this, window.innerWidth / 2 - 470, 623);
 
     // NPC: 대화 그만하기
@@ -168,25 +195,15 @@ export default class StoreScene extends Phaser.Scene {
       )
       .setOrigin(0, 1)
       .setInteractive({ draggable: false, cursor: "pointer" });
-    boxClose
-      .on("pointerdown", () => {
-        npcBox.setVisible(false);
-        boxClose.setVisible(false);
-        this.input.setDefaultCursor(
-          "url(assets/cursor/mouseDown.png), pointer"
-        );
-      })
-      .on("pointerover", () => {
-        this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
-      })
-      .on("pointerup", () => {
-        this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
-      });
+    boxClose.on("pointerdown", () => {
+      npcBox.setVisible(false);
+      boxClose.setVisible(false);
+    });
 
     //collider 부여
     this.physics.add.collider(this.platformGroup, this.player);
 
-    [this.pet, petFriend, petFriend2].forEach((cat) => {
+    [this.pet, petFriend, petFriend2, petFriend3].forEach((cat) => {
       this.physics.add.collider(this.catTowerGroup, cat);
       this.physics.add.collider(this.platformGroup, cat);
     });
@@ -216,6 +233,48 @@ export default class StoreScene extends Phaser.Scene {
           }
         );
       }
+    });
+
+    this.input.setDefaultCursor('url("path/to/custom-cursor.png"), pointer');
+    //Cursor
+    this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
+    this.children.list.forEach((child) => {
+      child
+        .on("pointerover", () => {
+          this.input.setDefaultCursor(
+            "url(assets/cursor/default.png), pointer"
+          );
+        })
+        .on("pointerout", () => {
+          this.input.setDefaultCursor(
+            "url(assets/cursor/default.png), pointer"
+          );
+        })
+        .on("pointerdown", () => {
+          this.input.setDefaultCursor(
+            "url(assets/cursor/mouseDown.png), pointer"
+          );
+        })
+        .on("pointerup", () => {
+          this.input.setDefaultCursor(
+            "url(assets/cursor/default.png), pointer"
+          );
+        })
+        .on("dragstart", () => {
+          this.input.setDefaultCursor(
+            "url(assets/cursor/mouseDown.png), pointer"
+          );
+        })
+        .on("drag", () => {
+          this.input.setDefaultCursor(
+            "url(assets/cursor/mouseDown.png), pointer"
+          );
+        })
+        .on("dragend", () => {
+          this.input.setDefaultCursor(
+            "url(assets/cursor/default.png), pointer"
+          );
+        });
     });
   }
 
