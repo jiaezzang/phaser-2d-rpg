@@ -144,7 +144,6 @@ export default class StoreScene extends Phaser.Scene {
         .on("dragend", () => {
           (cat.body as Phaser.Physics.Arcade.Body).setAllowGravity(true);
           cat.setImmovable(false);
-
           if (cat === petFriend2) {
             setTimeout(() => {
               cat.play("rest");
@@ -317,9 +316,6 @@ export default class StoreScene extends Phaser.Scene {
       this.player.setVelocityX(0);
       this.player.stop();
     }
-    // else{
-    //   this.player.update(this.cursors)
-    // }
     // 배경 안에서 움직일 수 있게
     if (
       (flag < this.map.widthInPixels / 2 - 50 && left.isDown) ||
