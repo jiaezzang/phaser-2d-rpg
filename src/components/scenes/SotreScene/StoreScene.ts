@@ -340,7 +340,7 @@ export default class StoreScene extends Phaser.Scene {
       !down.isDown &&
       !space.isDown
     ) {
-      this.pet.update(this.cursors)
+      this.pet.update(this.cursors);
       this.player.setVelocityX(0);
       if (this.time.now - this.lastKeyPressTime >= 2000) {
         this.pet.setVelocityX(0);
