@@ -16,7 +16,7 @@ export default class Bubble extends Phaser.Physics.Arcade.Sprite {
                 end: 4,
                 zeroPad: 1
             }),
-            frameRate: 10,
+            frameRate:4,
             repeat: -1
         });
 

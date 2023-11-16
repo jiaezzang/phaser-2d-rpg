@@ -1,9 +1,9 @@
-import Player from '../../Player';
-import Pet from '../../pet/Pet';
-import HealthBar from '../../healthBar/HealthBar';
-import Portal from '../../portal/Portal';
-import Npc from '../../npc/Npc';
-import Bubble from '../../bubble/Bubble';
+import Player from "../../Player";
+import Pet from "../../pet/Pet";
+import HealthBar from "../../healthBar/HealthBar";
+import Portal from "../../portal/Portal";
+import Npc from "../../npc/Npc";
+import Bubble from "../../bubble/Bubble";
 
 export default class StoreScene extends Phaser.Scene {
   player!: Player;
@@ -102,6 +102,8 @@ export default class StoreScene extends Phaser.Scene {
       this.player
     );
     this.pet.rest = true;
+
+    //Cats
     const petFriend = new Pet(
       this,
       window.innerWidth / 2 + 450,
@@ -150,6 +152,7 @@ export default class StoreScene extends Phaser.Scene {
       npcBox.setVisible(true);
       boxClose.setVisible(true);
     });
+    new Bubble(this, window.innerWidth / 2 - 470, 623);
 
     // NPC: 대화 그만하기
     const boxClose = this.add
