@@ -56,7 +56,7 @@ export default class DisplayScene extends Phaser.Scene {
         this.player = new Player(this, this.bounding.x, this.bounding.y, 'player_' + this.playerType, 'stand1');
 
         // 포탈, 보상
-        this.portal = new Portal(this, 300, 1945, 'portal').setScale(0.6).setSize(120, 120);
+        this.portal = new Portal(this, 5710, 1950, 'portal').setScale(0.6).setSize(120, 120);
 
         const fn = this.physics.add.overlap(this.portal, this.player, () => {
             if (this.cursors.up.isDown) {
