@@ -12,7 +12,7 @@ new Phaser.Game({
     physics: {
         default: 'arcade',
         arcade: {
-            debug: import.meta.env.DEV,
+            // debug: import.meta.env.DEV,
             gravity: { y: 2500 }
         }
     },
