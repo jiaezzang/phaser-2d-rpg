@@ -23,8 +23,4 @@ export default class Npc extends Phaser.Physics.Arcade.Sprite {
         this.play('stand');
         this.setFlipX(true);
     }
-
-    update() {
-        // this.play('stand');
-    }
 }

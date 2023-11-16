@@ -66,22 +66,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.setScale(0.7);
   }
   update(cursors: Phaser.Types.Input.Keyboard.CursorKeys): void {
-    // if(this.dead) return;
     if (cursors.left.isDown) {
       this.setVelocityX(-400);
       this.setFlipX(true);
-      //@ts-ignore
-      if (this.body.blocked.down && !this._attack) this.play("walk", true);
+      if (this.body?.blocked.down && !this._attack) this.play("walk", true);
     } else if (cursors.right.isDown) {
       this.setVelocityX(400);
       this.setFlipX(false);
-      //@ts-ignore
-      if (this.body.blocked.down && !this._attack) this.play("walk", true);
+      if (this.body?.blocked.down && !this._attack) this.play("walk", true);
     } else {
       this.setVelocityX(0);
       if (this.body?.blocked.down && !this._attack) this.play("stand");
       if (!this.dead && this.attacked) this.setFrame("hit1");
-      //@ts-ignore
     }
     //@ts-ignore
     if (cursors.space.isDown && this.body.blocked.down) {

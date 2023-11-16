@@ -14,7 +14,6 @@ export default class HealthBar extends Phaser.GameObjects.Graphics {
     this.x = window.innerWidth - 200;
     this.y = 50;
     this.value = value;
-    this.p = 1 / 2;
 
     this.hpbarImage = scene.add.image(this.x, this.y, "hpbar");
     this.hpbarImage.setScale(0.3).setScrollFactor(0).setDepth(1);
@@ -25,9 +24,9 @@ export default class HealthBar extends Phaser.GameObjects.Graphics {
   }
   draw() {
     this.bar.clear();
-    this.bar.fillStyle(0xf5000a);
-    var d = Math.floor(this.p * this.value);
+    const d = Math.floor(this.value/2);
     this.bar.fillRect(this.x - 82 + 2, this.y + 3, d, 23);
+    this.bar.fillStyle(0xf5000a);
   }
   increaseHP(type: string) {
     if (type === "redPotion") this.hp = 60;
