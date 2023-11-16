@@ -241,9 +241,16 @@ export default class StoreScene extends Phaser.Scene {
     this.children.list.forEach((child) => {
       child
         .on("pointerover", () => {
-          this.input.setDefaultCursor(
-            "url(assets/cursor/default.png), pointer"
-          );
+          if (
+            [this.pet, petFriend, petFriend2, petFriend3].includes(child as any)
+          )
+            this.input.setDefaultCursor(
+              "url(assets/cursor/petDefault.png), pointer"
+            );
+          else
+            this.input.setDefaultCursor(
+              "url(assets/cursor/default.png), pointer"
+            );
         })
         .on("pointerout", () => {
           this.input.setDefaultCursor(
@@ -261,19 +268,36 @@ export default class StoreScene extends Phaser.Scene {
           );
         })
         .on("dragstart", () => {
-          this.input.setDefaultCursor(
-            "url(assets/cursor/mouseDown.png), pointer"
-          );
+          if (
+            [this.pet, petFriend, petFriend2, petFriend3].includes(child as any)
+          )
+            this.input.setDefaultCursor("url(assets/cursor/grap.png), pointer");
+          else
+            this.input.setDefaultCursor(
+              "url(assets/cursor/mouseDown.png), pointer"
+            );
         })
         .on("drag", () => {
-          this.input.setDefaultCursor(
-            "url(assets/cursor/mouseDown.png), pointer"
-          );
+          if (
+            [this.pet, petFriend, petFriend2, petFriend3].includes(child as any)
+          )
+            this.input.setDefaultCursor("url(assets/cursor/grap.png), pointer");
+          else
+            this.input.setDefaultCursor(
+              "url(assets/cursor/mouseDown.png), pointer"
+            );
         })
         .on("dragend", () => {
-          this.input.setDefaultCursor(
-            "url(assets/cursor/default.png), pointer"
-          );
+          if (
+            [this.pet, petFriend, petFriend2, petFriend3].includes(child as any)
+          )
+            this.input.setDefaultCursor(
+              "url(assets/cursor/petDefault.png), pointer"
+            );
+          else
+            this.input.setDefaultCursor(
+              "url(assets/cursor/default.png), pointer"
+            );
         });
     });
   }
