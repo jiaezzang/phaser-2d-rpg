@@ -83,20 +83,22 @@ export default class StoreScene extends Phaser.Scene {
     this.hpBar = new HealthBar(this, this.value);
     const x = this.cameras.main.centerX;
     const y = window.innerHeight;
-    this.portal = new Portal(this, x + 550, y - 70, "portal")
+    this.portal = new Portal(this, window.innerWidth / 2 + 550, 840, "portal")
       .setScale(0.7)
       .setSize(120, 120);
     this.player = new Player(
       this,
-      x + 100,
-      y,
+      window.innerWidth / 2 + 550,
+      780,
       "player_" + this.playerType,
       "stand1"
-    );
+    )
+      .setFlipX(true)
+      .play("stand");
     this.pet = new Pet(
       this,
-      x + 100,
-      y - 100,
+      window.innerWidth / 2 + 550,
+      780,
       "blackPet",
       "stand1",
       this.player
@@ -125,7 +127,7 @@ export default class StoreScene extends Phaser.Scene {
     const petFriend3 = new Pet(
       this,
       window.innerWidth / 2 - 600,
-      y - 100,
+      window.innerHeight / 2,
       "brownPet",
       "rest1",
       this.player
