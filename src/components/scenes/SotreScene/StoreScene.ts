@@ -28,6 +28,7 @@ export default class StoreScene extends Phaser.Scene {
     this.value = data.hpBar;
   }
   create() {
+    this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
     //map
     this.map = this.make.tilemap({ key: "storeMap" });
     this.center = window.innerWidth / 2 - this.map.widthInPixels / 2;
@@ -116,16 +117,6 @@ export default class StoreScene extends Phaser.Scene {
     ).setSize(30, 30);
     const petFriend2 = new Pet(
       this,
-      window.innerWidth / 2 - 180,
-      200,
-      "brownPet",
-      "walk3",
-      this.player
-    )
-      .setFlipX(true)
-      .setFrame("walk3");
-    const petFriend3 = new Pet(
-      this,
       window.innerWidth / 2 - 600,
       window.innerHeight / 2,
       "brownPet",
@@ -136,6 +127,8 @@ export default class StoreScene extends Phaser.Scene {
       .setScale(1.3)
       .setSize(30, 30);
 
+      
+    this.add.image(window.innerWidth/2 - 180, 300, 'lyingCat').setFlipX(true);
     //NPC
     const npcBox = this.add.image(
       window.innerWidth / 2,
@@ -150,10 +143,20 @@ export default class StoreScene extends Phaser.Scene {
       "npc",
       "stand1"
     ).setInteractive({ draggable: false, cursor: "pointer" });
-    npcSprite.on("pointerdown", () => {
-      npcBox.setVisible(true);
-      boxClose.setVisible(true);
-    });
+    npcSprite
+      .on("pointerdown", () => {
+        npcBox.setVisible(true);
+        boxClose.setVisible(true);
+        this.input.setDefaultCursor(
+          "url(assets/cursor/mouseDown.png), pointer"
+        );
+      })
+      .on("pointerover", () => {
+        this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
+      })
+      .on("pointerup", () => {
+        this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
+      });
     new Bubble(this, window.innerWidth / 2 - 470, 623);
 
     // NPC: 대화 그만하기
@@ -166,19 +169,29 @@ export default class StoreScene extends Phaser.Scene {
       )
       .setOrigin(0, 1)
       .setInteractive({ draggable: false, cursor: "pointer" });
-    boxClose.on("pointerdown", () => {
-      npcBox.setVisible(false);
-      boxClose.setVisible(false);
-    });
+    boxClose
+      .on("pointerdown", () => {
+        npcBox.setVisible(false);
+        boxClose.setVisible(false);
+        this.input.setDefaultCursor(
+          "url(assets/cursor/mouseDown.png), pointer"
+        );
+      })
+      .on("pointerover", () => {
+        this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
+      })
+      .on("pointerup", () => {
+        this.input.setDefaultCursor("url(assets/cursor/default.png), pointer");
+      });
 
     //collider 부여
     this.physics.add.collider(this.platformGroup, this.player);
 
-    [this.pet, petFriend, petFriend2, petFriend3].forEach((cat) => {
+    [this.pet, petFriend, petFriend2].forEach((cat) => {
       this.physics.add.collider(this.catTowerGroup, cat);
       this.physics.add.collider(this.platformGroup, cat);
     });
-    petFriend3.play("rest");
+    petFriend2.play("rest");
 
     this.cursors = this.input.keyboard!.createCursorKeys();
 
