@@ -114,7 +114,7 @@ export default class StoreScene extends Phaser.Scene {
       "brownPet",
       "stand1",
       this.player
-    ).setSize(30, 30);
+    ).setSize(30, 40);
     const petFriend2 = new Pet(
       this,
       window.innerWidth / 2 - 600,
@@ -127,8 +127,7 @@ export default class StoreScene extends Phaser.Scene {
       .setScale(1.3)
       .setSize(30, 30);
 
-      
-    this.add.image(window.innerWidth/2 - 180, 300, 'lyingCat').setFlipX(true);
+    this.add.image(window.innerWidth / 2 - 180, 300, "lyingCat").setFlipX(true);
     //NPC
     const npcBox = this.add.image(
       window.innerWidth / 2,
