@@ -1,6 +1,6 @@
 export default class SelectPlayerScene extends Phaser.Scene {
     hover!: string;
-    players!: any[];
+    players!: Phaser.GameObjects.Sprite[];
     constructor() {
         super({ key: 'selectPlayer' });
         console.log('Select Player');
