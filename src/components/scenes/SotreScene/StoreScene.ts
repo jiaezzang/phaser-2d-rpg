@@ -213,7 +213,7 @@ export default class StoreScene extends Phaser.Scene {
 
     this.timeKey = setInterval(() => {
       this.hpBar.increaseHP("redPotion");
-    }, 10000);
+    }, 5000);
 
     const fn = this.physics.add.overlap(this.portal, this.player, () => {
       if (this.cursors.up.isDown) {
