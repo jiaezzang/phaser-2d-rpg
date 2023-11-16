@@ -300,6 +300,8 @@ export default class StoreScene extends Phaser.Scene {
             );
         });
     });
+    this.player.setDepth(99);
+    this.pet.setDepth(100);
   }
 
   update() {
