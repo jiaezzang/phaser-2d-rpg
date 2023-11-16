@@ -34,6 +34,8 @@ export default class Preloader extends Phaser.Scene {
 
         //npc
         this.load.atlas('npc', 'npc/npc.png', 'npc/npc.json');
+        this.load.image('npcBox', 'npc/npcBox.png');
+
 
         //bubble
         this.load.atlas('bubble', 'bubble/bubble.png', 'bubble/bubble.json');
