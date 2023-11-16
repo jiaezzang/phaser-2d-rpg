@@ -1,8 +1,9 @@
-import Player from "../../Player";
-import Pet from "../../pet/Pet";
-import HealthBar from "../../healthBar/HealthBar";
-import Portal from "../../portal/Portal";
-import Npc from "../../npc/Npc";
+import Player from '../../Player';
+import Pet from '../../pet/Pet';
+import HealthBar from '../../healthBar/HealthBar';
+import Portal from '../../portal/Portal';
+import Npc from '../../npc/Npc';
+import Bubble from '../../bubble/Bubble';
 
 export default class StoreScene extends Phaser.Scene {
   player!: Player;

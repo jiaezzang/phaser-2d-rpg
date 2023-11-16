@@ -5,7 +5,7 @@ export default class PinkBean extends Enemy {
     max: number;
     movingVelocity = 200;
     constructor(scene: Phaser.Scene, config: TEnemyProps) {
-        super(scene, config.x ?? 0, config.y ?? 0, 'pinkbean', config.flag, 'walk1');
+        super(scene, config.x ?? 0, config.y ?? 0, 'pinkbean', config.flag);
         this.min = config.properties.min;
         this.max = config.properties.max;
 

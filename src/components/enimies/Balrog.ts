@@ -5,7 +5,7 @@ export default class Balrog extends Enemy {
     max: number;
     movingVelocity = 100;
     constructor(scene: Phaser.Scene, config: TEnemyProps) {
-        super(scene, config.x ?? 0, config.y ?? 0, 'balrog', config.flag, 'walk1');
+        super(scene, config.x ?? 0, config.y ?? 0, 'balrog', config.flag);
         this.min = config.properties.min;
         this.max = config.properties.max;
 
@@ -14,7 +14,7 @@ export default class Balrog extends Enemy {
             frames: scene.anims.generateFrameNames('balrog', {
                 prefix: 'walk',
                 start: 1,
-                end: 9,
+                end: 8,
                 zeroPad: 1
             }),
             frameRate: 8,

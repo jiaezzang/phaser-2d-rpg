@@ -5,7 +5,6 @@ export default class Preloader extends Phaser.Scene {
     preload() {
         this.load.setBaseURL('assets');
         this.load.image('bg1', 'background/bg1.png');
-        this.load.image('bg2', 'background/bg2.png');
         this.load.image('selectPlayer', 'selectPlayer/select.png');
         this.load.atlas('player', 'player/poy/poy.png', 'player/poy/poy.json');
         this.load.atlas('player_angel', 'player/angel/angel.png', 'player/angel/angel.json');
