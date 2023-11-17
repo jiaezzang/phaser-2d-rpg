@@ -304,13 +304,10 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   ### 기획
 
-  📌 3개의 Player 중 하나를 선택하여 게임 실행
-
-  📌 서기, 걷기, 점프, 공격 동작 구현
-
-  📌 Camera는 Player에 초점
-
-  📌 다른 객체들과의 상호작용(Portal, Monster)
+  📌 3개의 Player 중 하나를 선택하여 게임 실행  
+  📌 서기, 걷기, 점프, 공격 동작 구현  
+  📌 Camera는 Player에 초점  
+  📌 다른 객체들과의 상호작용(Portal, Monster)  
 
   ### 개발
 
@@ -380,11 +377,9 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   ### 기획
 
-  📌 항상 Player 뒤에 따라다닐 것
-
-  📌 일정 거리 내의 아이템을 스스로 획득할 것
-
-  📌 일정 거리 이상 멀어질 때 소환될 것
+  📌 항상 Player 뒤에 따라다닐 것  
+  📌 일정 거리 내의 아이템을 스스로 획득할 것  
+  📌 일정 거리 이상 멀어질 때 소환될 것  
 
   ### 개발
 
