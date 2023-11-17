@@ -1,4 +1,4 @@
-# Phaser Project(231106~231116)
+# Phaser Project(231106~231116) : 슬기, 지애
 ## Thema : 2D RPG (Maple Stroy 모방)
 
 ![Untitled](https://cdn.ftoday.co.kr/news/photo/202309/308342_309298_1440.png)
