@@ -97,13 +97,13 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
     //keyboard event
     if (cursors.left.isDown) {
       this.setFlipX(false);
-      if (gapX < 0 && this.body?.blocked.down && gap.x > this.minLine) {
+      if (gapX < 0 && gap.x > this.minLine) {
         this.play("walk", true);
         this.setVelocityX(this.target.body.velocity.x);
       }
     } else if (cursors.right.isDown) {
       this.setFlipX(true);
-      if (gapX > 0 && this.body?.blocked.down && gap.x > this.minLine) {
+      if (gapX > 0 && gap.x > this.minLine) {
         this.play("walk", true);
         this.setVelocityX(this.target.body.velocity.x);
       }
@@ -122,7 +122,7 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
       return;
 
     if (cursors.space.isDown && this.body?.blocked.down) {
-      this.play("walk");
+      this.play("walk", true);
       this.setVelocityY(-1200);
     }
 
@@ -140,6 +140,6 @@ export default class Pet extends Phaser.Physics.Arcade.Sprite {
     }
   }
   attack() {
-    this.play("attack");
+    this.play("attack", true);
   }
 }
