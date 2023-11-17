@@ -5,7 +5,7 @@
 
 ## Thema : 2D RPG (Maple Stroy 모방)
 
-![Untitled](<Phaser%20Project(231106~231116)%20d1bc290d4a934e27a3384b78f74d495c/Phaser%20Project(231106~231116)%20(1)%203245cc2ec0b34dda82c8615881d42243/Untitled.png>)
+![Untitled](https://cdn.ftoday.co.kr/news/photo/202309/308342_309298_1440.png)
 
 - Player 선택
 - Player가 이동할 수 있는 TileMap
