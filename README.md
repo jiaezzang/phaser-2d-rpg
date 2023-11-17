@@ -3,7 +3,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
 ## Thema : 2D RPG (Maple Stroy 모방)
 
-![Untitled](https://cdn.ftoday.co.kr/news/photo/202309/308342_309298_1440.png)
+![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcDurN8%2FbtsAqZl2kY5%2FxHVranB95BrOGVixrttjN1%2Fimg.png)
 
 - Player 선택
 - Player가 이동할 수 있는 TileMap
@@ -18,15 +18,15 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
 ### SCENE0 : Player 선택
 
-![Untitled](https://terrific-oviraptor-585.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0c7b1e2a-e47d-454b-9a0a-ac8af11b4573%2F286c4723-05c5-4443-87f1-12f3a6d41faf%2FUntitled.png?table=block&id=34aa2f3e-c384-4516-8de5-8838d36176b8&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&width=2000&userId=&cache=v2)
+![Scene0](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcWVSLP%2FbtsAr6Fasxi%2FqPykFGZnFnReSkwVLEbZm0%2Fimg.png)
 
 ### SCENE1 : 사냥터
 
-![Untitled](https://terrific-oviraptor-585.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0c7b1e2a-e47d-454b-9a0a-ac8af11b4573%2F3294f1b5-4308-40c7-8a04-bebffe319c5c%2FUntitled.png?table=block&id=ab680cdb-9cca-48f7-af20-3c1e234a3898&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&width=2000&userId=&cache=v2)
+![Scene2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdfxEux%2FbtsAs8pdNNz%2FKVkI6JuKUNeXZ4jru4dq7K%2Fimg.png)
 
 ### SCENE2 : 쉼터
 
-![Untitled](https://terrific-oviraptor-585.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0c7b1e2a-e47d-454b-9a0a-ac8af11b4573%2F9dcc0d2e-c58e-499f-8758-1cd54be106ca%2FUntitled.png?table=block&id=144f8920-225d-4229-994f-7ed4165bee64&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&width=2000&userId=&cache=v2)
+![Scene2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdSRr5n%2FbtsAuLf2zOQ%2FeNw86M5T7Il50oljOLebP1%2Fimg.png)
 
 ## Development
 
@@ -104,19 +104,20 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   ### Tilemap Edit
 
-  ![Untitled](https://terrific-oviraptor-585.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0c7b1e2a-e47d-454b-9a0a-ac8af11b4573%2F361319a0-2ce1-4ca2-a3dc-b731fbf4dbfe%2FUntitled.png?table=block&id=9bbe732d-e768-431f-8fa8-000256a77772&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&width=2000&userId=&cache=v2)
+  ![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwmN7c%2FbtsAq2QEz5o%2FpPMiNp8qmw7OTBIwxvpiXK%2Fimg.png)
 
   - [**Tiled Map Editor**](https://www.mapeditor.org/) 활용하여 TileMap 생성
 
-  ![Untitled](https://terrific-oviraptor-585.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0c7b1e2a-e47d-454b-9a0a-ac8af11b4573%2F8b115c6d-7684-4f1c-91a9-6d7349dfbc34%2FUntitled.png?table=block&id=3e190c78-910e-41fa-a22d-e9a6f3972723&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&width=2000&userId=&cache=v2)
+  ![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFQhn8%2FbtsAw6X2q1s%2FDT3WgMysp6m5n7KNx0u9yK%2Fimg.png)
+
 
   - TileMap 생성 시 마찰을 가지게 될 영역을 지정해 bool type의 `Custom properties` 추가
 
-  ![Untitled](https://terrific-oviraptor-585.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0c7b1e2a-e47d-454b-9a0a-ac8af11b4573%2Fb3bfab35-2d60-456c-8533-da889a0f6e1d%2FUntitled.png?table=block&id=56e1dc9e-c699-45e4-afec-f4dd7c68b8e4&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&width=2000&userId=&cache=v2)
+  ![Untitled](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FTVCCW%2FbtsAs7cN1OE%2FKSRT4jdcR5cVCrmk7ZSJ9k%2Fimg.png)
 
   - 해당 Custom properties 찾고 rectangle 메서드를 활용해 위와 같은 사각형의 충돌 영역 설정
 
-  ### Create Tilemap Layer
+  #### Create Tilemap Layer
 
   ```jsx
   //1. map 생성
@@ -155,15 +156,15 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
   - 이렇게 그려진 사각형에 충돌 방식 설정
   - 이를 활용해 오브젝트마다 다르게 충범위 설정 가능(`checkCollision`)
 
-  ![map.gif](https://file.notion.so/f/f/0c7b1e2a-e47d-454b-9a0a-ac8af11b4573/0a2a925f-fb13-40c1-84c5-539d65a9ec51/map.gif?id=e2bde296-01e3-4189-9899-610518b91f1a&table=block&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&expirationTimestamp=1700280000000&signature=OrHsN5pIGgAhgHZhptawRyn-AP4mvrSpXUuXeSNGAtc)
+  ![map.gif](https://blog.kakaocdn.net/dn/d0kWhQ/btsAw9tFOem/kXNSndzXKYbYQjPTC1Q4VK/img.gif)
 
 - ## 🧩 Sprite
 
   ### 스프라이트 이미지 생성
 
-  ![스크린샷 2023-11-16 오후 1.53.01.png](https://terrific-oviraptor-585.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0c7b1e2a-e47d-454b-9a0a-ac8af11b4573%2F2d5a1d49-f61a-48e4-972a-064ce386540c%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-16_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_1.53.01.png?table=block&id=1417ce46-30f6-4ec9-8208-90837ee80575&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&width=2000&userId=&cache=v2)
+  ![스크린샷 2023-11-16 오후 1.53.01.png](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbYdTG9%2FbtsAx0iTdI1%2FGr4zGwkSLulo16XGzS51Q0%2Fimg.png)
 
-  ![스크린샷 2023-11-16 오후 3.34.15.png](https://terrific-oviraptor-585.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F0c7b1e2a-e47d-454b-9a0a-ac8af11b4573%2Fb36682b9-8349-4178-b8e8-57037e3267a5%2F%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-16_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_3.34.15.png?table=block&id=ff4b18a4-ccc7-45ca-b800-9ca3e12a0bfe&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&width=2000&userId=&cache=v2)
+  ![스크린샷 2023-11-16 오후 3.34.15.png](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F7Ym1f%2FbtsAxdW9SHt%2FWMf5Ket2AyOLyjbk7NB2F0%2Fimg.png)
 
   - 스프라이트 이미지 만들기
   - texture packer를 통해 스프라이트 이미지를 json 파일로 생성
@@ -228,7 +229,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
   - `repeat` 을 통해 무한 반복
   - 각 몬스터의 이름을 frame의 이름으로 등록, key 값은 json 파일에 있는 동작의 이름과 연결
 
-  ![화면-기록-2023-11-16-오후-3.59.51.gif](https://file.notion.so/f/f/0c7b1e2a-e47d-454b-9a0a-ac8af11b4573/77dc667b-2173-433a-8289-c2c836d6e9b0/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-2023-11-16-%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE-3.59.51.gif?id=4cfcd35e-99c3-49c3-9cd3-4e1d5378f12b&table=block&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&expirationTimestamp=1700280000000&signature=tB-_x_F_uLGXouagCvlvW5IAqW6RM0a9Yp1oNbkXY-8)
+  ![화면-기록-2023-11-16-오후-3.59.51.gif](https://blog.kakaocdn.net/dn/cytSdm/btsAxYFnN1R/g5oSiSBlf4u9a7mWItKAck/img.gif)
 
 - ## 💊 Health Bar
 
@@ -294,9 +295,10 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   ### tweens 적용 예시
 
-  ![Animation2.gif](https://file.notion.so/f/f/0c7b1e2a-e47d-454b-9a0a-ac8af11b4573/5fa32f66-5498-4527-b3f0-32966c9eced6/Animation2.gif?id=6930e435-708d-4f1a-9a7b-3ce02bce3295&table=block&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&expirationTimestamp=1700280000000&signature=OgEHc7YNcijYf7cbj96x8X4GagTjOhwKYJfHpBHOBnw)
-  ![Animation1.gif](https://file.notion.so/f/f/0c7b1e2a-e47d-454b-9a0a-ac8af11b4573/1ac29a1b-51bc-409c-b896-d657ba585e6d/Animation1.gif?id=c90258bf-c35e-4e3b-870f-00be3cb1de5c&table=block&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&expirationTimestamp=1700280000000&signature=g_PJDsoT6pjhUZtFFOyX1ZPUZPUR8s24T7lQuzbzujM)
-  _참고 예제 : [https://phaser.io/examples/v3/view/tweens/counter-tween,](https://phaser.io/examples/v3/view/tweens/counter-tween) [https://labs.phaser.io/edit.html?src=src/game objects/graphics/health bars demo.js&v=3.60.0](https://phaser.io/examples/v3/view/game-objects/graphics/health-bars-demo)_
+  ![Animation2.gif](https://blog.kakaocdn.net/dn/bbQYhE/btsAqDpZnhe/LZiL1RJ9K2m5eQgZ6eIpP1/img.gif)
+  ![Animation1.gif](https://blog.kakaocdn.net/dn/L3hrv/btsAuNZcmTT/Y1MKXXpx3NujEHY8yVQQsK/img.gif)  
+  _참고 예제 : [https://phaser.io/examples/v3/view/tweens/counter-tween,](https://phaser.io/examples/v3/view/tweens/counter-tween),  
+   [https://labs.phaser.io/edit.html?src=src/game objects/graphics/health bars demo.js&v=3.60.0](https://phaser.io/examples/v3/view/game-objects/graphics/health-bars-demo)_
 
 - ## 🧚 Player
 
@@ -312,9 +314,9 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   ### 개발
 
-  1. **3개의 Player 중 하나를 선택하여 게임 실행**
+  **1. 3개의 Player 중 하나를 선택하여 게임 실행**
 
-  ![selectPlayer.gif](https://file.notion.so/f/f/0c7b1e2a-e47d-454b-9a0a-ac8af11b4573/7f78f34b-acc0-4d44-b4a4-90a528eb41a2/selectPlayer.gif?id=ddd12d74-720b-4239-92ee-8740c2a9c885&table=block&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&expirationTimestamp=1700280000000&signature=dOW2bc-cplZMsOpptzy9n4_8mHuJhP7g9xhRtOVIOeE)
+  ![selectPlayer.gif](https://blog.kakaocdn.net/dn/xyxkI/btsAxcqoVRY/515ggaIj4jDF8glkmRRW4K/img.gif)
 
   ```jsx
   sprite.setInteractive({ draggable: false, cursor: "pointer" });
@@ -326,7 +328,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   - `setInteractive` : pointer 이벤트를 주기 위해 Sprite 이미지에 `setInteractive` 설정
 
-  2. **서기, 걷기, 점프, 공격 동작 구현**
+  **2. 서기, 걷기, 점프, 공격 동작 구현**
 
   ```jsx
   //LR, Stand
@@ -353,7 +355,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   - 키보드 조작과 데미지 여부에 따른 Animaition 부여
 
-  3. **Camera는 Player에 초점**
+  **3. Camera는 Player에 초점**
 
   ```jsx
   this.cameras.main.startFollow(this.player);
@@ -363,7 +365,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
   - `camera(Phaser.Cameras.Scene2D.CameraManager)`: 게임 화면에 대한 뷰포트 (플레이어의 시야)
   - `startFollow`로 초점 대상을 지정하고, `setBounds`로 가동 범위를 조절
 
-  4. **다른 객체들과의 상호작용(Portal, Monster)**
+  **4. 다른 객체들과의 상호작용(Portal, Monster)**
 
   ```jsx
   this.physics.add.overlap(this.player, this.enemies, () => {
@@ -384,7 +386,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   ### **개발**
 
-  1. **항상 Player 뒤에 따라다닐 것**
+  **1. 항상 Player 뒤에 따라다닐 것**
 
   ```jsx
   //gap : player와 pet 사이의 거리
@@ -430,7 +432,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
   - 좌우키를 누르지 않았을 때 : 최대 거리(deadLine)안에 있지만 최소 거리(minLine)보다 멀어졌을 때 키보드를 입력하지 않아도 Pet이 Player에게 스스로 걸어올 수 있도록 처리
   - 따라서 아이템을 획득했을 때에 다시 Player에게 돌아오도록 할 수 있음
 
-  2. **일정 거리 내의 아이템을 스스로 획득할 것**
+  **2. 일정 거리 내의 아이템을 스스로 획득할 것**
 
   ```jsx
   if (
@@ -444,7 +446,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
   - `moveToObject` : 특정 게임 객체가 다른 게임 객체나 좌표로 이동할 수 있게 도와주는 메서드
   - 목적지까지 선형 이동하는 방식으로 중력 법칙을 반영하지 않음 (Pet의 조작에는 부적합)
 
-  3. **일정 거리 이상 멀어질 때 소환될 것**
+  **3. 일정 거리 이상 멀어질 때 소환될 것**
 
   ```jsx
   if (gap.x > this.deadLine || gap.y > this.deadLine) {
@@ -493,7 +495,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
   - `Phaser.Math.Distance.Between` 을 사용해서 플레이어와 맵에 있는 모든 몬스터의 거리 계산
   - 몬스터의 좌표를 기준으로 공격 생성
 
-  ![화면-기록-2023-11-16-오후-4.36.22.gif](https://file.notion.so/f/f/0c7b1e2a-e47d-454b-9a0a-ac8af11b4573/ff903a80-6e67-450d-8f58-681c2b4123e1/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-2023-11-16-%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE-4.36.22.gif?id=96fc6678-1f6a-456f-90ae-54b9138fa6b9&table=block&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&expirationTimestamp=1700280000000&signature=BSUtywPBx6xH9YioMUM_OxN_XgdruZZEcJUF4wmeG88)
+  ![화면-기록-2023-11-16-오후-4.36.22.gif](https://blog.kakaocdn.net/dn/b3gW0g/btsAuPil7Wg/n0J9tUyxMHKDIQxaL7krb0/img.gif)
 
   ### 포션, 죽은 몬스터 생성
 
@@ -551,7 +553,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
 
   - `animationcomplete` 를 통해 애니메이션이 끝난 후 몬스터 제거
 
-  ![화면-기록-2023-11-16-오후-4.19.04.gif](https://file.notion.so/f/f/0c7b1e2a-e47d-454b-9a0a-ac8af11b4573/5ec1c2ad-654d-4d80-8da3-e629f9694958/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-2023-11-16-%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE-4.19.04.gif?id=8aefc16f-1477-4aa0-8571-2d5a2b1ffe66&table=block&spaceId=0c7b1e2a-e47d-454b-9a0a-ac8af11b4573&expirationTimestamp=1700280000000&signature=yBH56xe32WGRxkyM4hZsOkSImKHmE8oZ2Fxh3lwOBNo)
+  ![화면-기록-2023-11-16-오후-4.19.04.gif](https://blog.kakaocdn.net/dn/broQRl/btsArxbLQA5/XvPW44KxpFg01AkahRMuf0/img.gif)
 
 - ## 👻Monster
 
