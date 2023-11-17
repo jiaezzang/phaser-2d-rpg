@@ -194,6 +194,7 @@ export default class DisplayScene extends Phaser.Scene {
     );
 
     //index 설정
+    this.enemies.setDepth(98);
     this.player.setDepth(99);
     this.pet.setDepth(100);
     this.portal.setDepth(1);

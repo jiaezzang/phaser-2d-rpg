@@ -76,7 +76,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       if (this.body?.blocked.down && !this._attack) this.play("walk", true);
     } else {
       this.setVelocityX(0);
-      if (this.body?.blocked.down && !this._attack) this.play("stand");
+      if (this.body?.blocked.down && !this._attack) this.play("stand", true);
       if (!this.dead && this.attacked) this.setFrame("hit1");
     }
     //@ts-ignore
