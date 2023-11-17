@@ -1,5 +1,5 @@
 # Phaser Project(231106~231116)  
-Notion: **[https://notion/Phaser-Project-231106-231116](https://terrific-oviraptor-585.notion.site/Phaser-Project-231106-231116-d1bc290d4a934e27a3384b78f74d495c?pvs=4)**
+Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.site/Phaser-Project-231106-231116-d1bc290d4a934e27a3384b78f74d495c?pvs=4)**
 
 ## Thema : 2D RPG (Maple Stroy 모방)
 
