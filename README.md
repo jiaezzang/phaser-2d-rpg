@@ -1,4 +1,5 @@
-# Phaser Project(231106~231116)
+# Phaser Project(231106~231116)  
+Notion: **[https://notion/Phaser-Project-231106-231116](https://terrific-oviraptor-585.notion.site/Phaser-Project-231106-231116-d1bc290d4a934e27a3384b78f74d495c?pvs=4)**
 
 ## Thema : 2D RPG (Maple Stroy 모방)
 
@@ -115,7 +116,7 @@
 
   - 해당 Custom properties 찾고 rectangle 메서드를 활용해 위와 같은 사각형의 충돌 영역 설정
 
-  #### Create Tilemap Layer
+  ### Create Tilemap Layer
 
   ```jsx
   //1. map 생성
@@ -703,5 +704,3 @@
   - 몬스터의 Sprite Animation 생성
   - 몬스터의 타입에 따라 `setVelocityX` , `setVelocityY` 조절
   - `update()` 함수를 통해 몬스터가 타일을 벗어나지 않게 체크
-
-Notion: **[https://notion/Phaser-Project-231106-231116](https://terrific-oviraptor-585.notion.site/Phaser-Project-231106-231116-d1bc290d4a934e27a3384b78f74d495c?pvs=4)**
