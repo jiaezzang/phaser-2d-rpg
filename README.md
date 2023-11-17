@@ -154,7 +154,7 @@ Notion: **[Phaser Project(231106~231116)](https://terrific-oviraptor-585.notion.
   - `addTilesetImage`의 첫번째 인자는 Tilemap Edit에서 설정했던 Tileset의 이름, 두번째 인자는 Layer의 이름
   - 해당 Layer에서 앞서 설정한 Custom properties 모두 찾아 rectangle 추가
   - 이렇게 그려진 사각형에 충돌 방식 설정
-  - 이를 활용해 오브젝트마다 다르게 충범위 설정 가능(`checkCollision`)
+  - 이를 활용해 오브젝트마다 다르게 충돌범위 설정 가능(`checkCollision`)
 
   ![map.gif](https://blog.kakaocdn.net/dn/d0kWhQ/btsAw9tFOem/kXNSndzXKYbYQjPTC1Q4VK/img.gif)
 
